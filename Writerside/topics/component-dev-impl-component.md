@@ -333,7 +333,7 @@ public class FooComponent implements Component {
 
 > `serializersModule` 的“静态化”可以使用属性、也可以使用函数。这里选择使用属性的方式。
 
-## 支持 SPI 供应 {id="impl_spi_provide"}
+## 支持 SPI {id="impl_spi_provide"}
 
 ### 实现 ComponentFactoryProvider
 
@@ -380,7 +380,7 @@ public class JFooComponentFactoryProvider implements ComponentFactoryProvider<JF
 </tab>
 </tabs>
 
-### 添加 SPI 文件 {id="spi_meta"}
+### 添加 services 文件
 
 接下来，在你的项目资源目录的 
 <path>resources/META-INF/services</path>
