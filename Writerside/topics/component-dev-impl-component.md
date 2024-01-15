@@ -362,16 +362,16 @@ class FooComponentFactoryProvider : ComponentFactoryProvider<FooComponentConfigu
 <tab title="Java" group-key="Java">
 
 ```Java
-public class JFooComponentFactoryProvider implements ComponentFactoryProvider<JFooComponentConfiguration> {
+public class FooComponentFactoryProvider implements ComponentFactoryProvider<FooComponentConfiguration> {
     @Nullable
     @Override
-    public Sequence<ComponentFactoryConfigurerProvider<JFooComponentConfiguration>> loadConfigurers() {
+    public Sequence<ComponentFactoryConfigurerProvider<FooComponentConfiguration>> loadConfigurers() {
         return null;
     }
 
     @NotNull
     @Override
-    public ComponentFactory<?, JFooComponentConfiguration> provide() {
+    public ComponentFactory<?, FooComponentConfiguration> provide() {
         return JFooComponent.FACTORY;
     }
 }
