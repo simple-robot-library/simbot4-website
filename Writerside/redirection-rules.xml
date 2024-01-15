@@ -14,4 +14,8 @@
         <description>Created after removal of "Tutorial" from Simbot4 Website</description>
         <accepts>Tutorial.html</accepts>
     </rule>
+    <rule id="3a076756">
+        <description>Created after removal of "Test" from Simple Robot 4</description>
+        <accepts>Test.html</accepts>
+    </rule>
 </rules>

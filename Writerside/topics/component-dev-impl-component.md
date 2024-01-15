@@ -414,3 +414,47 @@ module com.example.foo {
 
 现在你可以将你的组件安装在任意的 `Application` 中，
 或者在 Spring Boot 等支持 SPI 的地方自动安装啦~
+
+<tabs group="code">
+<tab title="Kotlin" group-key="Kotlin">
+
+```Kotlin
+val app = launchSimpleApplication {
+    install(FooComponent)
+}
+
+// Kotlin 可以直接通过扩展函数根据类型寻找目标
+val fooComponent = app.components.find<FooComponent>()
+println(fooComponent)
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```Java
+var app = Applications.launchApplicationBlocking(Simple.INSTANCE, configurer -> {
+    configurer.install(FooComponent.FACTORY);
+});
+
+// 也可以使用类型寻找，此处图省事儿，直接通过id寻找
+var fooComponent = app.getComponents().findById(FooComponent.ID_VALUE);
+System.out.println(fooComponent);
+```
+
+</tab>
+<tab title="Java(Async)" group-key="Java-A">
+
+```Java
+Applications.launchApplicationAsync(Simple.INSTANCE, configurer -> {
+    // 注册
+    configurer.install(FooComponent.FACTORY);
+}).asFuture().thenAccept(app -> {
+    // 寻找注册的组件中的 FooComponent
+    // 也可以使用类型寻找，此处图省事儿，直接通过id寻找
+    var fooComponent = app.getComponents().findById(JFooComponent.ID_VALUE);
+    System.out.println(fooComponent);
+});
+```
+
+</tab>
+</tabs>
