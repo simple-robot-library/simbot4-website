@@ -22,6 +22,7 @@
         </toc-element>
     </toc-element>
     <toc-element topic="how-to-use.md">
+        <toc-element topic="community-components.md"/>
         <toc-element topic="official-components.md">
             <toc-element topic="component-qq-guild.md"/>
             <toc-element topic="component-kook.md"/>
