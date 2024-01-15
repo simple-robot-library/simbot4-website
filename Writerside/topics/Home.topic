@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Home" id="Home">
+
+    <!--    A section combines multiple topics dedicated to a specific subject.
+                Add a starting page to provide an overview of the topics in the section.
+                Start with two topics you want to promote in the <spotlight> group,
+                several important topics in the <primary> group (for example, where to start),
+                several less important topics in the <secondary> group (for example, more advanced topics),
+                and optionally add any other relevant topics in the <misc> group as cards and lists of links
+                (maybe related topics from other sections).
+                Only the spotlight section is limited to two topics.
+                For other groups, try to keep the number between 2 and 6, but you can add more if necessary.-->
+
+    <section-starting-page>
+        <title>Simple Robot 4</title>
+        <description>
+            一个基于 Kotlin 多平台、提供 Java 友好 API 的 Bot 风格的高性能事件调度框架
+        </description>
+
+        <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
+        <spotlight>
+            <a href="https://github.com/simple-robot" type="account"
+               summary="前往 GitHub 组织库了解更多内容🎉！">
+                组织库
+            </a>
+            <a href="https://github.com/orgs/simple-robot/discussions" type="search"
+               summary="前往 GitHub 讨论区与其他人或维护者友好交流~😊">
+                讨论社区
+            </a>
+        </spotlight>
+
+        <!--    Add several topics that are most important for this section.    -->
+        <primary>
+            <title>基本内容</title>
+            <a href="basic.md" summary="simbot中的大部分基本内容。"/>
+            <a href="basic-event.md" summary="与事件相关内容的描述与简介。"/>
+            <a href="basic-bot.md" summary="与 Bot 相关内容的描述与简介。" />
+            <a href="components-and-plugins.md" summary="对组件、插件等内容的描述与简介。" />
+        </primary>
+
+        <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
+        <secondary>
+            <title>组件开发</title>
+            <a href="component-dev.md" summary="针对组件开发者的内容概述"/>
+            <a href="component-dev-impl-component.md" summary="如何实现一个自己的组件标识 Component"/>
+            <a href="component-dev-impl-plugin.md" summary="如何实现一个自己的插件 Plugin"/>
+        </secondary>
+
+        <!--    Optionally add additional cards and links to topics that are not in this section but may be relevant.    -->
+        <misc>
+            <!--            <cards>-->
+            <!--                <title>Other relevant topics as wide cards</title>-->
+            <!--                <a href=""/>-->
+            <!--                <a href="" summary="With a custom card summary"/>-->
+            <!--                <a href="">Custom card title</a>-->
+            <!--                <a href="" summary="With a custom card summary">Custom card title</a>-->
+            <!--            </cards>-->
+
+            <!--            <cards narrow="true">-->
+            <!--                <title>Other relevant topics as narrow cards</title>-->
+            <!--                <a href=""/>-->
+            <!--                <a href=""/>-->
+            <!--                <a href="" summary="With a custom card summary"/>-->
+            <!--                <a href="">Custom card title</a>-->
+            <!--                <a href="">Custom card title</a>-->
+            <!--                <a href="" summary="With a custom card summary">Custom card title</a>-->
+            <!--            </cards>-->
+
+            <!--            <links>-->
+            <!--                <group>-->
+            <!--                    <title>GitHub社区</title>-->
+            <!--                    <a href=""/>-->
+            <!--                    <a href="" summary="With a custom card summary"/>-->
+            <!--                    <a href="">Custom card title</a>-->
+            <!--                    <a href="" summary="With a custom card summary">Custom card title</a>-->
+            <!--                </group>-->
+            <!--                <group>-->
+            <!--                    <title>Two in a row</title>-->
+            <!--                    <a href=""/>-->
+            <!--                    <a href="" summary="With a custom card summary"/>-->
+            <!--                    <a href="">Custom card title</a>-->
+            <!--                    <a href="" summary="With a custom card summary">Custom card title</a>-->
+            <!--                </group>-->
+            <!--            </links>-->
+
+            <links narrow="true">
+                <group>
+                    <title>手册/站点</title>
+                    <!--                    <a href="https://docs.simbot.forte.love/components/miyoushe-villa/" summary="大别野组件的API文档">API文档</a>-->
+                    <a href="https://docs.simbot.forte.love/" summary="simbot相关内容的引导站点">文档引导站</a>
+                </group>
+                <group>
+                    <title>社区</title>
+                    <a href="https://github.com/orgs/simple-robot/discussions" summary="GitHub 社区">社区</a>
+                    <a href="https://github.com/simple-robot/simpler-robot/issues" summary="问题反馈/建议意见">反馈</a>
+                </group>
+                <group>
+                    <title>仓库</title>
+                    <a href="https://github.com/simple-robot" summary="GitHub 组织库">组织库</a>
+                    <a href="https://github.com/simple-robot/simpler-robot"
+                       summary="Simple Robot 核心库仓库">核心库仓库</a>
+                </group>
+            </links>
+        </misc>
+    </section-starting-page>
+
+</topic>

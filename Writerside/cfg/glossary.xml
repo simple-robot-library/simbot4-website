@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE terms SYSTEM "https://resources.jetbrains.com/writerside/1.0/glossary.dtd">
+<terms>
+    <term name="组件">针对一组一个或多个组件标识和插件的统称。</term>
+    <term name="组件标识">接口类型 Component</term>
+    <term name="插件">接口类型 Plugin</term>
+</terms>

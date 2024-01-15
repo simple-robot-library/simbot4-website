@@ -2,5 +2,7 @@
 <!DOCTYPE vars SYSTEM "https://resources.jetbrains.com/writerside/1.0/vars.dtd">
 <vars>
     <var name="version" value="4.0.0-dev" />
-    <var name="product" value="Writerside"/>
+    <var name="jb" value="阻塞"/>
+    <var name="ja" value="异步"/>
+    <var name="copyright-year" value="2021-2024" />
 </vars>

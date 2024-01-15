@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="s4"
+                 name="Simple Robot 4"
+                  start-page="Home.topic">
+
+    <toc-element topic="Home.topic"/>
+    <toc-element topic="basic.md">
+        <toc-element topic="basic-ID.md"/>
+        <toc-element topic="basic-timestamp.md"/>
+        <toc-element topic="basic-event.md"/>
+        <toc-element topic="messages.md"/>
+        <toc-element topic="basic-bot.md"/>
+        <toc-element topic="components-and-plugins.md">
+            <toc-element topic="component-id.md"/>
+            <toc-element topic="plugin.md"/>
+            <toc-element topic="BotManager.md"/>
+        </toc-element>
+    </toc-element>
+    <toc-element topic="component-dev.md">
+        <toc-element topic="component-dev-impl-component.md"/>
+        <toc-element topic="component-dev-impl-plugin.md"/>
+        <toc-element topic="component-dev-impl-bot-and-manager.md">
+        </toc-element>
+        <toc-element topic="component-dev-impl-event.md"/>
+    </toc-element>
+</instance-profile>
