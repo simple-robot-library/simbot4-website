@@ -1,6 +1,7 @@
 ---
 switcher-label: Java API
 ---
+
 # 实现组件标识
 
 <tooltip term="组件标识">组件标识</tooltip>
@@ -107,7 +108,7 @@ public class FooComponentConfiguration {
 > {style="note"}
 
 > `ComponentFactory` 的两个泛型类型分别代表目标 `Component` 的类型和其配置类的类型。
-此处分别为 `FooComponent` 和 `FooComponentConfiguration`。
+> 此处分别为 `FooComponent` 和 `FooComponentConfiguration`。
 
 
 <tabs group="code">
@@ -386,7 +387,7 @@ public class FooComponentFactoryProvider implements ComponentFactoryProvider<Foo
 
 ### 添加 services 文件
 
-接下来，在你的项目资源目录的 
+接下来，在你的项目资源目录的
 <path>resources/META-INF/services</path>
 中创建一个文件：
 `love.forte.simbot.component.ComponentFactoryProvider`，
@@ -412,7 +413,7 @@ module com.example.foo {
 
 ## 结束
 
-以上就是包括必要操作、建议行为等内容在内的完整的实现一个 
+以上就是包括必要操作、建议行为等内容在内的完整的实现一个
 <tooltip term="组件标识">组件标识</tooltip>
 的步骤了。
 
@@ -446,6 +447,7 @@ Applications.launchApplicationAsync(Simple.INSTANCE, configurer -> {
     System.out.println(fooComponent);
 });
 ```
+
 {switcher-key="%ja%"}
 
 ```Java
@@ -457,6 +459,7 @@ var app = Applications.launchApplicationBlocking(Simple.INSTANCE, configurer -> 
 var fooComponent = app.getComponents().findById(FooComponent.ID_VALUE);
 System.out.println(fooComponent);
 ```
+
 {switcher-key="%jb%"}
 
 

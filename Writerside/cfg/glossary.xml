@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE terms SYSTEM "https://resources.jetbrains.com/writerside/1.0/glossary.dtd">
 <terms>
-    <term name="组件">针对一组一个或多个组件标识和插件的统称。</term>
-    <term name="组件标识">接口类型 Component</term>
-    <term name="插件">接口类型 Plugin</term>
+    <term name="组件">组件：针对一组一个或多个「组件标识」和「插件」的统称。</term>
+    <term name="组件标识">组件标识：Component，是对一个组件的标识与描述。</term>
+    <term name="插件">插件：Plugin，是一个可安装到 Application 中的功能单位。</term>
+    <term name="行为对象">行为对象(行为主体)：Actor，是对一个与「Bot」或其他「行为对象」间存在关系、具有关联行为的对象的描述，例如：一个频道。</term>
+    <term name="联系人">联系人：Contact，一种可以与 Bot 建立独立会话的「行为对象」。例如：一个私聊会话。</term>
+    <term name="组织">组织：Organization，一个组织是一个拥有多个「成员」的「行为对象」，例如：一个群。</term>
+    <term name="聊天室">聊天室：ChatRoom，一个聊天室是一个可以向其中发送消息、被多个「组织成员」接收的「行为对象」，例如：一个「聊天群」。</term>
+    <term name="聊天群">聊天群：ChatGroup，一个用于聊天的群。</term>
+    <term name="频道服务器">频道服务器：Guild，是对一组「组织成员」和一组「频道」的统一。</term>
+    <term name="频道">频道：Channel，是「频道服务器」中所有频道中的某一员。频道的类型可能有很多，其中包含了允许发送消息的「聊天频道」。</term>
+    <term name="聊天频道">聊天频道：ChatChannel，一个实现了「聊天室」的「频道」。</term>
+    <term name="组织成员">组织成员：Member，「组织」内的成员。</term>
 </terms>
