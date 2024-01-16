@@ -1,13 +1,16 @@
+---
+switcher-label: Java API
+---
 # 实现组件标识
 
 <tooltip term="组件标识">组件标识</tooltip>
-是实现一个组件的基础，也是需要实现的内容中最简单的那个。
+是实现一个组件的基础。
 
-<procedure title="实现一个组件标识的基本步骤">
+<procedure title="实现组件标识的基本步骤">
    <step>实现接口 <code>Component</code>。</step>
-   <step>如果需要的话，实现一个用于构建它的配置类。</step>
-   <step>实现 <code>ComponentFactory</code> 来为你的实现类型提供工厂。</step>
-   <step>如果需要的话，为 JVM 平台实现 SPI 的供应者 <code>ComponentFactoryProvider</code>。</step>
+   <step>如果需要的话，实现一个配置类。</step>
+   <step>实现 <code>ComponentFactory</code> 来提供工厂。</step>
+   <step>如果需要的话，实现 SPI 的供应者 <code>ComponentFactoryProvider</code>。</step>
 </procedure>
 
 ## 实现 Component 接口
@@ -72,7 +75,7 @@ public class FooComponent implements Component {
 </def>
 </deflist>
 
-## 实现一个配置类
+## 实现配置类
 
 由于我们没有什么需要配置的东西，因此仅提供一个空的配置类即可。
 
@@ -103,9 +106,8 @@ public class FooComponentConfiguration {
 > 在 Java 中，建议使用静态字段公开一个不变的唯一实例。
 > {style="note"}
 
-`ComponentFactory` 的两个泛型类型分别代表目标 `Component` 的类型和其配置类的类型。
+> `ComponentFactory` 的两个泛型类型分别代表目标 `Component` 的类型和其配置类的类型。
 此处分别为 `FooComponent` 和 `FooComponentConfiguration`。
-
 
 
 <tabs group="code">
@@ -116,7 +118,7 @@ class FooComponent : Component {
     override val id: String = "com.example.foo"
     override val serializersModule: SerializersModule = EmptySerializersModule()
 
-    /** 伴生对象实现的工厂实现 */
+    /** 伴生对象实现工厂 */
     companion object Factory : ComponentFactory<FooComponent, FooComponentConfiguration> {
         override val key: ComponentFactory.Key = object : ComponentFactory.Key {}
         override fun create(context: ComponentConfigureContext, configurer: ConfigurerFunction<FooComponentConfiguration>): FooComponent {
@@ -178,7 +180,7 @@ public class FooComponent implements Component {
 > 在 Java 中，我们选择使用内部类，并且隐藏构造、通过静态字段公开一个唯一单例以供使用。
 > `key` 的单例实现方式也是类似的，只不过它是匿名实现类的单例。
 > {style="note"}
->
+
 </tab>
 </tabs>
 
@@ -289,7 +291,7 @@ public class FooComponent implements Component {
     public static final SerializersModule SerializersModule = SerializersModuleBuildersKt.EmptySerializersModule();
 
     /** 静态的唯一工厂实例。 */
-    public static final JFooComponentFactory FACTORY = new JFooComponentFactory();
+    public static final FooComponentFactory FACTORY = new FooComponentFactory();
 
     @NotNull
     @Override
@@ -335,6 +337,8 @@ public class FooComponent implements Component {
 
 ## 支持 SPI {id="impl_spi_provide"}
 
+> 是否支持 SPI 取决于你的功能需求，这不是必须的。
+
 ### 实现 ComponentFactoryProvider
 
 > `ComponentFactoryProvider` 主要为 JVM 平台服务，不过此接口是多平台实现的。
@@ -372,7 +376,7 @@ public class FooComponentFactoryProvider implements ComponentFactoryProvider<Foo
     @NotNull
     @Override
     public ComponentFactory<?, FooComponentConfiguration> provide() {
-        return JFooComponent.FACTORY;
+        return ooComponent.FACTORY;
     }
 }
 ```
@@ -432,6 +436,19 @@ println(fooComponent)
 <tab title="Java" group-key="Java">
 
 ```Java
+Applications.launchApplicationAsync(Simple.INSTANCE, configurer -> {
+    // 注册
+    configurer.install(FooComponent.FACTORY);
+}).asFuture().thenAccept(app -> {
+    // 寻找注册的组件中的 FooComponent
+    // 也可以使用类型寻找，此处图省事儿，直接通过id寻找
+    var fooComponent = app.getComponents().findById(FooComponent.ID_VALUE);
+    System.out.println(fooComponent);
+});
+```
+{switcher-key="%ja%"}
+
+```Java
 var app = Applications.launchApplicationBlocking(Simple.INSTANCE, configurer -> {
     configurer.install(FooComponent.FACTORY);
 });
@@ -440,21 +457,8 @@ var app = Applications.launchApplicationBlocking(Simple.INSTANCE, configurer -> 
 var fooComponent = app.getComponents().findById(FooComponent.ID_VALUE);
 System.out.println(fooComponent);
 ```
+{switcher-key="%jb%"}
 
-</tab>
-<tab title="Java(Async)" group-key="Java-A">
-
-```Java
-Applications.launchApplicationAsync(Simple.INSTANCE, configurer -> {
-    // 注册
-    configurer.install(FooComponent.FACTORY);
-}).asFuture().thenAccept(app -> {
-    // 寻找注册的组件中的 FooComponent
-    // 也可以使用类型寻找，此处图省事儿，直接通过id寻找
-    var fooComponent = app.getComponents().findById(JFooComponent.ID_VALUE);
-    System.out.println(fooComponent);
-});
-```
 
 </tab>
 </tabs>
