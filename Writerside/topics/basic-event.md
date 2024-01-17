@@ -260,7 +260,7 @@
 属性：
 
 <deflist type="medium">
-<def title="guild">
+<def title="source">
 
 `Guild` 类型，此事件中心的频道所属的
 <tooltip term="频道服务器">频道服务器</tooltip>。
@@ -284,7 +284,7 @@
 属性：
 
 <deflist type="medium">
-<def title="guild">
+<def title="source">
 
 `Guild` 类型，此事件中心的频道所属的
 <tooltip term="频道服务器">频道服务器</tooltip>。
