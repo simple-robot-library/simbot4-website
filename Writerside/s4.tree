@@ -12,7 +12,7 @@
         <toc-element toc-title="V2" href="https://www.yuque.com/simpler-robot/simpler-robot-doc" />
         <toc-element toc-title="V1" href="https://www.kancloud.cn/forte-scarlet/simple-coolq-doc" />
     </toc-element>
-    <toc-element topic="basic.md">
+    <toc-element toc-title="基本内容">
         <toc-element topic="basic-ID.md"/>
         <toc-element topic="basic-timestamp.md"/>
         <toc-element topic="messages.md"/>
@@ -47,4 +47,5 @@
         </toc-element>
         <toc-element topic="component-dev-impl-event.md"/>
     </toc-element>
+    <toc-element topic="communities.md"/>
 </instance-profile>

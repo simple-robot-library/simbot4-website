@@ -27,19 +27,20 @@
                summary="前往 GitHub 组织库了解更多内容🎉！">
                 组织库
             </a>
-            <a href="https://github.com/orgs/simple-robot/discussions" type="search"
-               summary="前往 GitHub 讨论区与其他人或维护者友好交流~😊">
-                讨论社区
+<!--            <a href="https://github.com/orgs/simple-robot/discussions" type="search"-->
+            <a href="communities.md" type="search"
+               summary="前往社群信息寻找、加入一个心仪的社群或讨论区并与其他人或维护者友好交流吧~😊">
+                社群
             </a>
         </spotlight>
 
         <!--    Add several topics that are most important for this section.    -->
         <primary>
             <title>基本内容</title>
-            <a href="basic.md" summary="simbot中的大部分基本内容。"/>
-            <a href="basic-event.md" summary="与事件相关内容的描述与简介。"/>
-            <a href="basic-bot.md" summary="与 Bot 相关内容的描述与简介。"/>
-            <a href="components-and-plugins.md" summary="对组件、插件等内容的描述与简介。"/>
+            <a href="basic-event.md" summary="与事件相关内容的描述与介绍。"/>
+            <a href="basic-bot.md" summary="与 Bot 相关内容的描述与介绍。"/>
+            <a href="basic-event-listener.md" summary="对事件的监听与处理的描述与介绍。"/>
+            <a href="components-and-plugins.md" summary="对组件、插件等内容的描述与介绍。"/>
         </primary>
 
         <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
