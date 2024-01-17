@@ -1,3 +1,3 @@
 # QQ频道
 
-Start typing here...
+QQ频道组件的 GitHub 仓库：https://github.com/simple-robot/simbot-component-qq-guild/
