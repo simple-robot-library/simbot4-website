@@ -14,6 +14,7 @@
         <enable-browser-edits>true</enable-browser-edits>
         <locale-code>zh-CN</locale-code>
         <noindex-content>false</noindex-content>
+        <analytics-head-script-file>head-script.html</analytics-head-script-file>
     </variables>
 
     <build-profile instance="s4">
