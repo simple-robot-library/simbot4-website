@@ -9,14 +9,14 @@ Bot管理器 是 `simbot-api` 对外公开的接口类型 `BotManager`，
 <tooltip term="插件"><control>插件</control></tooltip>
 的一个特殊子类型。
 
-## 安装、配置与事后获取
+## 安装、配置与获取
 
 `BotManager` 被定义为用于处理与 `Bot` 相关行为的 `Plugin` 类型，
 但它也仍然是 `Plugin` 的子类型，因此对于一个 `BotManager` 
 的安装、配置与获取方式都与 `Plugin` 相同。
 可参考章节 [插件](plugin.md)。
 
-## 事后获取 (特别)
+## 获取 (特别)
 
 除了直接使用 `application.plugins` 获取以外，作为一种特别的类型，
 `Application` 还提供了另外一个专门针对 `BotManager` 的获取方式：
@@ -161,3 +161,9 @@ var bot = qqGuildBotManger.register("appid", "secret", "token", conf -> {
 
 因此，对于专属的 Bot 注册 API，它们都在各自的类型中定义，你只需要拿到你所需要的对应类型（例如 `QQGuildBotManager`）
 后再对其进行操作即可。
+
+<note>
+
+针对 `Bot` 的其他描述可前往 [**Bot**](basic-bot.md) 章节查看。
+
+</note>
