@@ -42,7 +42,7 @@ Simple Robot v4 基于[**KMP**](https://kotlinlang.org/docs/multiplatform.html) 
 
 ## Java 友好
 
-Java 依旧是重要的群体，且 Kotlin 天生与 Java 具有极强的兼容性。
+Java 是重要的伙伴，且 Kotlin 天生与 Java 具有极强的兼容性。
 
 simbot4 基于 **Java11**，为所有模块提供 JVM 平台实现以及相应的 **模块化(JPMS)** 信息、
 提供 **Spring Boot** 的 starter 快速快发实现、
