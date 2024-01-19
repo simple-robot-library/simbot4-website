@@ -58,4 +58,4 @@ simbot4 主要用于对接那些 Bot 平台，例如 QQ频道机器人、米游�
 ## 高性能异步事件调度框架
 
 既然是 Bot，那么就少不了事件。simbot4 基于 [**Kotlin 协程库**](https://kotlinlang.org/docs/coroutines-overview.html)
-实现高性能、无阻塞轻量且灵活的异步调度机制。
+实现高性能、无阻塞、轻量且灵活的异步调度机制。
