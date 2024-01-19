@@ -370,7 +370,7 @@ var messagesDecoded = json.decodeFromString(Messages.serializer(), jsonStr);
 </def>
 <def title="delete(...)">
 
-删除这个消息。“删除”也可以理解为撤回，如果平台某某种类型的消息内容不支持被删除，
+删除这个消息。“删除”也可以理解为撤回，如果平台中某种类型的消息内容不支持被删除，
 则可能会抛出 `UnsupportedOperationException`。
 
 </def>
@@ -433,7 +433,7 @@ receipt.delete() // 试着删除它
 <tab title="Java" group-key="Java">
 
 ```Java
-sendSupport.sendAsync("")
+sendSupport.sendAsync(...)
         // 试着删除它...
         .thenCompose(DeleteSupport::deleteAsync);
 
