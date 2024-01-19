@@ -137,7 +137,7 @@ var atAll = AtAll.INSTANCE;
 <deflist>
 <def title="基于 ByteArray">
 
-一个基于 `ByteArray` 的 `OfflineImage` 是多平台实现。
+一个基于 `ByteArray` 的 `OfflineImage` ，是多平台实现。
 
 <tabs group="Code">
 <tab title="Kotlin" group-key="Kotlin">
@@ -285,7 +285,7 @@ var newMessages2 = messages.plus(messagesFromList);
 
 ### 序列化
 
-simbot 中所有的序列化相关事件均基于 `Kotlinx serialization`, `Messages` 也不例外。
+simbot 中所有的序列化相关实现均基于 `Kotlinx serialization`, `Messages` 也不例外。
 `Messages` 会被作为一个 `List<Message.Element>` 基于多态进行序列化，因此当需要进行序列化的时候，
 请确保消息链中的所有消息元素均支持序列化。
 
