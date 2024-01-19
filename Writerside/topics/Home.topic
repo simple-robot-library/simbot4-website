@@ -18,7 +18,7 @@
     <section-starting-page>
         <title>Simple Robot 4</title>
         <description>
-            一个基于 Kotlin 多平台、提供 Java 友好 API 的 Bot 风格的高性能事件调度框架
+            一个基于 Kotlin 多平台、提供 Java 友好 API 的 Bot 风格的高性能异步事件调度框架 ~
         </description>
 
         <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
@@ -36,25 +36,35 @@
 
         <!--    Add several topics that are most important for this section.    -->
         <primary>
-            <title>基本内容</title>
-            <a href="basic-event.md" summary="与事件相关内容的描述与介绍。"/>
+            <title>基本内容👀</title>
+            <a href="outline.md" summary="对 simbot4 的基本介绍与概述">概述</a>
+            <a href="basic-messages.md" summary="与消息、消息链、消息发送相关内容的描述与介绍。"/>
             <a href="basic-bot.md" summary="与 Bot 相关内容的描述与介绍。"/>
+            <a href="basic-event.md" summary="与事件相关内容的描述与介绍。"/>
             <a href="basic-event-listener.md" summary="对事件的监听与处理的描述与介绍。"/>
+            <a href="basic-application.md" summary="对整个应用程序运行单元 Application 的描述与介绍。"/>
             <a href="components-and-plugins.md" summary="对组件、插件等内容的描述与介绍。"/>
         </primary>
 
         <!--    Add several topics that are less important or are relevant only for advanced/experienced users.    -->
         <secondary>
-            <title>组件</title>
-            <a href="component-qq-guild.md" summary="simbot官方实现的QQ频道组件"/>
-            <a href="component-kook.md" summary="simbot官方实现的KOOK组件"/>
-            <a href="component-miyoushe.md" summary="simbot官方实现的米游社大别野组件"/>
+            <title>开始使用💪</title>
+            <a href="how-to-use.md" summary="如何使用？开始使用概述"/>
+            <a href="start-use-core.md" summary="使用、安装核心库"/>
+            <a href="start-use-spring-boot-3.md" summary="使用 Spring Boot 3 starter"/>
+            <a href="start-use-components.md" summary="使用、安装组件库"/>
         </secondary>
 
         <!--    Optionally add additional cards and links to topics that are not in this section but may be relevant.    -->
         <misc>
             <cards>
-                <title>组件开发</title>
+                <title>组件🧩</title>
+                <a href="component-qq-guild.md" summary="simbot官方实现的QQ频道组件"/>
+                <a href="component-kook.md" summary="simbot官方实现的KOOK组件"/>
+                <a href="component-miyoushe.md" summary="simbot官方实现的米游社大别野组件"/>
+            </cards>
+            <cards>
+                <title>组件开发⚒️</title>
                 <a href="component-dev.md" summary="针对组件开发者的内容概述"/>
                 <a href="component-dev-impl-component.md" summary="如何实现一个自己的组件标识 Component"/>
                 <a href="component-dev-impl-plugin.md" summary="如何实现一个自己的插件 Plugin"/>
@@ -95,12 +105,12 @@
                 </group>
                 <group>
                     <title>社区</title>
+                    <a href="https://github.com/simple-robot" summary="GitHub 组织库首页">组织库首页</a>
                     <a href="https://github.com/orgs/simple-robot/discussions" summary="GitHub 社区">社区</a>
                     <a href="https://github.com/simple-robot/simpler-robot/issues" summary="问题反馈/建议意见">反馈</a>
                 </group>
                 <group>
                     <title>仓库</title>
-                    <a href="https://github.com/simple-robot" summary="GitHub 组织库">组织库</a>
                     <a href="https://github.com/simple-robot/simpler-robot"
                        summary="Simple Robot 核心库仓库">核心库仓库</a>
                 </group>

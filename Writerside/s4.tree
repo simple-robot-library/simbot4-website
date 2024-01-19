@@ -7,6 +7,7 @@
                   start-page="Home.topic">
 
     <toc-element topic="Home.topic"/>
+    <toc-element topic="outline.md"/>
     <toc-element topic="other-versions.md">
         <toc-element toc-title="V3" href="https://simple-robot-library.github.io/simbot3-website/" />
         <toc-element toc-title="V2" href="https://www.yuque.com/simpler-robot/simpler-robot-doc" />
@@ -15,7 +16,7 @@
     <toc-element toc-title="基本内容">
         <toc-element topic="basic-ID.md"/>
         <toc-element topic="basic-timestamp.md"/>
-        <toc-element topic="messages.md"/>
+        <toc-element topic="basic-messages.md"/>
         <toc-element topic="basic-bot.md"/>
         <toc-element topic="basic-actor.md"/>
         <toc-element topic="basic-event.md"/>
@@ -27,17 +28,22 @@
             <toc-element topic="BotManager.md"/>
         </toc-element>
     </toc-element>
+    <toc-element topic="java-friendly.md"/>
     <toc-element topic="how-to-use.md">
-        <toc-element topic="start-use-components.md"/>
-        <toc-element topic="official-components.md">
-            <toc-element topic="component-qq-guild.md"/>
-            <toc-element topic="component-kook.md"/>
-            <toc-element topic="component-miyoushe.md"/>
+        <toc-element toc-title="安装使用Application实现">
+            <toc-element topic="start-use-core.md"/>
+            <toc-element topic="start-use-spring-boot-3.md"/>
         </toc-element>
-        <toc-element topic="community-components.md"/>
+        <toc-element topic="start-use-components.md">
+            <toc-element topic="official-components.md">
+                <toc-element topic="component-qq-guild.md"/>
+                <toc-element topic="component-kook.md"/>
+                <toc-element topic="component-miyoushe.md"/>
+            </toc-element>
+            <toc-element topic="community-components.md"/>
+        </toc-element>
     </toc-element>
     <toc-element topic="advanced.md">
-        <toc-element topic="advanced-event-dispatcher.md"/>
         <toc-element topic="advanced-interceptor.md"/>
         <toc-element topic="advanced-quantcat.md"/>
     </toc-element>

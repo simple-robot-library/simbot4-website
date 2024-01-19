@@ -664,7 +664,7 @@
 一些与**Bot收到消息**相关的事件类型。
 
 <deflist>
-<def title="MessageEvent">
+<def title="MessageEvent" id="d-message-event">
 
 一个 `Bot` 收到消息的事件。继承 [BotEvent](#d-bot-event)、`ReplySupport`。
 

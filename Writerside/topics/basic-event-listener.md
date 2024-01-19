@@ -311,6 +311,7 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
     return EventResult.empty(); // 返回处理结果
 });
 ```
+
 {switcher-key="%jb%"}
 </tip>
 
@@ -347,7 +348,8 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 
 ### Error
 
-代表**出现错误**的结果。当出现了异常（例如由 `EventDispatcher` 捕获到的事件处理器中抛出的异常）时便会将异常包装到 `Error` 中，
+代表**出现错误**的结果。当出现了异常（例如由 `EventDispatcher` 捕获到的事件处理器中抛出的异常）时便会将异常包装到 `Error`
+中，
 然后返回给事件推送者。
 
 > 有关**事件推送**的内容会在下文介绍。
@@ -382,7 +384,8 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 - `kotlinx.coroutines.Deferred` (不支持 `kotlinx.coroutines.Job`)
 - `kotlinx.coroutines.flow.Flow` (会被收集为 `List`)
 - `kotlin.js.Promise` (JS)
-- `org.reactivestreams.Publisher` (JVM) (不是 `reactor.core.publisher.Mono` 或 `reactor.core.publisher.Flux` 时: 会被收集为 `List`)
+- `org.reactivestreams.Publisher` (JVM) (不是 `reactor.core.publisher.Mono` 或 `reactor.core.publisher.Flux` 时:
+  会被收集为 `List`)
 - `reactor.core.publisher.Flux` (JVM) (会被收集为 `List`)
 - `reactor.core.publisher.Mono` (JVM)
 - `io.reactivex.CompletableSource` (JVM) (会挂起，但是结果始终为 `null`)
@@ -411,14 +414,14 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 
 <deflist>
 <def title="context">
-        
+
 `EventContext` 类型，
 本次事件处理流程的整体上下文。
 其中包括本次流程中的一些有用信息，例如被推送的**事件**。
 
 </def>
 <def title="event">
-        
+
 `Event` 类型，
 本次事件处理流程中被推送的那个事件。来自 `context.event`。
 
@@ -426,6 +429,16 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 <def title="listener">
 
 当前这个 `EventListener` 自身。
+
+</def>
+<def title="plainText">
+
+本次事件处理器进行处理时，用于匹配的事件中消息文本内容。
+
+这是一个**可变**的属性，它的初始值一般与 `messageContent.plainText` 相同，如果不是 `MessageEvent` 则为 `null`。
+这个属性主要的作用是服务拦截器、条件匹配逻辑等地方，让他们可以将对文本内容的处理结果延续下去，
+
+比如第一个拦截器对文本进行“去除空白字符”(`String.trim`)，那么第二个拦截器便会在此基础上再做判断。
 
 </def>
 </deflist>
@@ -458,7 +471,8 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 
 ## 事件推送
 
-想要使事件处理器工作，那么就要推送事件。可以通过 `EventDispatcher.push` 推送一个事件，并得到一个处理结果流 `Flow<EventResult>`。
+想要使事件处理器工作，那么就要推送事件。可以通过 `EventDispatcher.push`
+推送一个事件，并得到一个处理结果流 `Flow<EventResult>`。
 
 <note>
 
@@ -466,4 +480,168 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 
 </note>
 
-TODO
+<tabs group="Code">
+<tab title="Kotlin" group-key="Kotlin">
+
+```Kotlin
+val resultFlow = dispatcher.push(event)
+// 事件推送的结果流是冷流，
+// 你必须收集这个流，事件才会真正开始被处理
+resultFlow.collect()
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+在 Java 中直接操作 `Flow` 可能会有一些困难，
+你可以使用 `EventProcessors` 中提供的各种静态API来进行事件推送。
+
+<if switcher-key="%ja%">
+
+```Java
+// 推送事件、并在异步中收集结果。
+// 其中第三个参数 `application` 是用于执行异步任务的 `CoroutineScope` 类型，
+// 你可以使用 `Application` （继承了 `CoroutineScope`），
+// 或者使用 Kotlin 的 `GlobalScope` （有关它的注意事项参见其文档注释）
+var asyncListFuture = EventProcessors.pushAndCollectToAsync(dispatcher, event, application, new ArrayList<>());
+
+// 如果希望收集为 List，也有简写形式
+var otherAsyncListFuture = EventProcessors.pushAndCollectToListAsync(dispatcher, event, application);
+
+// 也可以使用 Java 中的 Collector，就像在 Stream 中使用它一样
+var asyncCollectListFuture = EventProcessors.pushAndCollectToAsync(dispatcher, event, application, Collectors.toList());
+
+// 借助 Collector，也可以实现一些复杂的结果收集，比如：
+// -> 只过滤出类型为 StandardEventResult.Simple 的结果
+var asyncCollectSimpleListFuture = EventProcessors.pushAndCollectToAsync(
+                dispatcher, event, application,
+                Collectors.filtering(
+                    result -> result instanceof StandardEventResult.Simple,
+                    Collectors.toList()    
+                ));
+
+// -> 根据是否为 StandardEventResult.Error 为依据分组，并计算每组的结果数量
+var asyncTypeCountingFuture = EventProcessors.pushAndCollectToAsync(
+                dispatcher, event, application,
+                Collectors.partitioningBy(
+                    result -> result instanceof StandardEventResult.Error,
+                    Collectors.counting()
+                ));
+```
+
+你也可以将结果转化为响应式的 `reactor.core.publisher.Flux`。
+
+```Java
+var resultFlux = EventProcessors.pushAndAsFlux(dispatcher, event);
+resultFlux.subscribe(result -> {
+    // 事件推送的结果流是冷流，因此转化后的 `Flux` 也是冷的，
+    // 你必须消费其中的元素才能使得事件真正的被处理。
+});
+```
+
+<warning>
+
+使用 `pushAndAsFlux`
+需要项目运行时环境中存在 [kotlinx-coroutines-reactor](https://github.com/Kotlin/kotlinx.coroutines/tree/master/reactive)。
+
+</warning>
+
+</if>
+
+
+<if switcher-key="%jb%">
+
+```Java
+// 转化为阻塞的 Stream
+var stream = EventProcessors.pushAndAsStream(dispatcher, event, application);
+stream.forEach(result -> {
+    // 因为 push 事件的结果 Flow 是冷流，
+    // 因此转化为 Stream 后也是冷的，你必须使用 stream 的终结函数，例如 forEach、collect 等，
+    // 事件才会被真正的处理。
+});
+
+// 推送事件、并阻塞地收集结果。
+// 其中第三个参数 `application` 是用于执行异步任务的 `CoroutineScope` 类型，
+// 你可以使用 `Application` （继承了 `CoroutineScope`），
+// 或者使用 Kotlin 的 `GlobalScope` （有关它的注意事项参见其文档注释）
+var list = EventProcessors.pushAndCollectToBlocking(dispatcher, event, new ArrayList<>());
+
+// 如果希望收集为 List，也有简写形式
+var otherList = EventProcessors.pushAndCollectToListBlocking(dispatcher, event);
+
+// 也可以使用 Java 中的 Collector，就像在 Stream 中使用它一样
+var collectList = EventProcessors.pushAndCollectToBlocking(dispatcher, event, Collectors.toList());
+
+// 借助 Collector，也可以实现一些复杂的结果收集，比如：
+// -> 只过滤出类型为 StandardEventResult.Simple 的结果
+var collectSimpleList = EventProcessors.pushAndCollectToBlocking(
+        dispatcher, event,
+        Collectors.filtering(
+                result -> result instanceof StandardEventResult.Simple,
+                Collectors.toList()
+        ));
+
+// -> 根据是否为 StandardEventResult.Error 为依据分组，并计算每组的结果数量
+var typeCounting = EventProcessors.pushAndCollectToBlocking(
+        dispatcher, event,
+        Collectors.partitioningBy(
+                result -> result instanceof StandardEventResult.Error,
+                Collectors.counting()
+        ));
+```
+
+</if>
+</tab>
+</tabs>
+
+如上面的示例中所说，通过 `push` 得到的 `Flow` 结果是一个**冷流**，因此你必须收集、消费其中的元素，
+它才会使得事件被处理，并且这也受到你对这个流的中间操作。
+
+举个例子：
+
+<tabs group="Code">
+<tab title="Kotlin" group-key="Kotlin">
+
+```Kotlin
+val flow = dispatcher.push(event)
+flow.take(2) // 取前两个元素
+    .collect {
+        // 消费结果
+    }
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+<if switcher-key="%ja%">
+
+```Java
+var flux = EventProcessors.pushAndAsFlux(dispatcher, event);
+flux.take(2) // 取前两个结果
+        .subscribe(result -> {
+            // 消费结果
+        });
+```
+
+</if>
+
+
+<if switcher-key="%jb%">
+
+```Java
+var stream = EventProcessors.pushAndAsStream(dispatcher, event, application);
+stream.limit(2) // 取前两个结果
+        .forEach(result -> {
+            // 消费结果
+        });
+```
+
+</if>
+</tab>
+</tabs>
+
+在示例中，我们在获取到结果流时只取了**前两个**结果。此时，在消费结果时真正处理了事件的事件处理器也**只有前两个**，
+因为我们得到的流是冷流，每一次结果都是一次“实时”的事件处理。
+
+你可以依据这些类型的特性来自由决定结果流的处理形式，例如在收集前指定调度器，
+这时则可能在收集前便已经有事件处理器开始处理事件了。
