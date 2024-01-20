@@ -137,7 +137,7 @@ var atAll = AtAll.INSTANCE;
 <deflist>
 <def title="基于 ByteArray">
 
-一个基于 `ByteArray` 的 `OfflineImage` 是多平台实现。
+一个基于 `ByteArray` 的 `OfflineImage`, 是多平台实现。
 
 <tabs group="Code">
 <tab title="Kotlin" group-key="Kotlin">
@@ -285,7 +285,7 @@ var newMessages2 = messages.plus(messagesFromList);
 
 ### 序列化
 
-simbot 中所有的序列化相关事件均基于 `Kotlinx serialization`, `Messages` 也不例外。
+simbot 中所有的序列化相关实现均基于 `Kotlinx serialization`, `Messages` 也不例外。
 `Messages` 会被作为一个 `List<Message.Element>` 基于多态进行序列化, 因此当需要进行序列化的时候, 
 请确保消息链中的所有消息元素均支持序列化。
 
@@ -370,7 +370,7 @@ var messagesDecoded = json.decodeFromString(Messages.serializer(), jsonStr);
 </def>
 <def title="delete(...)">
 
-删除这个消息。“删除”也可以理解为撤回, 如果平台某某种类型的消息内容不支持被删除, 
+删除这个消息。“删除”也可以理解为撤回, 如果平台某种类型的消息内容不支持被删除, 
 则可能会抛出 `UnsupportedOperationException`。
 
 </def>
@@ -433,7 +433,7 @@ receipt.delete() // 试着删除它
 <tab title="Java" group-key="Java">
 
 ```Java
-sendSupport.sendAsync("")
+sendSupport.sendAsync(...)
         // 试着删除它...
         .thenCompose(DeleteSupport::deleteAsync);
 
