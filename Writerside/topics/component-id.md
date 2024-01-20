@@ -11,7 +11,7 @@ switcher-label: Java API
 public interface Component {
     /**
      * 一个组件的ID。
-     * 组件id建议使用类似于Java包路径的格式，
+     * 组件id建议使用类似于Java包路径的格式, 
      * 例如 `org.example.Sample` 并尽量避免重复。
      */
     public val id: String
@@ -34,14 +34,14 @@ public interface Component {
 </def>
 <def title="serializersModule">
 
-此组件的各种序列化信息，例如消息元素、可序列化的 `Bot` 配置类等。
+此组件的各种序列化信息, 例如消息元素、可序列化的 `Bot` 配置类等。
 
 </def>
 </deflist>
 
 ## 使用组件标识
 
-组件标识用于构建 `Application` 的过程中，先注册组件标识，用来告知后续步骤将要被注册的
+组件标识用于构建 `Application` 的过程中, 先注册组件标识, 用来告知后续步骤将要被注册的
 <tooltip term="插件">插件</tooltip>
 并为它提供一些可能的配置。
 
@@ -96,7 +96,7 @@ Applications.launchApplicationBlocking(Simple.INSTANCE, configurer -> {
 
 ### 配置
 
-假如 `FooComponent` 有可配置的信息的话，也可以使用 DSL/Lambda 对其进行配置:
+假如 `FooComponent` 有可配置的信息的话, 也可以使用 DSL/Lambda 对其进行配置:
 
 <tabs group="code">
 <tab title="Kotlin" group-key="Kotlin">
@@ -135,7 +135,7 @@ Applications.launchApplicationBlocking(Simple.INSTANCE, configurer -> {
 
 ### 事后获取
 
-当我们注册完成、并启动了一个 `Application` 之后，如果想要获取注册过的组件，则可以在 `Application` 
+当我们注册完成、并启动了一个 `Application` 之后, 如果想要获取注册过的组件, 则可以在 `Application` 
 中找到它们：
 
 <tabs group="code">

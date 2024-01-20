@@ -7,8 +7,27 @@
 
 </tldr>
 
+## 准备
 
-## 创建 Spring Boot 3 项目
+### Java 17
 
-首先你得有个 Spring Boot 3 项目，你可以前往 [start.spring.io](https://start.spring.io)
-或者借助
+simbot4 的 Spring Boot starter 基于 Spring Boot 3，因此请准备至少 **Java17** 版本的 Java。
+
+### 创建 Spring Boot 3 项目
+
+首先你得有个 Spring Boot 3 项目, 你可以前往 [Spring Initializr](https://start.spring.io)
+或者借助 IDE (比如 IDEA) 的相关功能创建一个 Spring Boot 3 的项目。
+你可以自由选择需要添加的任何其他 Spring Boot 组件，比如 `spring-boot-starter-web` 之类的。
+
+<note title="相关参考">
+
+- [Spring Initializr](https://start.spring.io)
+- [Spring Quickstart Guide](https://spring.io/quickstart/)
+
+</note>
+
+## 安装 starter
+
+在你的 Spring Boot 项目基础上，添加 `simbot-core-spring-boot-starter` 相关依赖。
+
+TODO

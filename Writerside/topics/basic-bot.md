@@ -4,7 +4,7 @@ switcher-label: Java API
 
 # Bot
 
-Bot，一个机器人。simbot 作为一个**Bot风格**的事件调度框架，`Bot` 是一个很常见也很关键的类型。
+Bot, 一个机器人。simbot 作为一个**Bot风格**的事件调度框架, `Bot` 是一个很常见也很关键的类型。
 
 ## 注册/创建
 
@@ -13,7 +13,7 @@ Bot，一个机器人。simbot 作为一个**Bot风格**的事件调度框架，
 
 ## 启动
 
-一个被注册出来的 `Bot` 是**尚未启动**的，你需要在适当的地方启动它，它才会开始运作（例如开始接收事件）。
+一个被注册出来的 `Bot` 是**尚未启动**的, 你需要在适当的地方启动它, 它才会开始运作（例如开始接收事件）。
 
 <tabs group="Code">
 <tab title="Kotlin" group-key="Kotlin">
@@ -45,7 +45,7 @@ bot.startBlocking(); // 启动它
 
 ## 基本信息与能力
 
-你可以在 `Bot` 中获取到一些基本的信息，以及 `Bot` 会提供一些针对其生命周期的基本能力。 
+你可以在 `Bot` 中获取到一些基本的信息, 以及 `Bot` 会提供一些针对其生命周期的基本能力。 
 
 <deflist>
 <def title="name">
@@ -55,7 +55,7 @@ bot.startBlocking(); // 启动它
 </def>
 <def title="id">
 
-`Bot` 的 ID。但是此ID通常是注册 Bot 时使用的某种 ID（比如 `APPID`，
+`Bot` 的 ID。但是此ID通常是注册 Bot 时使用的某种 ID（比如 `APPID`, 
 而这个 ID 并不一定就是 Bot 作为用户的 ID。
 
 </def>
@@ -67,7 +67,7 @@ bot.startBlocking(); // 启动它
 </def>
 <def title="isMe(...)">
    
-提供一个 `ID`，用于判断这个 ID 是否代表当前 Bot。
+提供一个 `ID`, 用于判断这个 ID 是否代表当前 Bot。
 
 </def>
 <def title="isStarted">
@@ -87,7 +87,7 @@ bot.startBlocking(); // 启动它
 </def>
 <def title="join(...)">
    
-挂起 `Bot`，直到它被关闭。
+挂起 `Bot`, 直到它被关闭。
 
 </def>
 <def title="cancel(...)">
@@ -97,7 +97,7 @@ bot.startBlocking(); // 启动它
 </def>
 <def title="guildRelation">
    
-`GuildRelation?` 类型，如果不为 `null` 则说明其支持与
+`GuildRelation?` 类型, 如果不为 `null` 则说明其支持与
 <tooltip term="频道">频道</tooltip>
 进行交互、获取信息。
 
@@ -106,7 +106,7 @@ bot.startBlocking(); // 启动它
 </def>
 <def title="groupRelation">
    
-`GroupRelation?` 类型，如果不为 `null` 则说明其支持与
+`GroupRelation?` 类型, 如果不为 `null` 则说明其支持与
 <tooltip term="聊天群">聊天群</tooltip>
 进行交互、获取信息。
 
@@ -115,7 +115,7 @@ bot.startBlocking(); // 启动它
 </def>
 <def title="contactRelation">
    
-`ContactRelation?` 类型，如果不为 `null` 则说明其支持与
+`ContactRelation?` 类型, 如果不为 `null` 则说明其支持与
 <tooltip term="联系人">联系人</tooltip>
 进行交互、获取信息。
 
@@ -130,7 +130,7 @@ bot.startBlocking(); // 启动它
 
 与
 <tooltip term="频道">频道</tooltip>
-的关系交互类型，其中包含了一些获取 `Guild` 相关信息的 API。
+的关系交互类型, 其中包含了一些获取 `Guild` 相关信息的 API。
 
 <deflist>
 <def title="guild(...)">
@@ -155,7 +155,7 @@ bot.startBlocking(); // 启动它
 
 与
 <tooltip term="聊天群">聊天群</tooltip>
-的关系交互类型，其中包含了一些获取 `ChatGroup` 相关信息的 API。
+的关系交互类型, 其中包含了一些获取 `ChatGroup` 相关信息的 API。
 
 <deflist>
 <def title="group(...)">
@@ -180,7 +180,7 @@ bot.startBlocking(); // 启动它
 
 与
 <tooltip term="联系人">联系人</tooltip>
-的关系交互类型，其中包含了一些获取 `Contact` 相关信息的 API。
+的关系交互类型, 其中包含了一些获取 `Contact` 相关信息的 API。
 
 <deflist>
 <def title="contact(...)">

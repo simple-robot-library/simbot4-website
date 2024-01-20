@@ -1,13 +1,13 @@
 # 社群信息
 
-这里是一些与 simbot 相关的社群，欢迎大家的加入~
+这里是一些与 simbot 相关的社群, 欢迎大家的加入~
 
 ## 讨论社区
 
 一同建设 [GitHub社区](https://github.com/orgs/simple-robot/discussions) 
-是我们最推荐的相互交流的方式！如果你发现了一些问题，
+是我们最推荐的相互交流的方式！如果你发现了一些问题, 
 也可以通过 [Issues](https://github.com/simple-robot/simpler-robot/issues) 进行反馈。 
-与他人交流，并留下你的足迹吧！
+与他人交流, 并留下你的足迹吧！
 
 ## QQ群 {id="qq_group"}
 

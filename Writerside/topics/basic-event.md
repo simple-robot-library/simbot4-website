@@ -7,7 +7,7 @@
 <note>
 
 文档介绍的内容是经过**简化**、且非 **“实时”** 的。
-如果你希望阅读更详细、更贴合版本真实情况的描述，
+如果你希望阅读更详细、更贴合版本真实情况的描述, 
 请前往参阅 [API文档引导站](https://docs.simbot.forte.love)
 中相关内容的 `KDoc`。
 
@@ -15,14 +15,14 @@
 
 ## 基本事件类型
 
-事件类型中，比较基础、接近根部的类型。
+事件类型中, 比较基础、接近根部的类型。
 
 <deflist>
 <def title="Event" id="d-event">
 
 事件。是所有事件类型的老父亲。
 
-> 所有其他事件都直接或间接继承 `Event`，
+> 所有其他事件都直接或间接继承 `Event`, 
 > 在后续的类型定义中将不再赘述。
 
 属性：
@@ -30,14 +30,14 @@
 <deflist type="medium">
 <def title="id">
 
-`ID` 类型，事件的ID。
+`ID` 类型, 事件的ID。
 
-根据不同的场景，它可能是真实的，也可能是随机的。
+根据不同的场景, 它可能是真实的, 也可能是随机的。
 
 </def>
 <def title="time">
 
-`Timestamp` 类型，事件发生的时间或此事件被接收到的时间。
+`Timestamp` 类型, 事件发生的时间或此事件被接收到的时间。
 
 </def>
 </deflist>
@@ -54,7 +54,7 @@
 <deflist type="medium">
 <def title="component">
 
-`Component` 类型，事件所属组件的组件标识。
+`Component` 类型, 事件所属组件的组件标识。
 
 </def>
 </deflist>
@@ -62,7 +62,7 @@
 </def>
 <def title="BotEvent" id="d-bot-event">
 
-继承 [`ComponentEvent`](#d-component-event)，
+继承 [`ComponentEvent`](#d-component-event), 
 代表一个含有 `Bot` 的事件。
 
 属性：
@@ -70,7 +70,7 @@
 <deflist type="medium">
 <def title="bot">
 
-`Bot` 类型，事件所属或源自的 `Bot`。
+`Bot` 类型, 事件所属或源自的 `Bot`。
 
 </def>
 </deflist>
@@ -85,7 +85,7 @@
 <deflist type="medium">
 <def title="content">
 
-`Any?` 类型，也就是可能为任何类型，代表这个事件的**主要事件中心**。
+`Any?` 类型, 也就是可能为任何类型, 代表这个事件的**主要事件中心**。
 
 > `content` 的具体类型主要由其他具体实现类来覆盖定义。
 
@@ -103,7 +103,7 @@
 <deflist type="medium">
 <def title="source">
 
-`Any?` 类型，也就是可能为任何类型，代表这个事件的 **“源头”** 。
+`Any?` 类型, 也就是可能为任何类型, 代表这个事件的 **“源头”** 。
 
 > `source` 的具体类型主要由其他具体实现类来覆盖定义。
 
@@ -113,7 +113,7 @@
 </def>
 <def title="ChangeEvent" id="d-change-event">
 
-继承 [`ContentEvent`](#d-content-event)，
+继承 [`ContentEvent`](#d-content-event), 
 发生了某种变化的事件。
 
 属性：
@@ -122,7 +122,7 @@
 <def title="content">
 
 
-`Any?` 类型，也就是可能为任何类型，代表这个事件的 **发生了变化的主体。** 。
+`Any?` 类型, 也就是可能为任何类型, 代表这个事件的 **发生了变化的主体。** 。
 
 > `content` 继承自 [`ContentEvent`](#d-content-event)。
 
@@ -140,9 +140,9 @@
 <deflist>
 <def title="ActorEvent" id="d-actor-event">
 
-所有**行为对象事件**的统一父类，继承 [BotEvent](#d-bot-event)、[ContentEvent](#d-content-event)。
+所有**行为对象事件**的统一父类, 继承 [BotEvent](#d-bot-event)、[ContentEvent](#d-content-event)。
 
-> **本节内**所有其他事件都继承 `ActorEvent`，在后续的类型定义中将不再赘述。
+> **本节内**所有其他事件都继承 `ActorEvent`, 在后续的类型定义中将不再赘述。
 
 属性：
 
@@ -150,7 +150,7 @@
 <def title="content">
 
 
-`Actor` 类型，被作为事件中心的
+`Actor` 类型, 被作为事件中心的
 <tooltip term="行为对象">行为对象</tooltip>。
 
 > `content` 继承自 [`ContentEvent`](#d-content-event)。
@@ -172,7 +172,7 @@
 <deflist type="medium">
 <def title="content">
 
-`Contact` 类型，被作为事件中心的
+`Contact` 类型, 被作为事件中心的
 <tooltip term="联系人">联系人</tooltip>。
 
 </def>
@@ -190,7 +190,7 @@
 <deflist type="medium">
 <def title="content">
 
-`Organization` 类型，被作为事件中心的
+`Organization` 类型, 被作为事件中心的
 <tooltip term="组织">组织</tooltip>。
 
 </def>
@@ -208,7 +208,7 @@
 <deflist type="medium">
 <def title="content">
 
-`ChatRoom` 类型，被作为事件中心的
+`ChatRoom` 类型, 被作为事件中心的
 <tooltip term="聊天室">聊天室</tooltip>。
 
 </def>
@@ -226,7 +226,7 @@
 <deflist type="medium">
 <def title="content">
 
-`ChatGroup` 类型，被作为事件中心的
+`ChatGroup` 类型, 被作为事件中心的
 <tooltip term="聊天群">聊天群</tooltip>。
 
 </def>
@@ -244,7 +244,7 @@
 <deflist type="medium">
 <def title="content">
 
-`Guild` 类型，被作为事件中心的
+`Guild` 类型, 被作为事件中心的
 <tooltip term="频道服务器">频道服务器</tooltip>。
 
 </def>
@@ -262,13 +262,13 @@
 <deflist type="medium">
 <def title="source">
 
-`Guild` 类型，此事件中心的频道所属的
+`Guild` 类型, 此事件中心的频道所属的
 <tooltip term="频道服务器">频道服务器</tooltip>。
 
 </def>
 <def title="content">
 
-`Channel` 类型，被作为事件中心的
+`Channel` 类型, 被作为事件中心的
 <tooltip term="频道">频道</tooltip>。
 
 </def>
@@ -286,13 +286,13 @@
 <deflist type="medium">
 <def title="source">
 
-`Guild` 类型，此事件中心的频道所属的
+`Guild` 类型, 此事件中心的频道所属的
 <tooltip term="频道服务器">频道服务器</tooltip>。
 
 </def>
 <def title="content">
 
-`ChatChannel` 类型，被作为事件中心的
+`ChatChannel` 类型, 被作为事件中心的
 <tooltip term="聊天频道">聊天频道</tooltip>。
 
 </def>
@@ -305,7 +305,7 @@
 <tooltip term="组织">组织</tooltip>
 作为源头、但并非事件主要主体的事件类型。
 
-> 此类型不实现 [ActorEvent](#d-actor-event)，
+> 此类型不实现 [ActorEvent](#d-actor-event), 
 > 但会与下述部分 [MemberEvent](#d-member-event) 相关类型的事件相互配合。
 
 属性：
@@ -313,7 +313,7 @@
 <deflist type="medium">
 <def title="source">
 
-`Organization` 类型，事件中心的所属源头
+`Organization` 类型, 事件中心的所属源头
 <tooltip term="组织">组织</tooltip>。
 
 </def>
@@ -331,13 +331,13 @@
 <deflist type="medium">
 <def title="source">
 
-`Organization` 类型，此事件中心的组织成员所属的源头
+`Organization` 类型, 此事件中心的组织成员所属的源头
 <tooltip term="组织">组织</tooltip>。
 
 </def>
 <def title="content">
 
-`Member` 类型，被作为事件中心的
+`Member` 类型, 被作为事件中心的
 <tooltip term="组织成员">组织成员</tooltip>。
 
 </def>
@@ -357,13 +357,13 @@
 <deflist type="medium">
 <def title="source">
 
-`ChatGroup` 类型，此事件中心的组织成员所属的源头
+`ChatGroup` 类型, 此事件中心的组织成员所属的源头
 <tooltip term="聊天群">聊天群</tooltip>。
 
 </def>
 <def title="content">
 
-`Member` 类型，被作为事件中心的
+`Member` 类型, 被作为事件中心的
 <tooltip term="组织成员">组织成员</tooltip>。
 
 </def>
@@ -383,13 +383,13 @@
 <deflist type="medium">
 <def title="source">
 
-`Guild` 类型，此事件中心的组织成员所属的源头
+`Guild` 类型, 此事件中心的组织成员所属的源头
 <tooltip term="频道">频道</tooltip>。
 
 </def>
 <def title="content">
 
-`Member` 类型，被作为事件中心的
+`Member` 类型, 被作为事件中心的
 <tooltip term="组织成员">组织成员</tooltip>。
 
 </def>
@@ -406,17 +406,17 @@
 
 `Bot` 收到的某种与请求/申请有关的事件。继承 [BotEvent](#d-bot-event)。
 
-> 本节内所有事件均继承 `RequestEvent`，下文将不再赘述。
+> 本节内所有事件均继承 `RequestEvent`, 下文将不再赘述。
 
 <deflist type="medium">
 <def title="message">
 
-`String?` 类型，伴随请求的附加消息。可能为 `null`。
+`String?` 类型, 伴随请求的附加消息。可能为 `null`。
 
 </def>
 <def title="type">
 
-`RequestEvent.Type` 枚举类型，此申请的主动或被动类型。
+`RequestEvent.Type` 枚举类型, 此申请的主动或被动类型。
 
 元素：
 
@@ -447,12 +447,12 @@
 <deflist type="medium">
 <def title="requesterId">
 
-`ID` 类型，申请人的 ID。
+`ID` 类型, 申请人的 ID。
 
 </def>
 <def title="requester">
 
-`User?` 类型，尝试获取申请者的一些基础信息。
+`User?` 类型, 尝试获取申请者的一些基础信息。
 如果无法获取则可能为 `null`。
 
 </def>
@@ -468,7 +468,7 @@
 <deflist type="medium">
 <def title="content">
 
-`ChatGroup` 类型，被申请的
+`ChatGroup` 类型, 被申请的
 <tooltip term="聊天群">聊天群</tooltip>。
 
 </def>
@@ -484,7 +484,7 @@
 <deflist type="medium">
 <def title="content">
 
-`Guild` 类型，被申请的
+`Guild` 类型, 被申请的
 <tooltip term="频道">频道</tooltip>。
 
 </def>
@@ -506,12 +506,12 @@
 <tooltip term="组织成员">组织成员</tooltip>
 发生了某种变化时的事件。
 
-> 本节内的事件均继承 `MemberChangeEvent`，下文将不再赘述。
+> 本节内的事件均继承 `MemberChangeEvent`, 下文将不再赘述。
 
 <deflist type="medium">
 <def title="content">
 
-`Member` 类型，发生了变化的
+`Member` 类型, 发生了变化的
 <tooltip term="组织成员">组织成员</tooltip>。
 
 </def>
@@ -531,13 +531,13 @@
 <deflist type="medium">
 <def title="source">
 
-`Guild` 类型，发生变化所在的
+`Guild` 类型, 发生变化所在的
 <tooltip term="频道">频道</tooltip>。
 
 </def>
 <def title="content">
 
-`Member` 类型，发生了变化的
+`Member` 类型, 发生了变化的
 <tooltip term="组织成员">组织成员</tooltip>。
 
 </def>
@@ -557,13 +557,13 @@
 <deflist type="medium">
 <def title="source">
 
-`ChatGroup` 类型，发生变化所在的
+`ChatGroup` 类型, 发生变化所在的
 <tooltip term="聊天群">聊天群</tooltip>。
 
 </def>
 <def title="content">
 
-`Member` 类型，发生了变化的
+`Member` 类型, 发生了变化的
 <tooltip term="组织成员">组织成员</tooltip>。
 
 </def>
@@ -585,14 +585,14 @@
 <tooltip term="组织">组织</tooltip>
 产生了某种变化的事件。
 
-继承 [ChangeEvent](#d-change-event) ，[OrganizationEvent](#d-organization-event)。
+继承 [ChangeEvent](#d-change-event) , [OrganizationEvent](#d-organization-event)。
 
-> 本节内所有事件均继承 `OrganizationChangeEvent`，下文将不再赘述。
+> 本节内所有事件均继承 `OrganizationChangeEvent`, 下文将不再赘述。
 
 <deflist type="medium">
 <def title="content">
 
-`Organization` 类型，发生了变化的
+`Organization` 类型, 发生了变化的
 <tooltip term="组织">组织</tooltip>。
 
 </def>
@@ -605,7 +605,7 @@
 <deflist type="medium">
 <def title="content">
 
-`Organization` 类型，增加或减少成员的
+`Organization` 类型, 增加或减少成员的
 <tooltip term="组织">组织</tooltip>。
 
 返回类型会根据实现类的场景而变化。
@@ -613,9 +613,9 @@
 </def>
 <def title="member">
 
-`Member?` 类型，增加或减少的
+`Member?` 类型, 增加或减少的
 <tooltip term="组织成员">组织成员</tooltip>。
-如不支持获取，则可能得到 null 。
+如不支持获取, 则可能得到 null 。
 
 </def>
 </deflist>
@@ -668,17 +668,17 @@
 
 一个 `Bot` 收到消息的事件。继承 [BotEvent](#d-bot-event)、`ReplySupport`。
 
-> 本节内所有事件均继承 `MessageEvent`，下文将不再赘述。
+> 本节内所有事件均继承 `MessageEvent`, 下文将不再赘述。
 
 <deflist type="medium">
 <def title="authorId">
 
-`ID` 类型，这个消息的发送人ID。
+`ID` 类型, 这个消息的发送人ID。
 
 </def>
 <def title="messageContent">
 
-`MessageContent` 类型，事件中收到的消息内容。
+`MessageContent` 类型, 事件中收到的消息内容。
 
 </def>
 <def title="reply(...)">

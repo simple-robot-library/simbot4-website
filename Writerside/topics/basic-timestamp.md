@@ -1,15 +1,15 @@
 # 时间戳 Timestamp
 
 <tldr>
-<p>针对“时间戳”的简单值包装类型，
+<p>针对“时间戳”的简单值包装类型, 
 以屏蔽时间戳<control>不同单位</control>带来的影响。</p>
-<p><control>不是</control>一种日期API，而是类似于时间单位的转化。</p>
+<p><control>不是</control>一种日期API, 而是类似于时间单位的转化。</p>
 <p><control>平台：</control> 多平台实现</p>
 </tldr>
 
 ## 创建
 
-你可以使用 `Timestamp.now()` 获取当前的 Unix 时间戳值，
+你可以使用 `Timestamp.now()` 获取当前的 Unix 时间戳值, 
 或使用 `Timestamp.ofMilliseconds(...)` 基于毫秒值获取一个结果。
 
 <tabs group="Code">
@@ -23,7 +23,7 @@ val time = Timestamp.ofMilliseconds(123456L)
 <warning>
 非 JVM 平台（尤其是 native 平台）的
 <code>Timestamp.now</code>
-尚在实验中，可能不稳定、或产生预期外的行为和结果。
+尚在实验中, 可能不稳定、或产生预期外的行为和结果。
 </warning>
 
 </tab>

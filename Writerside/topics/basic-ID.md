@@ -2,7 +2,7 @@
 
 <tldr>
 
-<p>一个针对“唯一标识”的简单值包装类型，
+<p>一个针对“唯一标识”的简单值包装类型, 
 用以屏蔽不同类型的ID之间的差异。</p>
 <p><control>平台：</control> 多平台实现</p>
 
@@ -10,7 +10,7 @@
 
 ## 唯一标识类型
 
-`ID` 是一个密封类型，提供了如下几种类型的实现类型：
+`ID` 是一个密封类型, 提供了如下几种类型的实现类型：
 
 - `StringID`
 - `UUID`
@@ -31,7 +31,7 @@
 <tabs group="Code">
 <tab title="Kotlin" group-key="Kotlin">
 
-在 Kotlin 中，你可以使用扩展属性 `xxx.ID` 来构建对应类型的 `ID` 实例。
+在 Kotlin 中, 你可以使用扩展属性 `xxx.ID` 来构建对应类型的 `ID` 实例。
 
 ```Kotlin
 val strID: StringID = "1".ID
@@ -58,7 +58,7 @@ val uuid = UUID.random()
 </tab>
 <tab  title="Java" group-key="Java">
 
-在 Java 中，你可以使用 `xxx.ID` 来构建对应类型的 `ID` 实例。
+在 Java 中, 你可以使用 `xxx.ID` 来构建对应类型的 `ID` 实例。
 
 ```Java
 var intID = Identifies.of(1);
@@ -104,7 +104,7 @@ System.out.println(strID); // 1
 
 ## 序列化
 
-`ID` 基于 `kotlinx-serialization` 实现对其的序列化，
+`ID` 基于 `kotlinx-serialization` 实现对其的序列化, 
 且序列化的值是一个非结构化的**字面值**。
 
 ```Kotlin
@@ -118,19 +118,19 @@ data class Foo(val value: UIntID)
 ### equals 与 hashCode
 
 `ID` 的所有类型均允许互相通过 `equals` 判断是否具有相同的**字面值**。
-`equals` 实际上不会判断类型，因此如果两个不同类型的 `ID` 的字面值相同，
-例如值为 `"1"` 的 `StringID` 和值为 `1` 的 `IntID`，它们之间使用 `equals` 会得到 `true`。
+`equals` 实际上不会判断类型, 因此如果两个不同类型的 `ID` 的字面值相同, 
+例如值为 `"1"` 的 `StringID` 和值为 `1` 的 `IntID`, 它们之间使用 `equals` 会得到 `true`。
 
-如果你希望严格匹配两个 `ID` 类型，那么使用 `equalsExact`。
+如果你希望严格匹配两个 `ID` 类型, 那么使用 `equalsExact`。
 
 在**不同类型**的两个 `ID` (例如 `StringID` 和 `IntID` ) `equals` 结果为 `true`
-的情况下，它们的 `hashCode` 则可能是**不同**的。
-因此，不适合将不同类型的 `ID` 混用于诸如 hash key 的地方。
+的情况下, 它们的 `hashCode` 则可能是**不同**的。
+因此, 不适合将不同类型的 `ID` 混用于诸如 hash key 的地方。
 
 ### 数字的符号
 
-在 Java 中使用数字ID时，需要注意无符号ID类型与有符号ID类型之间的差异。
-一个相同的数值，使用无符号类型和有符号类型的ID构建的结果可能是不同的，
+在 Java 中使用数字ID时, 需要注意无符号ID类型与有符号ID类型之间的差异。
+一个相同的数值, 使用无符号类型和有符号类型的ID构建的结果可能是不同的, 
 获取到的 `value` 和字面值也可能是不同的。
 
 Java在操作无符号ID的时候需要注意使用相关的无符号API。 以 `long` 为例：
@@ -148,7 +148,7 @@ System.out.println(longID.getValue());  // value 数值：-1
 System.out.println(uLongID.getValue()); // value 数值：-1
 ```
 
-如果希望得到一些符合预期的结果，你应该使用Java中的无符号相关API：
+如果希望得到一些符合预期的结果, 你应该使用Java中的无符号相关API：
 
 ```Java
 long value = Long.parseUnsignedLong("18446744073709551615");
