@@ -10,7 +10,7 @@
 `quantcat` 模块定义了一些注解, 以及服务这些注解的配套内容。这些注解的作用便是用于简化事件的监听、处理以及匹配的。
 `quantcat` 模块仅提供定义和一部分基础的、默认的实现。
 
-`quantcat` **没有** 具体的注解解析实现。
+`quantcat` 是一种“标准”, **没有** 具体的注解解析实现。
 
 
 <note>
@@ -18,8 +18,6 @@
 Spring Boot starter 模块便是基于 `quantcat` 中定义的注解与其他配套功能进行实现的。
 
 </note>
-
-> 下述的
 
 ## 事件监听 @Listener
 
@@ -40,7 +38,7 @@ suspend fun Event.listen2() {
 }
 ```
 
-> 在 Kotlin 中, 被标记的函数最好是标记了 `suspend` 的可挂起函数。
+> 在 Kotlin 中, 被标记的函数最好是 `suspend` 可挂起函数。
 
 </tab>
 <tab title="Java" group-key="Java">
@@ -79,7 +77,7 @@ public Mono<?> listen3(Event event) {
     - `Event` 或某个子类型 (上一条所述)
     - `EventListener`
 
-## 事件过滤器 @Filter
+## 事件过滤 @Filter
 
 `@Filter` 配合 `@Listener`, 用于简化对**文本**的匹配和一些已知的样板信息的匹配。
 
@@ -129,7 +127,7 @@ public void listen2(Event event) {
 
 > 真正准确的描述更建议直接阅读源码注释或生成的API文档。
 
-**@Listener**:
+**@Filter**:
 
 <deflist>
 <def title="value">
@@ -259,7 +257,7 @@ public void listen2(Event event) {
 </def>
 </deflist>
 
-### FilterValue 参数提取器
+## @FilterValue 参数提取器
 
 配合 `@Filter` 使用，当你使用**正则**类型的匹配方式进行文本匹配时，你可以使用参数提取来便捷的提取出匹配通过内容的某些值。
 例如：
