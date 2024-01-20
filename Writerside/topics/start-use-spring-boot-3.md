@@ -30,4 +30,47 @@ simbot4 的 Spring Boot starter 基于 Spring Boot 3，因此请准备至少 **J
 
 在你的 Spring Boot 项目基础上，添加 `simbot-core-spring-boot-starter` 相关依赖。
 
+<tabs group="build">
+<tab title="Gradle(Kotlin DSL)" group-key="kts">
+
+```Kotlin
+implementation("love.forte.simbot:simbot-core-spring-boot-starter:%version%")
+```
+
+</tab>
+<tab title="Gradle(Groovy)" group-key="groovy">
+
+```Groovy
+implementation 'love.forte.simbot:simbot-core-spring-boot-starter:%version%'
+```
+
+</tab>
+<tab title="Maven" group-key="maven">
+
+```xml
+
+<dependency>
+    <group>love.forte.simbot</group>
+    <artifactId>simbot-core-spring-boot-starter</artifactId>
+    <version>%version%</version>
+</dependency>
+```
+
+</tab>
+</tabs>
+
+## 修改启动类
+
+
+## 编写事件处理器
+
+
+## 可配置项
+
+
+## 安装组件以及组件配置
+
+
+## 运行
+
 TODO
