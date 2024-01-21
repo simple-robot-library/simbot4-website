@@ -60,36 +60,8 @@ implementation 'love.forte.simbot:simbot-core-spring-boot-starter:%version%'
 
 ## 修改启动类
 
-假设你的启动类的全限定名称为 `example.demo.MyApplication`, 它是这个样子的：
-
-<tabs group="Code">
-<tab title="Kotlin" group-key="Kotlin">
-
-```Kotlin
-@SpringBootApplication
-class MyApplication
-
-fun main(args: Array<String>) {
-    runApplicarion<MyApplication>(*args)
-}
-```
-
-</tab>
-<tab title="Java" group-key="Java">
-
-```Java
-@SpringBootApplication
-public class MyApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(MyApplication.class, args);
-    }
-}
-```
-
-</tab>
-</tabs>
-
-此时，添加一个注解 `@EnableSimbot` 来启用 simbot 的 Spring Boot starter。
+假设你的启动类的全限定名称为 `example.demo.MyApplication`, 
+在启动类上添加一个注解 `@EnableSimbot` 来启用 simbot 的 Spring Boot starter。
 
 <tabs group="Code">
 <tab title="Kotlin" group-key="Kotlin">

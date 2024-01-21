@@ -36,7 +36,8 @@
         </toc-element>
         <toc-element topic="start-use-components.md">
             <toc-element topic="official-components.md">
-                <toc-element topic="component-qq-guild.md"/>
+                <toc-element toc-title="QQ频道" href="https://simple-robot.github.io/simbot-component-qq-guild/" />
+<!--                <toc-element topic="component-qq-guild.md"/>-->
                 <toc-element topic="component-kook.md"/>
                 <toc-element topic="component-miyoushe.md"/>
             </toc-element>
