@@ -7,8 +7,27 @@
 <tooltip term="插件">插件</tooltip>、
 Bot、Bot管理器、事件等。
 
+## 推荐组合
+
+我们强烈推荐您使用 `Kotlin` + `Gradle` 的组合开发组件，
+并在有条件的情况下支持 KMP 多平台。
+
+尤其是当你使用 Kotlin 语言进行开发时, 只有 `Gradle` 支持多平台和子章节中会介绍到的 [编译器插件](component-dev-compiler-plugin.md)。
 
 ## 注意事项
+
+### Java 版本
+
+simbot4 的 JVM 目标最低为 **Java11**。不论是使用 Kotlin 还是 Java 开发, 
+都应当满足此要求。
+
+### Java 模块化 {id="JPMS"}
+
+既然最低 Java 目标的要求是 **Java11**, 我们也强烈建议您在 JVM 平台上支持 Java 的模块化信息([JPMS](https://www.oracle.com/cn/corporate/features/understanding-java-9-modules.html))。
+
+> 说的简单点儿, 就是提供一个合适的 `module-info.java`。
+
+### 开发语言?
 
 simbot4 是基于 Kotlin 多平台实现、提供 Java 友好 API 的事件调度框架。
 对于普通开发者来讲, 我们提供了阻塞、异步等多种风格的 Java API 供开发者选择。

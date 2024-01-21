@@ -51,6 +51,7 @@
     <toc-element topic="component-dev.md">
         <toc-element topic="component-dev-impl-component.md"/>
         <toc-element topic="component-dev-impl-plugin.md"/>
+        <toc-element topic="component-dev-compiler-plugin.md"/>
         <toc-element topic="component-dev-impl-bot-and-manager.md">
         </toc-element>
         <toc-element topic="component-dev-impl-event.md"/>
