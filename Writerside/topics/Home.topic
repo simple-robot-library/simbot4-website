@@ -59,7 +59,8 @@
         <misc>
             <cards>
                 <title>组件🧩</title>
-                <a href="component-qq-guild.md" summary="simbot官方实现的QQ频道组件"/>
+<!--                <a href="component-qq-guild.md" summary="simbot官方实现的QQ频道组件"/>-->
+                <a href="https://simple-robot.github.io/simbot-component-qq-guild/" summary="前往simbot官方实现的QQ频道组件手册"/>
                 <a href="component-kook.md" summary="simbot官方实现的KOOK组件"/>
                 <a href="component-miyoushe.md" summary="simbot官方实现的米游社大别野组件"/>
             </cards>
