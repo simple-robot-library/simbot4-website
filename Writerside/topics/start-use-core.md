@@ -59,7 +59,7 @@ implementation 'love.forte.simbot:simbot-core-jvm:%version%'
 ```xml
 
 <dependency>
-    <group>love.forte.simbot</group>
+    <groupId>love.forte.simbot</groupId>
     <artifactId>simbot-core-jvm</artifactId>
     <version>%version%</version>
 </dependency>
