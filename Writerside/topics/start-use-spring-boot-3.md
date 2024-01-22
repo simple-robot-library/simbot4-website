@@ -49,7 +49,7 @@ implementation 'love.forte.simbot:simbot-core-spring-boot-starter:%version%'
 
 ```xml
 <dependency>
-    <group>love.forte.simbot</group>
+    <groupId>love.forte.simbot</groupId>
     <artifactId>simbot-core-spring-boot-starter</artifactId>
     <version>%version%</version>
 </dependency>
