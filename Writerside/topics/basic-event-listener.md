@@ -315,6 +315,7 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 {switcher-key="%jb%"}
 </tip>
 
+
 ## 事件处理结果 EventResult {id="EventResult"}
 
 `EventResult` 是 `EventListener` 中处理完事件后的返回值类型。
@@ -468,6 +469,43 @@ var eventListener = EventListeners.block(Event.class, (context, event) -> {
 
 </def>
 </deflist>
+
+## 注解 API
+
+simbot4 定义了一套**注解API**，用来支持使用注解快速实现事件处理逻辑。
+这套注解API主要由 `Spring Boot starter` 进行实现。
+
+<tabs group="Code">
+<tab title="Kotlin" group-key="Kotlin">
+
+```Kotlin
+class MyListeners {
+    @Listener // 注解API，标记一个函数为事件处理函数
+    suspend fun handle(event: Event) {
+        // ...   
+    }
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```Java
+public class MyListeners {
+    @Listener // 注解API，标记一个函数为事件处理函数
+    public void handle(Event event) {
+        // ...   
+    }
+}
+```
+
+</tab>
+</tabs>
+
+它被命名为 `quantcat(量子猫)`，
+你可以前往文章
+[量子猫](advanced-quantcat.md)
+来了解更多。
 
 ## 事件推送
 

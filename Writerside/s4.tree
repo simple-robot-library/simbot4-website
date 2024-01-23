@@ -30,7 +30,7 @@
     </toc-element>
     <toc-element topic="java-friendly.md"/>
     <toc-element topic="how-to-use.md">
-        <toc-element toc-title="安装使用Application实现">
+        <toc-element toc-title="1.使用Application">
             <toc-element topic="start-use-core.md"/>
             <toc-element topic="start-use-spring-boot-3.md"/>
         </toc-element>
