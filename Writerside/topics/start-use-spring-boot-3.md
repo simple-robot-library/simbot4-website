@@ -137,6 +137,17 @@ public class MyEventHandlers {
 </tab>
 </tabs>
 
+<tip title="更多参考">
+<list>
+<li>
+有关注解API的详情与描述，可参考 <a href="advanced-quantcat.md" />
+</li>
+<li>
+有关标准的事件类型都有哪些，可参考 <a href="basic-event.md" />
+</li>
+</list>
+</tip>
+
 ## 可配置项
 
 starter 提供了一些可用的配置项。

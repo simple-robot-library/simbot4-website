@@ -48,7 +48,8 @@ simbot4 基于 **Java11**, 为所有模块提供 JVM 平台实现以及相应的
 提供 **Spring Boot** 的 starter 快速快发实现、
 以及异步、阻塞、预处理桥接器（可用于转化为响应式类型）的多种风格的挂起函数桥接API。
 
-有关其中的部分详细信息, 可前往参考 [**Java友好**](java-friendly.md) 章节。
+有关其中的部分详细信息, 可前往参考 
+<a href="java-friendly.md" /> 。
 
 ## Bot 风格
 

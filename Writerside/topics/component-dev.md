@@ -12,7 +12,8 @@ Bot、Bot管理器、事件等。
 我们强烈推荐您使用 `Kotlin` + `Gradle` 的组合开发组件，
 并在有条件的情况下支持 KMP 多平台。
 
-尤其是当你使用 Kotlin 语言进行开发时, 只有 `Gradle` 支持多平台和子章节中会介绍到的 [编译器插件](component-dev-compiler-plugin.md)。
+尤其是当你使用 Kotlin 语言进行开发时, 只有 `Gradle` 支持多平台和子章节中会介绍到的 
+<a href="component-dev-compiler-plugin.md" />。
 
 ## 注意事项
 

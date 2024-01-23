@@ -16,10 +16,24 @@
 
 ### 官方实现
 
-simbot4 提供了两个这样的库：`simbot-core` (也就是**“核心库”**), 以及 Spring Boot 的 starter 实现。
+simbot4 提供了两个这样的库：`simbot-core` (也就是 **“核心库”** ), 以及 Spring Boot 的 starter 实现。
 
-- 前往 [**使用核心库**](start-use-core.md) 来了解如何添加并使用 `simbot-core` 以及它提供的 `Application` 实现: `Simple`。
-- 前往 [**使用 Spring Boot**](start-use-spring-boot-3.md) 了解如何添加并使用 `simbot-core-spring-boot-starter` 以及它提供的 `Application` 实现。
+<list>
+<li>
+
+前往 
+<a href="start-use-core.md" />
+来了解如何添加并使用 `simbot-core` 以及它提供的 `Application` 实现: `Simple`。
+
+</li>
+<li>
+
+前往
+<a href="start-use-spring-boot-3.md" />
+了解如何添加并使用 `simbot-core-spring-boot-starter` 以及它提供的 `Application` 实现。
+
+</li>
+</list>
 
 <note>
 
