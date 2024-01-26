@@ -210,3 +210,24 @@ Bot 在当前组织内作为成员的表现。
 
 </def>
 </deflist>
+
+## 完整类关系图
+
+> 自动生成的。
+
+```plantuml
+@startuml
+
+interface Actor
+interface ChatRoom extends Actor
+interface ChatGroup extends ChatRoom, Organization
+interface Guild extends Organization
+interface Channel extends Actor
+interface ChatChannel extends Channel, ChatRoom
+interface Contact extends User
+interface Organization extends Actor
+interface Member extends User
+interface User extends Actor
+
+@enduml
+```
