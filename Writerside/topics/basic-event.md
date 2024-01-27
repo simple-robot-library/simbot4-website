@@ -7,7 +7,7 @@
 <note>
 
 文档介绍的内容是经过**简化**、且非 **“实时”** 的。
-如果你希望阅读更详细、更贴合版本真实情况的描述, 
+如果你希望阅读更详细、更贴合版本真实情况的描述,
 请前往参阅 [API文档引导站](https://docs.simbot.forte.love)
 中相关内容的 `KDoc`。
 
@@ -22,7 +22,7 @@
 
 事件。是所有事件类型的老父亲。
 
-> 所有其他事件都直接或间接继承 `Event`, 
+> 所有其他事件都直接或间接继承 `Event`,
 > 在后续的类型定义中将不再赘述。
 
 属性：
@@ -62,7 +62,7 @@
 </def>
 <def title="BotEvent" id="d-bot-event">
 
-继承 [`ComponentEvent`](#d-component-event), 
+继承 [`ComponentEvent`](#d-component-event),
 代表一个含有 `Bot` 的事件。
 
 属性：
@@ -113,7 +113,7 @@
 </def>
 <def title="ChangeEvent" id="d-change-event">
 
-继承 [`ContentEvent`](#d-content-event), 
+继承 [`ContentEvent`](#d-content-event),
 发生了某种变化的事件。
 
 属性：
@@ -305,7 +305,7 @@
 <tooltip term="组织">组织</tooltip>
 作为源头、但并非事件主要主体的事件类型。
 
-> 此类型不实现 [ActorEvent](#d-actor-event), 
+> 此类型不实现 [ActorEvent](#d-actor-event),
 > 但会与下述部分 [MemberEvent](#d-member-event) 相关类型的事件相互配合。
 
 属性：
@@ -729,3 +729,63 @@
 处收到消息的事件。
 </def>
 </deflist>
+
+## 完整类关系图
+
+> 自动生成的。
+
+```plantuml
+@startuml
+
+interface ActorEvent extends BotEvent, ContentEvent
+interface ContactEvent extends ActorEvent
+interface OrganizationEvent extends ActorEvent
+interface ChatRoomEvent extends ActorEvent
+interface ChatGroupEvent extends ChatRoomEvent, OrganizationEvent
+interface GuildEvent extends OrganizationEvent
+interface OrganizationSourceEvent extends BotEvent, SourceEvent
+interface ChannelEvent extends ActorEvent, OrganizationSourceEvent
+interface ChatChannelEvent extends ChannelEvent, ChatRoomEvent
+interface MemberEvent extends ActorEvent, OrganizationSourceEvent
+interface ChatGroupMemberEvent extends MemberEvent
+interface GuildMemberEvent extends MemberEvent
+interface Event
+interface ComponentEvent extends Event
+interface BotEvent extends ComponentEvent
+interface ContentEvent extends Event
+interface SourceEvent extends Event
+interface ChangeEvent extends ContentEvent
+interface MemberChangeEvent extends ChangeEvent, MemberEvent
+interface GuildMemberChangeEvent extends ChangeEvent, GuildMemberEvent
+interface GroupMemberChangeEvent extends ChangeEvent, ChatGroupMemberEvent
+interface MessageContentAwareEvent extends Event
+interface MessageEvent extends BotEvent, MessageContentAwareEvent
+interface AuthorAwareMessageEvent extends MessageEvent
+interface ActorAuthorAwareMessageEvent extends AuthorAwareMessageEvent
+interface MemberAuthorAwareMessageEvent extends ActorAuthorAwareMessageEvent
+interface ChatRoomMessageEvent extends MessageEvent, ChatRoomEvent
+interface ChatGroupMessageEvent extends ChatRoomMessageEvent, ChatGroupEvent, MemberAuthorAwareMessageEvent
+interface ChatChannelMessageEvent extends ChatRoomMessageEvent, ChatChannelEvent, MemberAuthorAwareMessageEvent
+interface MemberMessageEvent extends MessageEvent, MemberEvent
+interface ChatGroupMemberMessageEvent extends MessageEvent, MemberEvent
+interface GuildMemberMessageEvent extends MessageEvent, MemberEvent
+interface ContactMessageEvent extends MessageEvent, ContactEvent
+interface OrganizationChangeEvent extends ChangeEvent, OrganizationEvent
+interface MemberIncreaseOrDecreaseEvent extends OrganizationChangeEvent
+interface MemberIncreaseEvent extends MemberIncreaseOrDecreaseEvent
+interface MemberDecreaseEvent extends MemberIncreaseOrDecreaseEvent
+interface ChatGroupMemberIncreaseOrDecreaseEvent extends MemberIncreaseOrDecreaseEvent, ChatGroupEvent
+interface ChatGroupMemberIncreaseEvent extends MemberIncreaseEvent, ChatGroupMemberIncreaseOrDecreaseEvent
+interface ChatGroupMemberDecreaseEvent extends MemberDecreaseEvent, ChatGroupMemberIncreaseOrDecreaseEvent
+interface GuildMemberIncreaseOrDecreaseEvent extends MemberIncreaseOrDecreaseEvent, GuildEvent
+interface GuildMemberIncreaseEvent extends MemberIncreaseEvent, GuildMemberIncreaseOrDecreaseEvent
+interface GuildMemberDecreaseEvent extends MemberDecreaseEvent, GuildMemberIncreaseOrDecreaseEvent
+interface RequestEvent extends BotEvent
+interface OrganizationRequestEvent extends RequestEvent, OrganizationEvent
+interface OrganizationJoinRequestEvent extends OrganizationEvent
+interface ChatGroupJoinRequestEvent extends OrganizationJoinRequestEvent, ChatGroupEvent
+interface GuildJoinRequestEvent extends OrganizationJoinRequestEvent, GuildEvent
+
+@enduml
+```
+
