@@ -8,3 +8,5 @@
 模板项目不一定会更新的很及时，如果你有发现任何描述错误、落后的版本、错误的逻辑，也都欢迎为其提交 issue 或 pr，感谢您的协助！
 
 </warning>
+
+- [基于KMP的组件库模板](https://github.com/simple-robot/simbot4-multiplatform-component-template)
