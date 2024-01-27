@@ -16,17 +16,6 @@ simbot4
 [kotlin-suspend-transform-compiler-plugin][kstcp]
 为 Java 和其他可能的平台提供阻塞、异步以及 `Reserve` 风格的API（`Reserce` 后续小节会讲）。
 
-<warning title="K2编译器">
-
-[kotlin-suspend-transform-compiler-plugin][kstcp] 暂不支持 **K2** 编译器。
-但是 simbot4 的目标是基于 Kotlin 2.0 进行构建, 因此 **K2** 的支持是早晚需要实现的。
-
-此插件有关 **K2**的信息可追踪
-[#44](https://github.com/ForteScarlet/kotlin-suspend-transform-compiler-plugin/issues/44),
-并如果可以的话希望能为其贡献一份力量！🙏
-
-</warning>
-
 [kstcp]: https://github.com/ForteScarlet/kotlin-suspend-transform-compiler-plugin
 
 例如, 一个 Kotlin 中的挂起函数：

@@ -33,3 +33,9 @@
 
 <img alt="频道二维码" thumbnail="true" src="qq-guild-qrcode.png" height="450"/>
 
+## 反馈与支持
+
+当你遇到了任何bug或需要向我们反馈的内容、或有任何希望为我们提供支持的想法，
+欢迎前往
+<a href="feedback-and-support.md" />
+来了解如何向我们提供反馈与支持！

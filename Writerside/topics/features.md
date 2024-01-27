@@ -1,4 +1,4 @@
-# 从V3升级
+# 新特性概览
 
 <tldr>
 
@@ -8,36 +8,36 @@ simbot4 与 simbot3 相比 **完全不同**，是又一次的**彻底重构**产
 
 ## V4 新特性与变化
 
-<list>
-<li>
+### Kotlin 多平台 {id="kotlin_multiplatform"}
 
-基于 [KMP](https://kotlinlang.org/docs/multiplatform.html) 全面支持多平台。
+早在 simbot2 时代就已经开始畅想的，现在终于实现了。
+simbot4 现已基于 [KMP](https://kotlinlang.org/docs/multiplatform.html) 全面支持 Kotlin 多平台。
 
-</li>
-<li>
+### Kotlin2 与 K2
 
-JVM 平台中，Java最低要求为 **Java11**。
-并且所有模块都会提供相应的模块化信息。
+simbot4 的目标是构建在 **Kotlin v2** (与**K2 编译器**) 之上的。
 
-</li>
-<li>
+### Java 最低版本
+
+JVM 平台中，Java最低要求为 **Java11**，
+并且所有模块都提供相应的模块化信息支持。
 
 JVM 平台中，Spring Boot starter 的实现最低要求使用 Spring Boot 3，
 也因此在使用 starter 的时候 Java 需要确保版本为 **Java17+** 。
 
-</li>
-<li>
+### 过滤器的概念
 
-移除“过滤器(Filter)”概念，加强“拦截器(Interceptor)”能力。
-(不过在注解API中依旧保有 `@Filter` 注解。)
+移除 “过滤器(Filter)” 概念，加强 “拦截器(Interceptor)” 能力。
+(在注解API中依旧保有 `@Filter` 注解。)
 
 过滤器与拦截器的概念有些重复了，在 simbot3 中的**监听函数**类型的实现也因为了实现
 “过滤器”概念而变得有些抽象且难以扩展。
 
-</li>
-<li>
+### 大幅简化 API
+
 
 与 simbot3 相比，API**大幅简化**。
+并得益于此，组件开发成本和核心库的维护成本都大大下降。
 
 <procedure collapsible="true" title="部分细节">
 <list>
@@ -119,11 +119,17 @@ interface GuildEvent : OrganizationEvent {
 </list>
 </procedure>
 
+### 更多的单元测试
 
-并得益于此，组件开发难度(或者说繁琐度)大大下降。
+从 simbot4 开始，我们会尝试更注重**单元测试**。
+事实上，之前的版本可以说完全没有把单元测试放在心上。
+从这个版本开始，我们会逐步在完善单元测试上增加精力，
+也可借此增加整个simbot库的稳定性与可靠性。
 
-
-</li>
-</list>
-
+<note>
+在编写与使用单元测试方面我们仍然是新手。
+如果你有任何好的建议意见，欢迎反馈给我们或为我们提供
+<a href="feedback-and-support.md">贡献与支持</a>
+，非常感谢！
+</note>
 
