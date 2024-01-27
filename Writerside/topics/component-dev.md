@@ -1,7 +1,7 @@
-# 组件开发
+# 组件库开发
 
 本章节下内容会为你介绍如何实现一套自定义的
-<tooltip term="组件">组件</tooltip>
+<tooltip term="组件">组件库</tooltip>
 , 包括
 <tooltip term="组件标识">组件标识</tooltip>、
 <tooltip term="插件">插件</tooltip>、
