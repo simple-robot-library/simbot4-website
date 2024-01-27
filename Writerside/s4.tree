@@ -50,12 +50,15 @@
         <toc-element topic="advanced-quantcat.md"/>
     </toc-element>
     <toc-element topic="component-dev.md">
-        <toc-element topic="component-dev-impl-component.md"/>
-        <toc-element topic="component-dev-impl-plugin.md"/>
-        <toc-element topic="component-dev-compiler-plugin.md"/>
-        <toc-element topic="component-dev-impl-bot-and-manager.md">
+        <toc-element toc-title="实现组件库/插件库">
+            <toc-element topic="component-dev-impl-component.md"/>
+            <toc-element topic="component-dev-impl-plugin.md"/>
+            <toc-element topic="component-dev-compiler-plugin.md"/>
+            <toc-element topic="component-dev-impl-bot-and-manager.md">
+            </toc-element>
+            <toc-element topic="component-dev-impl-event.md"/>
         </toc-element>
-        <toc-element topic="component-dev-impl-event.md"/>
+        <toc-element topic="component-dev-templates.md"/>
     </toc-element>
     <toc-element topic="communities.md"/>
 </instance-profile>
