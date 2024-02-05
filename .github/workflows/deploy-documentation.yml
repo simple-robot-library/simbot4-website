@@ -113,7 +113,7 @@ jobs:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
       ALGOLIA_ARTIFACT: algolia-indexes-S4.zip
       CONFIG_JSON_PRODUCT: S4
-      CONFIG_JSON_VERSION: 1.0
+      CONFIG_JSON_VERSION: ''
 
     # Requires the build-job results
     needs: test
@@ -134,7 +134,7 @@ jobs:
           --application-name ${{env.ALGOLIA_APP_NAME}} \
           --index-name ${{env.ALGOLIA_INDEX_NAME}} \
           --product ${{env.CONFIG_JSON_PRODUCT}} \
-          --version \
+          --version ${{env.CONFIG_JSON_VERSION}} \
           --index-directory algolia-indexes/ \
           2>&1 | tee algolia-update-index-log.txt
 
