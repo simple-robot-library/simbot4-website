@@ -64,13 +64,16 @@ jobs:
         run: |
           echo "config_json=" >> tmp_config_json.txt
           content=`cat dir/config.json`
+
+          echo content >> tmp_config_json.txt
+          cat tmp_config_json.txt >> $GITHUB_OUTPUT
+          echo "::set-output name=config_json::$content"
+
 #          # the following lines are only required for multi line json
 #          content="${content//'%'/'%25'}"
 #          content="${content//$'\n'/'%0A'}"
 #          content="${content//$'\r'/'%0D'}"
-          echo content >> tmp_config_json.txt
-          cat tmp_config_json.txt >> $GITHUB_OUTPUT
-          echo "::set-output name=config_json::$content"
+
 #          echo 'config_json<<EOF' >> $GITHUB_ENV
 #          cat dir/config.json >> $GITHUB_ENV
 #          echo 'EOF' >> $GITHUB_ENV
