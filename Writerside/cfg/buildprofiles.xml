@@ -21,7 +21,6 @@
         <web-root>https://simbot.forte.love</web-root>
     </variables>
 
-
     <build-profile instance="s4">
         <variables>
             <noindex-content>false</noindex-content>
