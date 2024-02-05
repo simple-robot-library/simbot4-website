@@ -60,14 +60,21 @@ jobs:
         run: unzip -O UTF-8 -qq artifacts/${{ env.ARTIFACT }} -d dir
 
       - name: Output documentation config.json
+        id: output-config-json
         run: |
-          echo 'config_json<<EOF' >> $GITHUB_ENV
-          cat dir/config.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+          {
+            echo 'config_json<<EOF'
+            cat dir/config.json
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
 
-      - id: output-config-json
-        run: |
-          echo "json=${{ fromJSON(env.config_json).productVersion }}" >> $GITHUB_OUTPUT
+#          echo 'config_json<<EOF' >> $GITHUB_ENV
+#          cat dir/config.json >> $GITHUB_ENV
+#          echo 'EOF' >> $GITHUB_ENV
+
+#      - id: output-config-json
+#        run: |
+#          echo "json=${{ fromJSON(env.config_json).productVersion }}" >> $GITHUB_OUTPUT
 #          echo "json=" >> tmp_config_json.txt
 #          cat dir/config.json >> tmp_config_json.txt
 #          ${{ fromJSON({ cat dir/config.json }).productVersion }}
