@@ -34,7 +34,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      config-json: ${{ steps.output-config-json.outputs.json }}
+      config_json: ${{ steps.output-config-json.outputs.config_json }}
 
     steps:
       - name: Checkout repository
@@ -148,7 +148,7 @@ jobs:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
       ALGOLIA_ARTIFACT: algolia-indexes-S4.zip
       CONFIG_JSON_PRODUCT: S4
-      CONFIG_JSON_VERSION: ${{ fromJSON(needs.build.outputs.json).productVersion }}
+      CONFIG_JSON_VERSION: ${{ fromJSON(needs.build.outputs.config_json).productVersion }}
 
     steps:
       - name: Download artifact
