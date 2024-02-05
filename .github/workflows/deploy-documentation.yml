@@ -62,8 +62,9 @@ jobs:
       - name: Output documentation config.json
         id: output-config-json
         run: |
-          echo "json=" >> $GITHUB_OUTPUT
-          cat dir/config.json >> $GITHUB_OUTPUT
+          echo "json=" >> tmp_config_json.txt
+          cat dir/config.json >> tmp_config_json.txt
+          cat tmp_config_json.txt >> $GITHUB_OUTPUT
 
       # Add the step below to upload Algolia indexes
       - name: Upload algolia-indexes
