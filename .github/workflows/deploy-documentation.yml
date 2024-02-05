@@ -21,6 +21,7 @@ permissions:
 env:
   # Name of module and id separated by a slash
   INSTANCE: Writerside/s4
+  INSTANCE_NAME: s4
   # Replace HI with the ID of the instance in capital letters
   ARTIFACT: webHelpS42-all.zip
   # Writerside docker image version
@@ -56,13 +57,6 @@ jobs:
             artifacts/report.json
           retention-days: 7
 
-      - name: Unzip artifact
-        run: unzip -O UTF-8 -qq artifacts/${{ env.ARTIFACT }} -d dir
-
-      - name: Output documentation config.json
-        id: output-config-json
-        run: |
-          echo "config_json=$(cat dir/config.json)" >> $GITHUB_OUTPUT
 
       # Add the step below to upload Algolia indexes
       - name: Upload algolia-indexes
@@ -71,6 +65,14 @@ jobs:
           name: algolia-indexes
           path: artifacts/${{ env.ALGOLIA_ARTIFACT }}
           retention-days: 7
+
+      - name: Unzip artifact
+        run: unzip -O UTF-8 -qq artifacts/${{ env.ARTIFACT }} -d dir
+
+      - name: Output documentation config.json
+        id: output-config-json
+        run: |
+          echo "config_json=$(cat dir/config.json)" >> $GITHUB_OUTPUT
 
   # Add the job below and artifacts/report.json on Upload documentation step above if you want to fail the build when documentation contains errors
   test:
@@ -130,8 +132,8 @@ jobs:
       ALGOLIA_APP_NAME: VLLZ4JZE8Z
       ALGOLIA_INDEX_NAME: doc
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
-      ALGOLIA_ARTIFACT: algolia-indexes-S4.zip
-      CONFIG_JSON_PRODUCT: S4
+      ALGOLIA_ARTIFACT: ${{ env.ALGOLIA_ARTIFACT }}
+      CONFIG_JSON_PRODUCT: ${{ env.INSTANCE_NAME }}
       CONFIG_JSON_VERSION: ${{ fromJSON(needs.build.outputs.config_json).productVersion }}
 
     steps:
@@ -153,4 +155,3 @@ jobs:
           --index-directory algolia-indexes/ \
           2>&1 | tee algolia-update-index-log.txt
 
-#               --version ${{env.CONFIG_JSON_VERSION}} \
