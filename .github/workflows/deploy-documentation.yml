@@ -62,8 +62,7 @@ jobs:
       - name: Output documentation config.json
         id: output-config-json
         run: |
-          CONFIG_JSON = $(cat dir/config.json)
-          echo "config_json=$CONFIG_JSON" >> $GITHUB_OUTPUT
+          echo "config_json=$(cat dir/config.json)" >> $GITHUB_OUTPUT
 
 #          echo "config_json=" >> tmp_config_json.txt
 #          content=`cat dir/config.json`
