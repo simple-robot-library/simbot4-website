@@ -64,6 +64,7 @@ jobs:
         run: |
           echo "json=" >> tmp_config_json.txt
           cat dir/config.json >> tmp_config_json.txt
+          ${{ fromJSON({ cat dir/config.json }).productVersion }}
           cat tmp_config_json.txt >> $GITHUB_OUTPUT
 
       # Add the step below to upload Algolia indexes
