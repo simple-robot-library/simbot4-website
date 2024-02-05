@@ -64,30 +64,6 @@ jobs:
         run: |
           echo "config_json=$(cat dir/config.json)" >> $GITHUB_OUTPUT
 
-#          echo "config_json=" >> tmp_config_json.txt
-#          content=`cat dir/config.json`
-#
-#          echo content >> tmp_config_json.txt
-#          cat tmp_config_json.txt >> $GITHUB_OUTPUT
-#          echo "::set-output name=config_json::$content"
-#
-#          # the following lines are only required for multi line json
-#          content="${content//'%'/'%25'}"
-#          content="${content//$'\n'/'%0A'}"
-#          content="${content//$'\r'/'%0D'}"
-
-#          echo 'config_json<<EOF' >> $GITHUB_ENV
-#          cat dir/config.json >> $GITHUB_ENV
-#          echo 'EOF' >> $GITHUB_ENV
-
-#      - id: output-config-json
-#        run: |
-#          echo "json=${{ fromJSON(env.config_json).productVersion }}" >> $GITHUB_OUTPUT
-#          echo "json=" >> tmp_config_json.txt
-#          cat dir/config.json >> tmp_config_json.txt
-#          ${{ fromJSON({ cat dir/config.json }).productVersion }}
-#          cat tmp_config_json.txt >> $GITHUB_OUTPUT
-
       # Add the step below to upload Algolia indexes
       - name: Upload algolia-indexes
         uses: actions/upload-artifact@v3
