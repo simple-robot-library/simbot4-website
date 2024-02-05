@@ -8,6 +8,8 @@ on:
       - master
     paths:
       - 'Writerside/**'
+      - '.github/workflows/deploy-documentation.yml'
+
   # Specify to run a workflow manually from the Actions tab on GitHub
   workflow_dispatch:
 
@@ -55,7 +57,7 @@ jobs:
           retention-days: 7
 
       - name: Unzip artifact
-        run: unzip -O UTF-8 -qq ${{ env.ARTIFACT }} -d dir
+        run: unzip -O UTF-8 -qq artifacts/${{ env.ARTIFACT }} -d dir
 
       - name: Output documentation config.json
         id: output-config-json
