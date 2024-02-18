@@ -214,7 +214,7 @@ simbot:
 </tabs>
 
 <deflist>
-<def title="simbot.bots.auto-registration-failure-policy">
+<def title="simbot.application.application-launch-mode">
 
 `ApplicationLaunchMode` 枚举, 保持 `Application` 活跃的策略。
 
@@ -233,7 +233,15 @@ simbot:
 </deflist>
 
 </def>
-<def title="simbot.bots.auto-registration-mismatch-configurable-bot-manager-policy">
+<def title="simbot.bots.configuration-json-resources">
+
+`Set<String>`, 需要加载的所有组件下它们对应的所有 `JSON` 格式 的 `Bot` 配置文件。
+
+默认为 `classpath:simbot-bots/*.bot.json`, 即本项目中、资源目录下的 `resources/simbot-bots`
+中的所有扩展名为 `.bot.json` 的配置文件。
+
+</def>
+<def title="simbot.bots.auto-registration-resource-load-failure-policy">
 
 `BotConfigResourceLoadFailurePolicy` 枚举, 当加载用于注册bot的配置文件出现错误时的处理策略。
 
@@ -247,7 +255,7 @@ simbot:
 </deflist>
 
 </def>
-<def title="simbot.bots.auto-registration-resource-load-failure-policy">
+<def title="simbot.bots.auto-registration-mismatch-configurable-bot-manager-policy">
 
 `MismatchConfigurableBotManagerPolicy` 枚举, 当无法为某个 `SerializableBotConfiguration`
 找到任何可供其注册的 `BotManager` 时的处理策略。
@@ -297,12 +305,33 @@ simbot:
 </deflist>
 
 </def>
-<def title="simbot.bots.configuration-json-resources">
+<def title="simbot.bots.auto-registration-failure-policy">
 
-`Set<String>`, 需要加载的所有组件下它们对应的所有 `JSON` 格式 的 `Bot` 配置文件。
+`BotRegistrationFailurePolicy`, 当自动扫描的bot注册或启动失败时的处理策略。
+默认为 `ERROR`，直接异常以终止程序。
 
-默认为 `classpath:simbot-bots/*.bot.json`, 即本项目中、资源目录下的 `resources/simbot-bots`
-中的所有扩展名为 `.bot.json` 的配置文件。
+<deflist>
+<def title="ERROR">
+
+当bot注册或启动过程中出现异常或bot最终无法注册时都会抛出异常并终止程序。 是建议的默认选择。
+
+</def>
+<def title="ERROR_LOG">
+
+当bot注册或启动过程中出现异常或bot最终无法注册时会输出带有异常信息的 `error` 日志。
+
+</def>
+<def title="WARN">
+
+当bot注册或启动过程中出现异常或bot最终无法注册时会输出带有异常信息的 `warn` 日志。
+
+</def>
+<def title="IGNORE">
+
+当bot注册或启动过程中出现异常或bot最终无法注册时仅会输出 `debug` 调试日志。
+
+</def>
+</deflist>
 
 </def>
 <def title="simbot.components.auto-install-providers">
