@@ -26,4 +26,8 @@
         <description>Created after removal of "事件调度器 EventDispatcher" from Simple Robot 4</description>
         <accepts>advanced-event-dispatcher.html</accepts>
     </rule>
+    <rule id="597856a2">
+        <description>Created after removal of "米游社" from Simple Robot 4</description>
+        <accepts>component-miyoushe.html</accepts>
+    </rule>
 </rules>
