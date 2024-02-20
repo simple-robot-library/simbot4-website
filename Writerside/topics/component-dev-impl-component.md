@@ -11,7 +11,7 @@ switcher-label: Java API
    <step>实现接口 <code>Component</code>。</step>
    <step>如果需要的话, 实现一个配置类。</step>
    <step>实现 <code>ComponentFactory</code> 来提供工厂。</step>
-   <step>如果需要的话, 实现 SPI 的供应者 <code>ComponentFactoryProvider</code>。</step>
+   <step>可选地实现 SPI 供应者 <code>ComponentFactoryProvider</code>。</step>
 </procedure>
 
 ## 实现 Component 接口

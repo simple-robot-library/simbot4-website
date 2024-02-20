@@ -17,7 +17,7 @@ switcher-label: Java API
 <step>实现接口 <code>Plugin</code>。</step>
 <step>如果需要的话, 实现一个配置类。</step>
 <step>实现 <code>PluginFactory</code> 来提供工厂。</step>
-<step>如果需要的话, 实现 SPI 的供应者 <code>PluginFactoryProvider</code>。</step>
+<step>可选地实现 SPI 供应者 <code>PluginFactoryProvider</code>。</step>
 </procedure>
 
 ## 实现 Plugin 接口
@@ -475,7 +475,7 @@ public class FooPlugin implements Plugin {
 
 > 是否支持 SPI 取决于你的功能需求, 这不是必须的。
 
-### 实现 PluginFactoryProvider
+### 实现 PluginFactoryProvider {id="impl-plugin-factory-provider"}
 
 > `PluginFactoryProvider` 主要为 JVM 平台服务, 不过此接口是多平台实现的。
 
@@ -520,7 +520,7 @@ public class FooPluginFactoryProvider implements PluginFactoryProvider<FooPlugin
 </tab>
 </tabs>
 
-### 添加 services 文件
+### 添加 services 文件 {id="add-services"}
 
 接下来, 在你的项目资源目录的
 <path>resources/META-INF/services</path>
@@ -532,7 +532,7 @@ public class FooPluginFactoryProvider implements PluginFactoryProvider<FooPlugin
 com.example.foo.FooPluginFactoryProvider
 ```
 
-### 修改 module-info.java
+### 修改 module-info.java {id="modify-module-info-java"}
 
 同样的, 如果你提供了模块化信息文件 `module-info.java`, 你还需要在其中补充上相关信息：
 

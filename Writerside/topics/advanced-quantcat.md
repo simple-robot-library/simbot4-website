@@ -1,4 +1,4 @@
-# 量子猫🐱 quantcat (注解API)
+# 量子猫🐱 Quantcat (注解API)
 
 <tldr>
 
