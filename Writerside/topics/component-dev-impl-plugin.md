@@ -17,7 +17,7 @@ switcher-label: Java API
 <step>实现接口 <code>Plugin</code>。</step>
 <step>如果需要的话, 实现一个配置类。</step>
 <step>实现 <code>PluginFactory</code> 来提供工厂。</step>
-<step>可选地实现 SPI 供应者 <code>PluginFactoryProvider</code>。</step>
+<step>可选地支持 SPI</step>
 </procedure>
 
 ## 实现 Plugin 接口
