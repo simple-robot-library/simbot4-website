@@ -23,11 +23,16 @@
 
 ## 内容贡献
 
-我们随时欢迎您通过对应仓库的 **Pull Requests** 为我们贡献代码、文档或其他任何内容！
+我们随时欢迎您以任何形式为本项目做出贡献！您可以前往 [核心库][GH] 的 [贡献指南][GH-CB] 来了解如何参与贡献！
+
+> 不同的组件库、文档仓库也可能会有各自的贡献指南
+
 如果您有特殊的贡献需求，也可以通过 
 <a href="communities.md" />
 中的各种方式与我们联系！
 
-<note>感谢您的贡献！</note>
+<note title="感谢">感谢您的贡献！</note>
 
+[GH]: https://github.com/simple-robot/simpler-robot
+[GH-CB]: https://github.com/simple-robot/simpler-robot/blob/v4-dev/docs/CONTRIBUTING.md
 [GHD]: https://github.com/orgs/simple-robot/discussions

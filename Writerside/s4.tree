@@ -54,6 +54,8 @@
                 <toc-element topic="component-dev-impl-bot-and-manager-impl-bot-manager.md"/>
             </toc-element>
             <toc-element topic="component-dev-impl-event.md"/>
+            <toc-element topic="component-dev-event-push.md"/>
+            <toc-element topic="component-dev-event-push-with-bot.md"/>
         </toc-element>
         <toc-element topic="component-dev-templates.md"/>
     </toc-element>

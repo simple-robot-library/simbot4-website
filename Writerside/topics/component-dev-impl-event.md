@@ -1,3 +1,6 @@
 # 实现事件
 
-Start typing here...
+相比较于上一篇的实现 Bot 相关的内容，
+实现一个 **事件 `Event`** 则会简单的多。
+
+TODO
