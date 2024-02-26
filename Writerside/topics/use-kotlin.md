@@ -23,7 +23,9 @@
 > 它简洁、安全、可与 Java 及其他语言互操作，并提供了多种方式在多个平台间复用代码，以实现高效编程。
 > {style='note'}
 
-引用 [灰蓝天际博客](https://hltj.me/)[^hltj] 中的[介绍](https://hltj.me/kotlin/2017/05/15/kotlin-reference-translated.html):
+
+
+引用[灰蓝天际的博客](https://hltj.me/)中的[介绍](https://hltj.me/kotlin/2017/05/15/kotlin-reference-translated.html):
 
 > Kotlin 是一门支持多范式、多平台的现代静态编程语言。Kotlin 支持面向对象、泛型与函数式等编程范式,
 > 它支持 JVM、Android、JavaScript 目标平台 (以及 native 平台) ...
@@ -34,7 +36,14 @@
 > 也能让既有的基于 Java 的服务端与 Android 项目逐步迁移到 Kotlin。
 > {style='note'}
 
-[^hltj]: 灰蓝天际, GitHub 为 [gltj](https://github.com/hltj), [Kotlin 中文站][KT CN BOOK]和Ktor 中文站的主要维护者与翻译者(来自 GitHub 的自我介绍)。
+<tip title="灰蓝天际">
+
+GitHub: [hltj](https://github.com/hltj)
+
+是[Kotlin 中文站][KT CN BOOK]和Ktor中文站的主要维护者与翻译者(来自 GitHub 的自我介绍)。
+
+</tip>
+
 
 
 ## 上手 Kotlin {id='use-kotlin'}
