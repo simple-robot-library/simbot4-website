@@ -25,6 +25,7 @@
         </toc-element>
     </toc-element>
     <toc-element topic="java-friendly.md"/>
+    <toc-element topic="use-kotlin.md"/>
     <toc-element topic="how-to-use.md">
         <toc-element toc-title="第一步: 选择、使用 Application">
             <toc-element topic="start-use-core.md"/>
