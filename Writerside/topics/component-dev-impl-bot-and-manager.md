@@ -1,5 +1,5 @@
 
-# 实现Bot与Bot管理器
+# 实现 Bot 相关 API
 
 `Bot` 和 `BotManager` 的实现通常都是配套的。
 
