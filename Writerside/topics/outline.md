@@ -1,7 +1,7 @@
 # 概述
 
-Simple Robot v4 是一个基于 [KMP](https://kotlinlang.org/docs/multiplatform.html)
-的多平台实现、Java API 友好的 Bot 风格高性能异步事件调度框架。
+Simple Robot v4 是一个基于 Kotlin 协程的Bot风格[Kotlin 多平台](https://kotlinlang.org/docs/multiplatform.html)事件调度框架，
+异步高效、Java友好~
 
 ## 多平台实现 {id="multiplatform-targets"}
 
@@ -40,9 +40,9 @@ Simple Robot v4 基于[**KMP**](https://kotlinlang.org/docs/multiplatform.html) 
 </list>
 </procedure>
 
-## Java 友好
+## Java友好
 
-Java 是重要的伙伴, 且 Kotlin 天生与 Java 具有极强的兼容性。
+Java是重要的伙伴, Kotlin天生与Java具有极强的兼容性。
 
 simbot4 基于 **Java11**, 为所有模块提供 JVM 平台实现以及相应的 **模块化(JPMS)** 信息、
 提供 **Spring Boot** 的 starter 快速快发实现、
@@ -51,7 +51,7 @@ simbot4 基于 **Java11**, 为所有模块提供 JVM 平台实现以及相应的
 有关其中的部分详细信息, 可前往参考 
 <a href="java-friendly.md" /> 。
 
-## Bot 风格
+## Bot风格
 
 simbot4 主要用于对接那些 Bot 平台, 例如 QQ频道机器人、米游社大别野机器人、KOOK机器人等, 
 因此 simbot 的 API 设计也是以 Bot 为起点进行设计的。
