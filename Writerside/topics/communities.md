@@ -1,4 +1,4 @@
-# 社群信息
+# 社群 / Communities
 
 这里是一些与 simbot 相关的社群, 欢迎大家的加入~
 
@@ -15,7 +15,7 @@
 <p><control>群号: </control> <code>185375305</code></p>
 <p>
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&amp;k=1cMawVHBGR3IFKHaIgWlVpXx1alKXgyM&amp;authKey=nhEUdT3BnqrTJEaFzlHc8JTFlYzqHkVR4bQj%2BDMMoHuUAVG1Rgt0j%2Ffrym5uFlx3&amp;noverify=0&amp;group_code=185375305">
-点击加入
+<control>点击加入♥</control>
 </a>
 </p>
 </tldr>
@@ -27,11 +27,20 @@
 <tldr>
 <p><control>频道号: </control> <code>yaw03btm8m</code></p>
 <p><a href="https://pd.qq.com/s/32yn6zj65">
-点击加入
+<control>点击加入♥</control>
 </a></p>
 </tldr>
 
 <img alt="频道二维码" thumbnail="true" src="qq-guild-qrcode.png" height="450"/>
+
+## Discord
+
+<tldr>
+<p><a href="https://discord.gg/eFB3HeBp9B">
+<control>点击加入♥</control>
+</a></p>
+
+</tldr>
 
 ## 反馈与支持
 
