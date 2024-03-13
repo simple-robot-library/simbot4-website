@@ -45,26 +45,26 @@
         <toc-element topic="advanced-interceptor.md"/>
         <toc-element topic="advanced-quantcat.md"/>
         <toc-element topic="extension-continuous-session.md"/>
-    </toc-element>
-    <toc-element topic="component-dev.md">
-        <toc-element toc-title="实现组件库/插件库">
-            <toc-element topic="component-outline.md"/>
-            <toc-element topic="component-dev-compiler-plugin.md"/>
-            <toc-element topic="component-dev-impl-component.md"/>
-            <toc-element topic="component-dev-impl-plugin.md"/>
-            <toc-element topic="component-dev-impl-bot-and-manager.md">
-                <toc-element topic="component-dev-impl-bot-and-manager-impl-bot.md"/>
-                <toc-element topic="component-dev-impl-bot-and-manager-impl-bot-manager.md"/>
+        <toc-element topic="component-dev.md">
+            <toc-element toc-title="实现组件库/插件库">
+                <toc-element topic="component-outline.md"/>
+                <toc-element topic="component-dev-compiler-plugin.md"/>
+                <toc-element topic="component-dev-impl-component.md"/>
+                <toc-element topic="component-dev-impl-plugin.md"/>
+                <toc-element topic="component-dev-impl-bot-and-manager.md">
+                    <toc-element topic="component-dev-impl-bot-and-manager-impl-bot.md"/>
+                    <toc-element topic="component-dev-impl-bot-and-manager-impl-bot-manager.md"/>
+                </toc-element>
+                <toc-element topic="component-dev-event-api.md">
+                    <toc-element topic="component-dev-impl-event.md"/>
+                    <toc-element topic="component-dev-event-push.md"/>
+                    <toc-element topic="component-dev-event-push-with-bot.md"/>
+                </toc-element>
+                <toc-element topic="component-dev-message-api.md"/>
+                <toc-element topic="component-dev-component-publish.md"/>
             </toc-element>
-            <toc-element topic="component-dev-event-api.md">
-                <toc-element topic="component-dev-impl-event.md"/>
-                <toc-element topic="component-dev-event-push.md"/>
-                <toc-element topic="component-dev-event-push-with-bot.md"/>
-            </toc-element>
-            <toc-element topic="component-dev-message-api.md"/>
-            <toc-element topic="component-dev-component-publish.md"/>
+            <toc-element topic="component-dev-templates.md"/>
         </toc-element>
-        <toc-element topic="component-dev-templates.md"/>
     </toc-element>
     <toc-element topic="communities.md"/>
     <toc-element topic="feedback-and-support.md"/>
