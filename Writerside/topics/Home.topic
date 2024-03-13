@@ -16,20 +16,20 @@
                 For other groups, try to keep the number between 2 and 6, but you can add more if necessary.-->
 
     <section-starting-page>
-        <title>Simple Robot 4</title>
+        <title>Simple Robot Ⅳ</title>
         <description>
-            一个基于 Kotlin 多平台、提供 Java 友好 API 的 Bot 风格的高性能异步事件调度框架 ~
+            🐱 基于 Kotlin Coroutine 的 Bot 风格事件调度框架，异步高效、Java友好 😽
         </description>
 
         <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
         <spotlight>
             <a href="https://github.com/simple-robot" type="account"
-               summary="前往 GitHub 组织库了解更多内容🎉！">
+               summary="🎉前往 GitHub 组织库首页了解更多内容！">
                 组织库
             </a>
 <!--            <a href="https://github.com/orgs/simple-robot/discussions" type="search"-->
             <a href="communities.md" type="search"
-               summary="前往社群信息寻找、加入一个心仪的社群或讨论区并与其他人或维护者友好交流吧~😊">
+               summary="😊前往社群信息寻找、加入一个心仪的社群或讨论区并与其他人或维护者友好交流吧~">
                 社群
             </a>
         </spotlight>
@@ -58,16 +58,30 @@
         <!--    Optionally add additional cards and links to topics that are not in this section but may be relevant.    -->
         <misc>
             <cards>
-                <title>组件🧩</title>
-<!--                <a href="component-qq-guild.md" summary="simbot官方实现的QQ频道组件"/>-->
-                <a href="https://simple-robot.github.io/simbot-component-qq-guild/" summary="前往simbot官方实现的QQ频道组件手册"/>
-                <a href="https://simple-robot.github.io/simbot-component-kook/" summary="simbot官方实现的KOOK组件"/>
+                <title>组件库🧩</title>
+                <a href="https://simple-robot.github.io/simbot-component-qq-guild/" summary="前往simbot官方实现的QQ频道组件手册">
+                    QQ频道组件
+                </a>
+                <a href="https://simple-robot.github.io/simbot-component-kook/" summary="前往simbot官方实现的KOOK组件手册">
+                    KOOK组件
+                </a>
+                <a href="component-telegram.md" summary="simbot官方实现的Telegram组件">
+                    Telegram组件
+                </a>
+                <a href="component-discord.md" summary="simbot官方实现的Discord组件">
+                    Discord组件
+                </a>
             </cards>
             <cards>
-                <title>组件开发⚒️</title>
+                <title>组件库开发⚒️</title>
                 <a href="component-dev.md" summary="针对组件开发者的内容概述"/>
                 <a href="component-dev-impl-component.md" summary="如何实现一个自己的组件标识 Component"/>
                 <a href="component-dev-impl-plugin.md" summary="如何实现一个自己的插件 Plugin"/>
+            </cards>
+            <cards>
+                <title>应用体验论💡</title>
+                <a href="java-friendly.md" summary="Kotlin中的Java友好论，用各种风格在Java中使用Kotlin协程吧！"/>
+                <a href="use-kotlin.md" summary="Kotlin又何尝不可？也许会让人上瘾~"/>
             </cards>
 
             <!--            <cards narrow="true">-->
