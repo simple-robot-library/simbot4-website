@@ -1,4 +1,4 @@
-# 上手 Kotlin
+# 上手 Kotlin!
 
 尽管 Simple Robot 是一个努力保证 Java 友好的框架，但是无论如何，它首先是使用 **Kotlin** 开发的。
 那么，直接使用 Kotlin 进行开发的体验终究会比使用 Java 要更好。

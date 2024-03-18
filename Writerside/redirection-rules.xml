@@ -30,4 +30,8 @@
         <description>Created after removal of "米游社" from Simple Robot 4</description>
         <accepts>component-miyoushe.html</accepts>
     </rule>
+    <rule id="697b8f8b">
+        <description>Created after removal of "走码观花" from Simple Robot 4</description>
+        <accepts>looook.html</accepts>
+    </rule>
 </rules>
