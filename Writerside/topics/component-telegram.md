@@ -1,4 +1,4 @@
-# Telegram
+# 🚧 Telegram
 
 GitHub 仓库: [点击前往Telegram组件](https://github.com/simple-robot/simbot-component-telegram)
 

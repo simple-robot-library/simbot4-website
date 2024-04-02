@@ -144,4 +144,4 @@ application.joinBlocking();
 
 > 在 native 平台下，你可能需要使用 `runBlocking { ... }` 包裹上述需要挂起的内容
 > (因为 native 尚不支持可挂起的 main 入口，参考 [KT-52753](https://youtrack.jetbrains.com/issue/KT-52753/Native-Support-suspending-entrypoints))，
-> 此时建议为其分配调度器：`runBlocking(Dispatchers.Default) { ... }`。
+> 此时建议为其分配调度器，比如：`runBlocking(Dispatchers.Default) { ... }`。
