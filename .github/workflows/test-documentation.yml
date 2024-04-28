@@ -41,6 +41,7 @@ jobs:
           path: |
             artifacts/${{ env.ARTIFACT }}
             artifacts/report.json
+            public/*
           retention-days: 7
 
       - name: Upload documentation test reports
@@ -64,7 +65,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: docs
-          path: artifacts
+#          path: artifacts
 
       - name: Test documentation
         uses: JetBrains/writerside-checker-action@v1

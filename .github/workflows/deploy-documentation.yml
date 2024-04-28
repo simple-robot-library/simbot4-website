@@ -97,7 +97,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: docs
-          path: artifacts
+#          path: artifacts
 
       - name: Test documentation
         uses: JetBrains/writerside-checker-action@v1
@@ -118,7 +118,10 @@ jobs:
           name: docs
 
       - name: Unzip artifact
-        run: unzip -O UTF-8 -qq ${{ env.ARTIFACT }} -d dir
+        run: unzip -O UTF-8 -qq artifacts/${{ env.ARTIFACT }} -d dir
+
+      - name: Copy public
+        run: cp -r public/* dir/
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
