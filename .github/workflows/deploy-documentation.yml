@@ -124,7 +124,7 @@ jobs:
         run: cp -r public/* dir/
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
