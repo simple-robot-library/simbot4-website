@@ -71,3 +71,16 @@ jobs:
         uses: JetBrains/writerside-checker-action@v1
         with:
           instance: ${{ env.INSTANCE }}
+
+      - name: Unzip artifact
+        run: unzip -O UTF-8 -qq artifacts/${{ env.ARTIFACT }} -d dir
+
+      - name: Copy public
+        run: cp -r public/* dir/
+
+      - name: Upload dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dir
+          retention-days: 7
