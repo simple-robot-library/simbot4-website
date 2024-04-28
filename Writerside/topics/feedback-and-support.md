@@ -1,8 +1,10 @@
-# 反馈与贡献
+# 反馈、贡献与支持
 
 <tldr>
 为我们提供宝贵的问题反馈、意见建议与内容贡献吧！
 </tldr>
+
+<include from="ads.md" element-id="horizontal-show-ad-unit"></include>
 
 ## 社区交流
 
@@ -32,6 +34,8 @@
 中的各种方式与我们联系！
 
 <note title="感谢">感谢您的贡献！</note>
+
+<include from="ads.md" element-id="horizontal-multi-ad-unit"></include>
 
 [GH]: https://github.com/simple-robot/simpler-robot
 [GH-CB]: https://github.com/simple-robot/simpler-robot/blob/v4-dev/docs/CONTRIBUTING.md
