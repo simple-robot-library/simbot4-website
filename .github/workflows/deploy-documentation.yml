@@ -127,7 +127,7 @@ jobs:
         uses: actions/configure-pages@v2
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dir
 
@@ -150,7 +150,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: algolia-indexes
-
 
       - name: Unzip artifact
         run: |
