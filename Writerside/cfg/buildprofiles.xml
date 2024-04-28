@@ -14,7 +14,8 @@
         <enable-browser-edits>true</enable-browser-edits>
         <locale-code>zh-CN</locale-code>
         <noindex-content>false</noindex-content>
-        <analytics-head-script-file>head-script.html</analytics-head-script-file>
+        <include-in-head>head-script.html</include-in-head>
+<!--        <analytics-head-script-file>head-script.html</analytics-head-script-file>-->
         <algolia-id>VLLZ4JZE8Z</algolia-id>
         <algolia-index>doc</algolia-index>
         <algolia-api-key>e60d9ee16618a0ad3a338ecc73cb840e</algolia-api-key>
@@ -25,6 +26,7 @@
         <variables>
             <noindex-content>false</noindex-content>
         </variables>
+        <sitemap priority="0.45" change-frequency="weekly" />
     </build-profile>
 
     <footer>
