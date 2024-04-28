@@ -5,7 +5,6 @@
 <instance-profile id="s4"
                  name="Simple Robot 4"
                   start-page="Home.topic">
-
     <toc-element topic="Home.topic"/>
     <toc-element topic="outline.md"/>
     <toc-element topic="java-friendly.md"/>

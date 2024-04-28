@@ -1,6 +1,4 @@
 <snippet id="horizontal-show-ad-unit">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4062299174917944"
-     crossorigin="anonymous"></script>
 <!-- 横向展示广告 -->
 <ins class="adsbygoogle"
      style="display:block"
@@ -11,12 +9,12 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
 </snippet>
 
 
 <snippet id="horizontal-multi-ad-unit">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4062299174917944"
-     crossorigin="anonymous"></script>
+
 <!-- 横向多重广告 -->
 <ins class="adsbygoogle"
      style="display:block"
@@ -26,4 +24,5 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
 </snippet>
