@@ -43,14 +43,18 @@
 
     /*横向广告*/
     if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-      alert('移动端？');
       // 当前设备是移动设备
       // https://www.ruanyifeng.com/blog/2021/09/detecting-mobile-browser.html
+       try {
        window.addEventListener('load',(event) => {
             _addIns(() => {
                _pushAd('after ins append.');
            });
        });
+       } catch (e) {
+        console.log('add event load failed.', e);
+         alert('移动端 err: ' + e);
+       }
        //window.onload=(event)=>{
        //    _addIns(() => {
        //        _pushAd('after ins append.');
