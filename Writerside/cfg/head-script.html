@@ -19,25 +19,50 @@
 
 <script>
     /*横向广告*/
-    window.onload=function () {
-    try {
-    const elements = document.getElementsByTagName('article');
-    if (elements && elements.length > 0) {
-        const article = elements[0];
-        const insDiv = document.createElement('div');
-        insDiv.setAttribute('class', 'ins_div');
-        const ins = document.createElement('ins');
-        ins.setAttribute('class', 'adsbygoogle adsbygoogle_inline_ins');
-        /*ins.setAttribute('style', 'display:block');*/
-        ins.style.display = 'block';
-        ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
-        ins.setAttribute('data-ad-slot', 'auto');
-        ins.setAttribute('data-full-width-responsive', 'true');
-        insDiv.appendChild(ins);
-        article.appendChild(insDiv);
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        console.log('adsbygoogle pushed.');
-    }
-    } catch(e) {console.log(e);}
-};
+    document.addEventListener("DOMContentLoaded", (event) => {
+        try {
+            const elements = document.getElementsByTagName('article');
+            if (elements && elements.length > 0) {
+                const article = elements[0];
+                const insDiv = document.createElement('div');
+                insDiv.setAttribute('class', 'ins_div');
+                const ins = document.createElement('ins');
+                ins.setAttribute('class', 'adsbygoogle adsbygoogle_inline_ins');
+                /*ins.setAttribute('style', 'display:block');*/
+                ins.style.display = 'block';
+                ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
+                ins.setAttribute('data-ad-slot', 'auto');
+                ins.setAttribute('data-full-width-responsive', 'true');
+                insDiv.appendChild(ins);
+                article.appendChild(insDiv);
+                // in loaded
+                window.addEventListener('load',function(){
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    console.log('adsbygoogle pushed.');
+                });
+
+            }
+        } catch(e) {console.log(e);}
+    });
+    //window.onload=function () {
+    //try {
+    //const elements = document.getElementsByTagName('article');
+    //if (elements && elements.length > 0) {
+    //    const article = elements[0];
+    //    const insDiv = document.createElement('div');
+    //    insDiv.setAttribute('class', 'ins_div');
+    //    const ins = document.createElement('ins');
+    //    ins.setAttribute('class', 'adsbygoogle adsbygoogle_inline_ins');
+    //    /*ins.setAttribute('style', 'display:block');*/
+    //    ins.style.display = 'block';
+    //    ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
+    //    ins.setAttribute('data-ad-slot', 'auto');
+    //    ins.setAttribute('data-full-width-responsive', 'true');
+    //    insDiv.appendChild(ins);
+    //    article.appendChild(insDiv);
+    //    (adsbygoogle = window.adsbygoogle || []).push({});
+    //    console.log('adsbygoogle pushed.');
+    //}
+    //} catch(e) {console.log(e);}
+    //};
 </script>
