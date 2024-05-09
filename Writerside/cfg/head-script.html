@@ -22,16 +22,12 @@
         const elements = document.getElementsByTagName('article');
         if (elements && elements.length > 0) {
             const article = elements[0];
-            //const insDiv = document.createElement('div');
-            //insDiv.setAttribute('class', 'ins_div');
             const ins = document.createElement('ins');
-            ins.setAttribute('class', 'adsbygoogle adsbygoogle_inline_ins');
-            /*ins.setAttribute('style', 'display:block');*/
+            ins.setAttribute('class', 'adsbygoogle');
             ins.style.display = 'block';
             ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
             ins.setAttribute('data-ad-slot', 'auto');
             ins.setAttribute('data-full-width-responsive', 'true');
-            //insDiv.appendChild(ins);
             article.appendChild(ins);
             then();
         }
@@ -42,15 +38,15 @@
     }
 
     /*横向广告*/
-    document.addEventListener("DOMContentLoaded", (event) => {
+    document.addEventListener('DOMContentLoaded', (event) => {
         try {
             _addIns(() => {
                 window.addEventListener('load',(event) => {
                 try {
                     _pushAd('on event `load`');
-                    } catch(e) {console.log(e);}
+                    } catch(e) {console.log(e);alert(e);}
                 });
             });
-        } catch(e) {console.log(e);}
+        } catch(e) {console.log(e);alert(e);}
     });
 </script>
