@@ -25,7 +25,7 @@ ins.adsbygoogle[data-ad-status="unfilled"] {
 
 <script>
     /*https://support.google.com/adsense/thread/4144770?hl=en*/
-    function _addIns(then) {
+    function _addIns() {
         const elements = document.getElementsByTagName('article');
         if (elements && elements.length > 0) {
             const article = elements[0];
@@ -40,29 +40,20 @@ ins.adsbygoogle[data-ad-status="unfilled"] {
             // after ins script
             const insScript = document.createElement('script');
             insScript.innerText = "(adsbygoogle = window.adsbygoogle || []).push({});console.log('ad pushed.');"
-
             insDiv.appendChild(ins);
             insDiv.appendChild(insScript);
-
             article.appendChild(insDiv);
-
         }
-    }
-    function _pushAd(log) {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      console.log('adsbygoogle pushed: ', log || '(NULL)');
     }
 
     /*横向广告*/
-    window.addEventListener('load', (event) => {
+    if (!(/Mobi|Android|iPhone/i.test(navigator.userAgent))) {
+      // 当前设备不是移动设备
+      window.addEventListener('load', (event) => {
         try {
-            _addIns(() => {
-                //window.addEventListener('load',(event) => {
-                //try {
-                //    _pushAd('on event `load`');
-                //    } catch(e) {console.log(e);}
-                //});
-            });
+            _addIns();
         } catch(e) {console.log(e);}
-    });
+      });
+    }
+
 </script>
