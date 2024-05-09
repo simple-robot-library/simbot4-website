@@ -29,7 +29,9 @@
             ins.setAttribute('data-ad-slot', 'auto');
             ins.setAttribute('data-full-width-responsive', 'true');
             article.appendChild(ins);
-            then();
+            const insScript = document.createElement('script');
+            insScript.innerText = "(adsbygoogle = window.adsbygoogle || []).push({});console.log('ad pushed.');"
+            article.appendChild(insScript);
         }
     }
     function _pushAd(log) {
@@ -41,12 +43,12 @@
     document.addEventListener('DOMContentLoaded', (event) => {
         try {
             _addIns(() => {
-                window.addEventListener('load',(event) => {
-                try {
-                    _pushAd('on event `load`');
-                    } catch(e) {console.log(e);alert(e);}
-                });
+                //window.addEventListener('load',(event) => {
+                //try {
+                //    _pushAd('on event `load`');
+                //    } catch(e) {console.log(e);}
+                //});
             });
-        } catch(e) {console.log(e);alert(e);}
+        } catch(e) {console.log(e);}
     });
 </script>
