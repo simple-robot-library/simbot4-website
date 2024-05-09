@@ -1,0 +1,22 @@
+<!-- Google 页内文章AD -->
+<script>
+/*横向广告*/
+(function () {
+    const elements = document.getElementsByTagName('article');
+    if (elements && elements.length > 0) {
+        const article = elements[0];
+        const insDiv = document.createElement('div');
+        insDiv.setAttribute('class', 'ins_div');
+        const ins = document.createElement('ins');
+        ins.setAttribute('class', 'adsbygoogle');
+        ins.setAttribute('style', 'display:block');
+        ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
+        ins.setAttribute('data-ad-slot', 'auto');
+        ins.setAttribute('data-full-width-responsive', 'true');
+        insDiv.appendChild(ins);
+        article.appendChild(insDiv);
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        console.log('adsbygoogle pushed.');
+    }
+})();
+</script>

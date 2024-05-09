@@ -15,6 +15,7 @@
         <locale-code>zh-CN</locale-code>
         <noindex-content>false</noindex-content>
         <include-in-head>head-script.html</include-in-head>
+        <include-after-body>after-body.html</include-after-body>
 <!--        <analytics-head-script-file>head-script.html</analytics-head-script-file>-->
         <algolia-id>VLLZ4JZE8Z</algolia-id>
         <algolia-index>doc</algolia-index>
