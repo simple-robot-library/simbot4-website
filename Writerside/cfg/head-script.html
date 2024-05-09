@@ -16,3 +16,27 @@
 
 <!-- meta keywords -->
 <meta name="keywords" content="Simple Robot, simbot, Simple Robot 4, simbot4, Java, Java11, Kotlin, Kotlin Multiplatform, KMP, Kotlin JVM, Simple Robot v4, bot, forte, ForteScarlet, 法欧特斯卡雷特, 法欧特">
+
+<script>
+    window.onload=function () {
+    try {
+    var elements = document.getElementsByTagName('article');
+    if (elements && elements.length > 0) {
+        var article = elements[0];
+        var insDiv = document.createElement('div');
+        insDiv.setAttribute('class', 'ins_div');
+        var ins = document.createElement('ins');
+        ins.setAttribute('class', 'adsbygoogle adsbygoogle_inline_ins');
+        /*ins.setAttribute('style', 'display:block');*/
+        ins.style.display = 'block';
+        ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
+        ins.setAttribute('data-ad-slot', 'auto');
+        ins.setAttribute('data-full-width-responsive', 'true');
+        insDiv.appendChild(ins);
+        article.appendChild(insDiv);
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        console.log('adsbygoogle pushed.');
+    }
+    } catch(e) {console.log(e);}
+};
+</script>
