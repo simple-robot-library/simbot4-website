@@ -22,8 +22,8 @@
         const elements = document.getElementsByTagName('article');
         if (elements && elements.length > 0) {
             const article = elements[0];
-            const insDiv = document.createElement('div');
-            insDiv.setAttribute('class', 'ins_div');
+            //const insDiv = document.createElement('div');
+            //insDiv.setAttribute('class', 'ins_div');
             const ins = document.createElement('ins');
             ins.setAttribute('class', 'adsbygoogle adsbygoogle_inline_ins');
             /*ins.setAttribute('style', 'display:block');*/
@@ -31,8 +31,8 @@
             ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
             ins.setAttribute('data-ad-slot', 'auto');
             ins.setAttribute('data-full-width-responsive', 'true');
-            insDiv.appendChild(ins);
-            article.appendChild(insDiv);
+            //insDiv.appendChild(ins);
+            article.appendChild(ins);
             then();
         }
     }
@@ -42,28 +42,6 @@
     }
 
     /*横向广告*/
-    if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-      // 当前设备是移动设备
-      // https://www.ruanyifeng.com/blog/2021/09/detecting-mobile-browser.html
-       //try {
-       //window.addEventListener('load',(event) => {
-       //     _addIns(() => {
-       //        _pushAd('after ins append.');
-       //    });
-       //});
-       //} catch (e) {
-       // console.log('add event load failed.', e);
-       //}
-       window.onload=(event)=>{
-           try{
-           _addIns(() => {
-               _pushAd('after ins append.');
-           });
-           } catch (e) {
-           console.log('add ad failed.', e);
-           }
-       };
-    } else {
     document.addEventListener("DOMContentLoaded", (event) => {
         try {
             _addIns(() => {
@@ -73,5 +51,4 @@
             });
         } catch(e) {console.log(e);}
     });
-    }
 </script>
