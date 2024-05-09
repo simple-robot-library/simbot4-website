@@ -46,7 +46,9 @@
         try {
             _addIns(() => {
                 window.addEventListener('load',(event) => {
+                try {
                     _pushAd('on event `load`');
+                    } catch(e) {console.log(e);}
                 });
             });
         } catch(e) {console.log(e);}
