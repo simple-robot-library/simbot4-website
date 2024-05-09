@@ -22,16 +22,21 @@
         const elements = document.getElementsByTagName('article');
         if (elements && elements.length > 0) {
             const article = elements[0];
+            const insDiv = document.createElement('div');
             const ins = document.createElement('ins');
             ins.setAttribute('class', 'adsbygoogle');
             ins.style.display = 'block';
             ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
             ins.setAttribute('data-ad-slot', 'auto');
             ins.setAttribute('data-full-width-responsive', 'true');
-            article.appendChild(ins);
             const insScript = document.createElement('script');
             insScript.innerText = "(adsbygoogle = window.adsbygoogle || []).push({});console.log('ad pushed.');"
-            article.appendChild(insScript);
+
+            insDiv.appendChild(ins);
+            insDiv.appendChild(insScript);
+
+            article.appendChild(insDiv);
+
         }
     }
     function _pushAd(log) {
