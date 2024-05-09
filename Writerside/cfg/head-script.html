@@ -36,11 +36,15 @@
                 insDiv.appendChild(ins);
                 article.appendChild(insDiv);
                 // in loaded
-                window.addEventListener('load',function(){
+                try {
+                    window.addEventListener('load',(event) => {
                     (adsbygoogle = window.adsbygoogle || []).push({});
-                    console.log('adsbygoogle pushed.');
+                    console.log('adsbygoogle pushed after loaded.');
                 });
-
+                } catch(e) {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    console.log('adsbygoogle pushed in DOMContentLoaded.');
+                }
             }
         } catch(e) {console.log(e);}
     });
