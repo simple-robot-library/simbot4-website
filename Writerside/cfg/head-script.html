@@ -1,5 +1,5 @@
 <!-- Google adsense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4062299174917944" crossorigin="anonymous"></script>
+<!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4062299174917944" crossorigin="anonymous"></script>-->
 
 <!-- 百度统计 -->
 <script async src="https://hm.baidu.com/hm.js?c446fffc21c42c4af42ff1595795363a"></script>
@@ -29,9 +29,18 @@
             ins.setAttribute('data-ad-client', 'ca-pub-4062299174917944');
             ins.setAttribute('data-ad-slot', 'auto');
             ins.setAttribute('data-full-width-responsive', 'true');
+            // before ins script
+            // script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4062299174917944"
+            // crossorigin="anonymous"
+            const beforeScript = document.createElement('script');
+            beforeScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4062299174917944';
+            beforeScript.setAttribute('crossorigin', 'anonymous');
+
+            // after ins script
             const insScript = document.createElement('script');
             insScript.innerText = "(adsbygoogle = window.adsbygoogle || []).push({});console.log('ad pushed.');"
 
+            insDiv.appendChild(beforeScript);
             insDiv.appendChild(ins);
             insDiv.appendChild(insScript);
 
