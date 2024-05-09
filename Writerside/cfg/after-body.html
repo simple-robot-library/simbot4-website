@@ -2,6 +2,7 @@
 <script>
 /*横向广告*/
 (function () {
+    try {
     const elements = document.getElementsByTagName('article');
     if (elements && elements.length > 0) {
         const article = elements[0];
@@ -19,5 +20,6 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         console.log('adsbygoogle pushed.');
     }
+    } catch(e) {console.log(e);}
 })();
 </script>
