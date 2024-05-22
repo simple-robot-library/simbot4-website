@@ -5,7 +5,7 @@
     <variables>
         <primary-color>ruby</primary-color>
         <custom-favicons>logo-icon.svg</custom-favicons>
-        <header-logo>logo-icon.svg</header-logo>
+        <header-logo>logo-icon-white.svg</header-logo>
         <product-web-url>https://github.com/simple-robot/simpler-robot</product-web-url>
         <download-title>GitHub</download-title>
         <download-page>https://github.com/simple-robot/simpler-robot</download-page>
