@@ -13,9 +13,16 @@ simbot4 与 simbot3 相比 **完全不同**，是又一次的**彻底重构**产
 早在 simbot2 时代就已经开始畅想的，现在终于实现了。
 simbot4 现已基于 [KMP](https://kotlinlang.org/docs/multiplatform.html) 全面支持 Kotlin 多平台。
 
-### Kotlin2 与 K2
+### Kotlin 2。0 与 K2
 
 simbot4 的目标是构建在 **Kotlin v2** (与**K2 编译器**) 之上的。
+
+<note>
+
+已经自 [v4.0.0-RC1](https://github.com/simple-robot/simpler-robot/releases/tag/v4.0.0-RC1)
+版本起迁移至 Kotlin 2.0~ 🎉
+
+</note>
 
 ### Java 最低版本
 
