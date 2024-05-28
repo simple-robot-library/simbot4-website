@@ -115,7 +115,7 @@ var mono = reserve.transform(SuspendReserves.mono());
 var rx2Maybe = reserve.transform(SuspendReserves.rx2Maybe());
 
 // 将挂起函数的结果作为 [[[RxJava 3.x|https://github.com/ReactiveX/RxJava]]] 的 `io.reactivex.rxjava3.core.Maybe` 返回
-// 使用此转化器需要确保运行时环境中存在 [[[kotlinx-coroutines-rx2|https://github.com/Kotlin/kotlinx.coroutines/tree/master/reactive]]] 的相关依赖
+// 使用此转化器需要确保运行时环境中存在 [[[kotlinx-coroutines-rx3|https://github.com/Kotlin/kotlinx.coroutines/tree/master/reactive]]] 的相关依赖
 var rx3Maybe = reserve.transform(SuspendReserves.rx3Maybe());
 ```
 
