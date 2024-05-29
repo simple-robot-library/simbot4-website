@@ -2,14 +2,14 @@
 
 当你有了事件，那么就将其发射。
 
-<note>
+<tip>
 <p>
 事件处理器<b>建议</b>通过Kotlin使用，不过我们也提供了一定程度的Java兼容。
 </p>
 <p>
 如果你打算使用Java调用事件处理器的API，请尽可能选择<b>异步</b>或<b>响应式</b>的API。
 </p>
-</note>
+</tip>
 
 ## 事件处理器
 
@@ -130,7 +130,7 @@ eventProcessor.push(event)
 </tab>
 <tab title="Java" group-key="Java">
 
-在 Java 中，我们为 `EventProcessor` 提供了一些异步有好的兼容API。
+在 Java 中，我们为 `EventProcessor` 提供了一些异步友好的兼容API。
 
 首先，`push` 函数本身并非挂起函数，因此你可以直接调用它并得到 `Flow` 的结果。
 
@@ -295,6 +295,7 @@ eventProcessor
             )
         }
     }
+    .collect()
 ```
 
 我们提供了一些简化操作的API。例如，你可以使用 `onEachError { ... }` 来改写上面的代码：
@@ -311,6 +312,7 @@ eventProcessor
             result.content, // Throwable
         )
     }
+    .collect()
 ```
 
 <note>
