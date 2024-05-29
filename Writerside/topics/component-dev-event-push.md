@@ -38,7 +38,7 @@ public interface EventProcessor {
 </tip>
 
 可以看到，`EventProcessor` 的主要作用就是：通过 `push` 推送一个事件 `Event`，
-然后得到所有事件监听函数(`EventListener`)的处理**结果流** `Flow<EventResult`。
+然后得到所有事件监听函数(`EventListener`)的处理**结果流** `Flow<EventResult>`。
 
 ## 获取并保存
 
@@ -50,7 +50,7 @@ public interface EventProcessor {
 
 </tip>
 
-### BotManager 获取
+### Plugin / BotManager 内获取
 
 `EventProcessor` 在构建阶段中，从开始构建 `Plugin` 这个阶段开始可以被获取到。
 其中，`BotManager` 的构建就属于这个阶段。
