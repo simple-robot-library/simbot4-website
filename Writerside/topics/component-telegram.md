@@ -2,6 +2,12 @@
 
 GitHub 仓库: [点击前往Telegram组件](https://github.com/simple-robot/simbot-component-telegram)
 
+<tip>
+
+已经发布了早期可用的尝鲜版本，欢迎体验与反馈~
+
+</tip>
+
 <warning title="协助希望🙏">
 
 Telegram组件仍处于**早期开发阶段**，并且积极地期待着**贡献者**的参与与协助！
