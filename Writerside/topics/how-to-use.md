@@ -88,18 +88,18 @@ implementation 'io.github.Jojo.cp:bar2-impl:5.14'
 ```xml
 <!-- 使用核心库 -->
 <dependency>
-    <group>love.forte.simbot</group>
+    <groupId>love.forte.simbot</groupId>
     <artifactId>simbot-core</artifactId>
     <version>%version%</version>
 </dependency>
 <!-- 添加组件库, 假设有两个叫做 foo1、bar2 的组件实现 -->
 <dependency>
-    <group>com.example.component</group>
+    <groupId>com.example.component</groupId>
     <artifactId>foo1-core</artifactId>
     <version>1.14</version>
 </dependency>
 <dependency>
-    <group>io.github.Jojo.cp</group>
+    <groupId>io.github.Jojo.cp</groupId>
     <artifactId>bar2-impl</artifactId>
     <version>5.14</version>
 </dependency>
