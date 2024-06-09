@@ -37,8 +37,8 @@
 
         <toc-element topic="components-intro.md"/>
         <toc-element topic="official-components.md">
-            <toc-element href="https://simple-robot.github.io/simbot-component-qq-guild/" toc-title="QQ频道"/>
-            <toc-element href="https://simple-robot.github.io/simbot-component-kook/" toc-title="KOOK(开黑啦)"/>
+            <toc-element topic="component-qq-guild.md" />
+            <toc-element topic="component-kook.md" />
             <toc-element topic="component-onebot.md"/>
             <toc-element topic="component-kritor.md"/>
             <toc-element topic="component-telegram.md"/>

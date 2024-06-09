@@ -1,3 +1,6 @@
 # QQ频道
 
-**QQ频道**组件的 GitHub 仓库：<https://github.com/simple-robot/simbot-component-qq-guild/>
+![](https://img.shields.io/github/v/release/simple-robot/simbot-component-qq-guild)
+
+- 前往 [**QQ频道组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-qq-guild)
+- 前往 [**QQ频道组件**手册](https://simple-robot.github.io/simbot-component-qq-guild/)

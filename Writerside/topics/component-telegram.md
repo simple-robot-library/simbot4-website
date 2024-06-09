@@ -1,10 +1,12 @@
 # 🚧 Telegram
 
-GitHub 仓库: [点击前往Telegram组件](https://github.com/simple-robot/simbot-component-telegram)
+![](https://img.shields.io/github/v/release/simple-robot/simbot-component-telegram)
+
+- 前往 [**Telegram组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-telegram)
 
 <tip>
 
-已经发布了早期可用的尝鲜版本，欢迎体验与反馈~
+已经发布了早期可用的尝鲜版本，欢迎体验与**反馈**~
 
 </tip>
 

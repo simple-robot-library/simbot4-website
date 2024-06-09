@@ -1,10 +1,19 @@
 # 🚧 OneBot
 
-GitHub 仓库: [点击前往OneBot组件](https://github.com/simple-robot/simbot-component-onebot)
+![](https://img.shields.io/github/v/release/simple-robot/simbot-component-onebot)
+
+- 前往 [**OneBot组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-onebot)
+
+
+<tip>
+
+已经发布了早期可用的尝鲜版本，欢迎体验与**反馈**~
+
+</tip>
 
 <warning title="协助希望🙏">
 
-Kritor组件仍处于**早期开发阶段**，并且积极地期待着**贡献者**的参与与协助！
+OneBot组件仍处于**早期开发阶段**，并且积极地期待着**贡献者**的参与与协助！
 
 如果你对参与此组件的开发感兴趣，欢迎前往
 <a href="communities.md" /> 加入社群与我们联系，

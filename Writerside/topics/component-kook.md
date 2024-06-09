@@ -1,3 +1,6 @@
-# KOOK
+# KOOK(开黑啦)
 
-**KOOK**组件的 GitHub 仓库：<https://github.com/simple-robot/simbot-component-kook/>
+![](https://img.shields.io/github/v/release/simple-robot/simbot-component-kook)
+
+- 前往 [**KOOK组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-kook)
+- 前往 [**KOOK组件**手册](https://simple-robot.github.io/simbot-component-kook/)

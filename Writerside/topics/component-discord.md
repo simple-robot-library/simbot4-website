@@ -1,6 +1,8 @@
 # 🚧 Discord
 
-GitHub 仓库: [点击前往Discord组件](https://github.com/simple-robot/simbot-component-discord)
+![](https://img.shields.io/github/v/release/simple-robot/simbot-component-discord)
+
+- 前往 [**Discord组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-discord)
 
 <warning title="协助希望🙏">
 

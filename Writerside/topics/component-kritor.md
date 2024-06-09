@@ -1,6 +1,8 @@
 # 🚧 Kritor
 
-GitHub 仓库: [点击前往Kritor组件](https://github.com/simple-robot/simbot-component-kritor)
+![](https://img.shields.io/github/v/release/simple-robot/simbot-component-kritor)
+
+- 前往 [**Kritor组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-kritor)
 
 <warning title="协助希望🙏">
 
