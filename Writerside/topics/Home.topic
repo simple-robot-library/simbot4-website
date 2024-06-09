@@ -18,7 +18,7 @@
     <section-starting-page>
         <title>Simple Robot 4</title>
         <description>
-            🐱 基于 Kotlin Coroutine 的 Bot 风格事件调度框架，异步高效、Java友好 😽
+            🐱 基于 Kotlin 协程的多平台 Bot 风格事件调度框架，异步高效、Java友好！😽
         </description>
 
         <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->

@@ -1,14 +1,20 @@
 # 概述
 
-Simple Robot v4 是一个基于 Kotlin 协程的Bot风格[Kotlin 多平台](https://kotlinlang.org/docs/multiplatform.html)事件调度框架，
+Simple Robot v4 是一个基于 Kotlin 协程的多平台 Bot 风格[Kotlin 多平台](https://kotlinlang.org/docs/multiplatform.html)事件调度框架，
 异步高效、Java友好~
 
 ## 多平台实现 {id="multiplatform-targets"}
 
 Simple Robot v4 基于[**KMP**](https://kotlinlang.org/docs/multiplatform.html) 实现多平台, 
 支持 [native-target-support](https://kotlinlang.org/docs/native-target-support.html)
-中所述的 `Tier 1`、`Tier 2`、`Tier 3` 三个级别的全部目标, 
-并且有一小部分模块实验性的支持 `wasm-js` 目标。
+中所述的 `Tier 1`、`Tier 2`、`Tier 3` 三个级别的全部目标以及 `wasm-js` 平台目标。
+
+<tip>
+
+涉及到Ktor的模块暂时无法支持 `wasm-js` 平台。
+
+</tip>
+
 
 > 在部分需要 Ktor 依赖的模块中, 实现目标中会缺少那些 Ktor 尚不支持的平台。
 > 这些目标大部分是 `Tier 2` 或 `Tier 3` 中的。
