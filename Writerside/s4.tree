@@ -73,6 +73,7 @@
     </toc-element>
     <toc-element topic="communities.md"/>
     <toc-element topic="feedback-and-support.md"/>
+    <toc-element topic="Sponsor.md"/>
     <toc-element topic="other-versions.md">
         <toc-element href="https://simple-robot-library.github.io/simbot3-website/" toc-title="V3"/>
         <toc-element href="https://www.yuque.com/simpler-robot/simpler-robot-doc" toc-title="V2"/>
