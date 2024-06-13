@@ -15,6 +15,6 @@
 
 <note>
 举个不恰当的例子。
-如果将 simbot 不自量力地比喻为 Spring Boot，那么组件则可以类似地视为各种 starter。
+如果将 simbot 比喻为 Spring Boot，那么组件则可以类似地视为各种 starter。
 </note>
 
