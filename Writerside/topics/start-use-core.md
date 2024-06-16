@@ -100,7 +100,6 @@ var applicationAsync = Applications.launchApplicationAsync(Simple.INSTANCE, appC
         // 配置 Application...
        
     });
-});
 
 // 异步结果可转化为 CompletableFuture
 var future = applicationAsync.asFuture();
@@ -109,7 +108,6 @@ var future = applicationAsync.asFuture();
 // 阻塞当前线程直到被关闭
 future.join();
 ```
-
 {switcher-key="%ja%"}
 
 ```Java
@@ -124,7 +122,6 @@ var application = Applications.launchApplicationBlocking(Simple.INSTANCE, appCon
 // 阻塞当前线程直到被关闭
 application.joinBlocking();
 ```
-
 {switcher-key="%jb%"}
 
 </tab>

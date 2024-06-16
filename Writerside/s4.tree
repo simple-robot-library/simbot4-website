@@ -10,6 +10,7 @@
     <toc-element topic="java-friendly.md"/>
     <toc-element topic="use-kotlin.md"/>
     <toc-element topic="features.md"/>
+    <toc-element topic="quick-preview.md"/>
     <toc-element toc-title="基本内容">
         <toc-element topic="basic-ID.md"/>
         <toc-element topic="basic-timestamp.md"/>
