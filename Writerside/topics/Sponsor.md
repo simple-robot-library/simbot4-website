@@ -19,3 +19,13 @@
 
 </tab>
 </tabs>
+
+## 联系我们
+
+如果你有其他需求或问题想要得到付费协助，可以前往
+<a href="communities.md" />
+找到并联系我们，
+也可以
+<a href="mailto:ForteScarlet@163.com">通过邮箱</a>
+联系我们，
+进行进一步地交流沟通~
