@@ -100,8 +100,6 @@ implementation 'love.forte.simbot:simbot-core-spring-boot-starter:%version%'
 </tab>
 </tabs>
 
-
-
 ## 修改启动类
 
 假设你的启动类的全限定名称为 `example.demo.MyApplication`, 

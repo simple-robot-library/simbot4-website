@@ -26,6 +26,9 @@
             <toc-element topic="BotManager.md"/>
         </toc-element>
     </toc-element>
+    <toc-element toc-title="集成">
+        <toc-element topic="Spring-Boot.md"/>
+    </toc-element>
     <toc-element topic="how-to-use.md">
         <toc-element toc-title="第一步: 选择核心实现库">
             <toc-element topic="start-use-core.md"/>
@@ -52,7 +55,7 @@
         <toc-element topic="advanced-quantcat.md"/>
         <toc-element topic="extension-continuous-session.md"/>
         <toc-element topic="component-dev.md">
-            <toc-element toc-title="实现组件库/插件库">
+            <toc-element toc-title="实现组件库">
                 <toc-element topic="component-outline.md"/>
                 <toc-element topic="component-dev-compiler-plugin.md"/>
                 <toc-element topic="component-dev-impl-component.md"/>
@@ -72,8 +75,8 @@
             <toc-element topic="component-dev-templates.md"/>
         </toc-element>
     </toc-element>
-    <toc-element topic="communities.md"/>
     <toc-element topic="feedback-and-support.md"/>
+    <toc-element topic="communities.md"/>
     <toc-element topic="Sponsor.md"/>
     <toc-element topic="other-versions.md">
         <toc-element href="https://simple-robot-library.github.io/simbot3-website/" toc-title="V3"/>
