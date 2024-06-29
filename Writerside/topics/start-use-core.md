@@ -12,61 +12,19 @@ switcher-label: Java API
 
 ## 准备
 
-准备一个 Kotlin 或 Java 项目。
+<include from="installation.md" element-id="prepare-simbot-core-snippet"></include>
 
-- 如果是 Kotlin 多平台项目, 可参考 [概述](outline.md#multiplatform-targets) 了解支持的平台。
-- 如果是 Java 项目, 请确保 Java 版本是 **Java11** 或以上。
+> 也可前往
+> <a href="installation.md#prepare-simbot-core"></a>
+> 参考更多。
 
 ## 安装
 
-<tabs group="build">
-<tab title="Gradle(Kotlin DSL)" group-key="kts">
+<include from="refers.md" element-id="simbot-core-build"></include>
 
-```Kotlin
-implementation("love.forte.simbot:simbot-core:%version%")
-```
-
-<tip>
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Kotlin
-implementation("love.forte.simbot:simbot-core-jvm:%version%")
-```
-
-</tip>
-</tab>
-<tab title="Gradle(Groovy)" group-key="groovy">
-
-```Groovy
-implementation 'love.forte.simbot:simbot-core:%version%'
-```
-
-<tip>
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Groovy
-implementation 'love.forte.simbot:simbot-core-jvm:%version%'
-```
-
-</tip>
-
-
-</tab>
-<tab title="Maven" group-key="maven">
-
-```xml
-
-<dependency>
-    <groupId>love.forte.simbot</groupId>
-    <artifactId>simbot-core-jvm</artifactId>
-    <version>%version%</version>
-</dependency>
-```
-
-</tab>
-</tabs>
+> 也可前往
+> <a href="installation.md#安装核心库"></a>
+> 参考更多。
 
 ## 使用
 

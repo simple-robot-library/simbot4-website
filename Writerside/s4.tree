@@ -11,6 +11,17 @@
     <toc-element topic="use-kotlin.md"/>
     <toc-element topic="features.md"/>
     <toc-element topic="quick-preview.md"/>
+    <toc-element topic="how-to-use.md">
+        <toc-element topic="installation.md"/>
+        <toc-element toc-title="使用">
+            <toc-element topic="start-use-core.md"/>
+            <toc-element topic="start-use-spring-boot-3.md"/>
+        </toc-element>
+        <toc-element topic="start-use-components.md"/>
+    </toc-element>
+    <toc-element toc-title="集成">
+        <toc-element topic="Spring-Boot.md"/>
+    </toc-element>
     <toc-element toc-title="基本内容">
         <toc-element topic="basic-ID.md"/>
         <toc-element topic="basic-timestamp.md"/>
@@ -26,17 +37,6 @@
             <toc-element topic="BotManager.md"/>
         </toc-element>
     </toc-element>
-    <toc-element toc-title="集成">
-        <toc-element topic="Spring-Boot.md"/>
-    </toc-element>
-    <toc-element topic="how-to-use.md">
-        <toc-element toc-title="第一步: 选择核心实现库">
-            <toc-element topic="start-use-core.md"/>
-            <toc-element topic="start-use-spring-boot-3.md"/>
-        </toc-element>
-        <toc-element topic="start-use-components.md">
-        </toc-element>
-    </toc-element>
     <toc-element toc-title="组件库">
 
         <toc-element topic="components-intro.md"/>
@@ -44,9 +44,9 @@
             <toc-element topic="component-qq-guild.md" />
             <toc-element topic="component-kook.md" />
             <toc-element topic="component-onebot.md"/>
-            <toc-element topic="component-kritor.md"/>
             <toc-element topic="component-telegram.md"/>
             <toc-element topic="component-discord.md"/>
+            <toc-element topic="component-kritor.md"/>
         </toc-element>
         <toc-element topic="community-components.md"/>
     </toc-element>

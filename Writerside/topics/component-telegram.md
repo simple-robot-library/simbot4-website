@@ -21,3 +21,5 @@ Telegram组件仍处于**早期开发阶段**，并且积极地期待着**贡献
 协助我们！
 
 </warning>
+
+<include from="refers.md" element-id="tg-build"></include>
