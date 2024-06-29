@@ -420,6 +420,64 @@ simbot:
 </def>
 </deflist>
 
+## 额外的定制化配置
+
+starter 提供了大量的 `*Configurer` 类型来支持你对启动过程中的各个步骤添加**额外**的自定义配置。
+
+<deflist>
+<def title="SimbotApplicationConfigurationConfigurer">
+
+针对 `Application` 配置属性的额外配置器。
+
+</def>
+<def title="SimbotDispatcherConfigurer">
+
+针对 Spring 下的事件调度器 `EventDispatcher` 的额外配置器。
+
+</def>
+<def title="SimbotComponentInstaller">
+
+`Component` 组件安装器。
+
+</def>
+<def title="SimbotPluginInstaller">
+
+`Plugin` 插件安装器。
+
+</def>
+<def title="SimbotApplicationLauncherPreConfigurer">
+
+构建 `Application` 过程中, 安插在配置、安装其他内容之前的额外配置器。
+
+</def>
+<def title="SimbotApplicationLauncherPostConfigurer">
+
+构建 `Application` 过程中, 安插在配置、安装其他内容之后的额外配置器。
+
+</def>
+<def title="SimbotApplicationPreConfigurer">
+
+`Application` 构建完成后, (在一定范围内) 安插在其他配置之前的额外配置器。
+
+</def>
+<def title="SimbotApplicationPostConfigurer">
+
+`Application` 构建完成后, (在一定范围内) 安插在其他配置之后的额外配置器。
+
+</def>
+<def title="SimbotEventDispatcherPostConfigurer">
+
+`Application` 构建完成后, 针对 `EventDispatcher` 的额外配置器。
+
+</def>
+<def title="SimbotEventListenerRegistrarPostConfigurer">
+
+`Application` 构建完成后, 针对 `EventListenerRegistrar` 的额外配置器。
+
+</def>
+</deflist>
+
+
 ## 安装组件以及组件配置
 
 你可以在上面的配置中看到，组件 `Component` 和 `Plugin` 默认情况下都是通过 SPI **自动加载** 的。
