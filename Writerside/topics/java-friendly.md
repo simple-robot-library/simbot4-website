@@ -1,3 +1,9 @@
+---
+switcher-label: JavaAPI风格
+---
+
+<show-structure for="chapter,procedure" depth="3"/>
+
 # Java友好 ♥
 
 <tldr>
@@ -41,7 +47,26 @@ public CompletableFuture<? extends Integer> runAsync() { ... }
 public SuspendReserve<? extends Integer> runReserve() { ... }
 ```
 
-<warning title="小贴士">
+
+### 💡文档表现
+
+在文档中，可能会同时提供阻塞、异步、预处理(响应式)三种风格的API。
+
+此时你可以通过文档**右上角**的切换标签
+<control>JavaAPI风格</control>
+来修改展示的API风格。
+
+<note>
+
+动动手试试吧！现在显示的风格是：
+<control switcher-key="%ja%">%ja%</control>
+<control switcher-key="%jb%">%jb%</control>
+<control switcher-key="%jr%">%jr%</control>
+
+</note>
+
+
+### ⚠️注意异步中的异常处理
 
 当你在使用**异步**结果时（也包括下文会提到的各响应式类型结果），你需要多一些心眼儿。
 
@@ -96,7 +121,6 @@ future.whenComplete((value, exception) -> {
 
 下文所述的各种响应式结果通常也可能会有类似的问题，需要多加注意喔。
 
-</warning>
 
 ## SuspendReserve 预执行桥接器
 
