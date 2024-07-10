@@ -6,13 +6,21 @@ switcher-label: JavaAPI风格
 
 ## 前期准备
 
+<include from="component-onebot.md" element-id="OneBot11-前期准备"></include>
+
+<tip>
 参考
-<a href="component-onebot.md#前期准备">前期准备</a> 。
+<a href="component-onebot.md#OneBot11-前期准备">前期准备</a> 。
+</tip>
 
 ## 安装
 
+<include from="component-onebot.md" element-id="OneBot11-安装依赖"></include>
+
+<tip>
 参考
-<a href="component-onebot.md#安装">安装</a> 。
+<a href="component-onebot.md#OneBot11-安装依赖">安装依赖</a> 。
+</tip>
 
 ## 使用
 

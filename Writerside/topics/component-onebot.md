@@ -1,18 +1,18 @@
+<show-structure for="chapter,procedure" depth="3"/>
+
 # OneBot
 
 <a href="https://github.com/simple-robot/simbot-component-onebot/releases/latest">
 <img alt="release" src="https://img.shields.io/github/v/release/simple-robot/simbot-component-onebot" />
 </a>
 
-
-- 前往 [**OneBot组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-onebot)
-- 前往 [**OneBot组件**手册](https://simple-robot.github.io/simbot-component-onebot/)
-
-<warning title="正在迁移...">
-
-独立的手册内容正在逐步迁移至当前文档，但尚未迁移完成。
-
-</warning>
+<seealso>
+<category ref="links">
+<a href="https://github.com/simple-robot/simbot-component-onebot">OneBot组件仓库</a>
+<a href="https://ktor.io/">Ktor首页</a>
+<a href="https://github.com/botuniverse/onebot-11">OneBot11</a>
+</category>
+</seealso>
 
 ## 概述
 
@@ -27,11 +27,71 @@ OneBot 组件是一个
 助你快速开发 OneBot 客户端应用！
 
 > 序列化和网络请求相关分别基于 [Kotlin serialization](https://github.com/Kotlin/kotlinx.serialization)
-和 [Ktor](https://ktor.io/)。
+> 和 [Ktor](https://ktor.io/)。
 
-## 前期准备
+- 前往 [**OneBot组件**GitHub 仓库](https://github.com/simple-robot/simbot-component-onebot)
 
-### OneBot11协议服务端
+## 模块
+
+### 公共模块
+
+OneBot组件为所有协议实现的模块提供了一些共享内容的模块，
+命名为 `simbot-component-onebot-common`。
+
+此模块中会定义一些通用的类型或注解等。
+对于普通开发者来讲可以不用过多关注，此模块由其他组件模块引用并使用。
+
+### OneBot11
+
+在OneBot组件中，我们提供了针对 [OneBot11](https://github.com/botuniverse/onebot-11)
+协议的组件实现模块，它们的坐标以 `simbot-component-onebot-v11` 作为开头：
+
+<list>
+<li><control>simbot-component-onebot-v11-common</control>
+
+在OneBot11协议的实现模块中进行共享的模块。
+对于普通开发者来讲可以不用过多关注，此模块由其他组件模块引用并使用。
+</li>
+<li><control>simbot-component-onebot-v11-core</control>
+
+OneBot11协议作为一个simbot组件的实现模块。通常会是你**真正使用**的模块。
+</li>
+<li><control>simbot-component-onebot-v11-event</control>
+
+对OneBot11协议中的[原始事件](https://github.com/botuniverse/onebot-11/tree/master/event)
+类型提供定义的模块，
+被 `simbot-component-onebot-v11-core` 引用并依赖。
+
+<tip>
+
+需要注意的是这里的事件并不是simbot中的**事件**，而仅仅是一种数据类实现，
+是对原始事件的JSON结构的基本映射。
+</tip>
+</li>
+<li><control>simbot-component-onebot-v11-message</control>
+
+对OneBot11协议中的[原始消息段](https://github.com/botuniverse/onebot-11/blob/master/message/segment.md)
+类型提供定义的模块。
+
+这里定义的大部分类型都是针对消息段的数据类实现，
+是对它们的JSON结构的基本映射，
+被 `simbot-component-onebot-v11-core` 引用并依赖。
+
+</li>
+</list>
+
+
+## 安装
+
+<note>
+在安装组件库之前，确保你已经安装了可用的核心库实现，比如 simbot-core 或 Spring Boot starter.
+</note>
+
+### 安装OneBot11组件
+
+<procedure title="前期准备" id="OneBot11-前期准备">
+<step>
+<control>准备OneBot11协议服务端</control>
 
 OneBot组件是一个OneBot协议的**客户端**实现，
 因此在使用之前，你需要安装、下载、启动一个支持OneBot11协议的**服务端**。
@@ -47,20 +107,15 @@ OneBot组件是一个OneBot协议的**客户端**实现，
 向其他人寻求帮助。
 
 </warning>
+</step>
 
-## 安装
+</procedure>
 
-<note>
-在安装组件库之前，确保你已经安装了可用的核心库实现，比如 simbot-core 或 Spring Boot starter.
-</note>
+<procedure title="安装依赖" id="OneBot11-安装依赖">
+<step>
+<control>安装 <code>simbot-component-onebot-v11-core</code> 依赖</control>
 
-### 安装OneBot11组件
-
-首先，安装 `simbot-component-onebot-v11-core` 依赖。
-
-<tabs id="build">
-<tab title="OneBot11">
-<tabs group="build">
+<tabs id="build" group="build">
 <tab title="Gradle(Kotlin DSL)" group-key="kts">
 
 ```Kotlin
@@ -99,8 +154,9 @@ implementation 'love.forte.simbot.component:simbot-component-onebot-v11-core-jvm
 
 </tab>
 </tabs>
-</tab>
-</tabs>
+</step>
+<step>
+<control>安装Ktor客户端引擎</control>
 
 OneBot11组件使用 [Ktor](https://ktor.io) 作为 HTTP 客户端实现，
 但是默认不会依赖任何具体的**引擎**。
@@ -114,4 +170,8 @@ OneBot11组件使用 [Ktor](https://ktor.io) 作为 HTTP 客户端实现，
 </warning>
 
 <include from="refers.md" element-id="engine-choose"/>
+</step>
+</procedure>
+
+
 

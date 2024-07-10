@@ -275,14 +275,11 @@ implementation 'love.forte.simbot.component:simbot-component-telegram-core-jvm:$
 runtimeOnly("io.ktor:ktor-client-java:$ktor_version")
 ```
 
-<tip>
-
 如果不使用Kotlin的[Gradle插件](https://kotlinlang.org/docs/gradle-configure-project.html):
 
 ```kotlin
 runtimeOnly("io.ktor:ktor-client-java-jvm:$ktor_version")
 ```
-</tip>
 
 </tab>
 <tab title="Gradle Groovy" group-key="groovy">
@@ -291,14 +288,11 @@ runtimeOnly("io.ktor:ktor-client-java-jvm:$ktor_version")
 runtimeOnly 'io.ktor:ktor-client-java:$ktor_version'
 ```
 
-<tip>
-
 如果不使用Kotlin的[Gradle插件](https://kotlinlang.org/docs/gradle-configure-project.html):
 
 ```groovy
 runtimeOnly 'io.ktor:ktor-client-java-jvm:$ktor_version'
 ```
-</tip>
 
 <br />
 
@@ -332,14 +326,11 @@ runtimeOnly 'io.ktor:ktor-client-java-jvm:$ktor_version'
 runtimeOnly("io.ktor:ktor-client-okhttp:$ktor_version")
 ```
 
-<tip>
-
 如果不使用Kotlin的[Gradle插件](https://kotlinlang.org/docs/gradle-configure-project.html):
 
 ```kotlin
 runtimeOnly("io.ktor:ktor-client-okhttp-jvm:$ktor_version")
 ```
-</tip>
 
 </tab>
 <tab title="Gradle Groovy" group-key="groovy">
@@ -348,14 +339,11 @@ runtimeOnly("io.ktor:ktor-client-okhttp-jvm:$ktor_version")
 runtimeOnly 'io.ktor:ktor-client-okhttp:$ktor_version'
 ```
 
-<tip>
-
 如果不使用Kotlin的[Gradle插件](https://kotlinlang.org/docs/gradle-configure-project.html):
 
 ```groovy
 runtimeOnly 'io.ktor:ktor-client-okhttp-jvm:$ktor_version'
 ```
-</tip>
 
 </tab>
 <tab title="Maven" group-key="maven">
@@ -385,14 +373,11 @@ runtimeOnly 'io.ktor:ktor-client-okhttp-jvm:$ktor_version'
 runtimeOnly("io.ktor:ktor-client-cio:$ktor_version")
 ```
 
-<tip>
-
 如果不使用Kotlin的[Gradle插件](https://kotlinlang.org/docs/gradle-configure-project.html):
 
 ```kotlin
 runtimeOnly("io.ktor:ktor-client-cio-jvm:$ktor_version")
 ```
-</tip>
 
 </tab>
 <tab title="Gradle Groovy" group-key="groovy">
@@ -401,14 +386,12 @@ runtimeOnly("io.ktor:ktor-client-cio-jvm:$ktor_version")
 runtimeOnly 'io.ktor:ktor-client-cio:$ktor_version'
 ```
 
-<tip>
 
 如果不使用Kotlin的[Gradle插件](https://kotlinlang.org/docs/gradle-configure-project.html):
 
 ```groovy
 runtimeOnly 'io.ktor:ktor-client-cio-jvm:$ktor_version'
 ```
-</tip>
 
 </tab>
 <tab title="Maven" group-key="maven">
