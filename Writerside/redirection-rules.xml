@@ -34,4 +34,8 @@
         <description>Created after removal of "走码观花" from Simple Robot 4</description>
         <accepts>looook.html</accepts>
     </rule>
+    <rule id="45991819">
+        <description>Created after removal of "官方组件" from Simple Robot 4</description>
+        <accepts>official-components.html</accepts>
+    </rule>
 </rules>

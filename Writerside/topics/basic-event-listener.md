@@ -1,5 +1,5 @@
 ---
-switcher-label: Java API
+switcher-label: JavaAPI风格
 ---
 
 # 事件监听与处理

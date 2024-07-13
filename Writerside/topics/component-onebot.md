@@ -19,9 +19,7 @@
 OneBot 组件是一个
 [OneBot11协议](https://github.com/botuniverse/onebot-11)
 的客户端SDK，
-也是
-[Simple Robot](http://github.com/simple-robot/simpler-robot) 
-标准API下实现的组件库。
+也是 Simple Robot 标准API下实现的组件库。
 
 借助simbot核心库提供的能力，它支持众多高级功能和封装，比如组件协同、Spring支持等，
 助你快速开发 OneBot 客户端应用！
@@ -83,9 +81,7 @@ OneBot11协议作为一个simbot组件的实现模块。通常会是你**真正�
 
 ## 安装
 
-<note>
-在安装组件库之前，确保你已经安装了可用的核心库实现，比如 simbot-core 或 Spring Boot starter.
-</note>
+<include from="refers.md" element-id="pre-component-install" />
 
 ### 安装OneBot11组件
 

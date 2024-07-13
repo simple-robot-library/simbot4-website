@@ -92,45 +92,7 @@ implementation 'love.forte.simbot:simbot-core-spring-boot-starter-v2:%version%'
 </tab>
 </tabs>
 
-<tabs id="qg-build" group="build">
-<tab title="Gradle(Kotlin DSL)" group-key="kts">
 
-```Kotlin
-implementation("love.forte.simbot.component:simbot-component-qq-guild-core:$VERSION")
-```
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Kotlin
-implementation("love.forte.simbot.component:simbot-component-qq-guild-core-jvm:$VERSION")
-```
-
-</tab>
-<tab title="Gradle(Groovy)" group-key="groovy">
-
-```Groovy
-implementation 'love.forte.simbot.component:simbot-component-qq-guild-core:$VERSION'
-```
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Groovy
-implementation 'love.forte.simbot.component:simbot-component-qq-guild-core-jvm:$VERSION'
-```
-
-</tab>
-<tab title="Maven" group-key="maven">
-
-```xml
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-qq-guild-core-jvm</artifactId>
-    <version>${VERSION}</version>
-</dependency>
-```
-
-</tab>
-</tabs>
 <tabs id="kook-build" group="build">
 <tab title="Gradle(Kotlin DSL)" group-key="kts">
 
@@ -170,49 +132,7 @@ implementation 'love.forte.simbot.component:simbot-component-kook-core-jvm:$VERS
 
 </tab>
 </tabs>
-<tabs id="onebot-build">
-<tab title="OneBot11">
-<tabs group="build">
-<tab title="Gradle(Kotlin DSL)" group-key="kts">
 
-```Kotlin
-implementation("love.forte.simbot.component:simbot-component-onebot-v11-core:$VERSION")
-```
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Kotlin
-implementation("love.forte.simbot.component:simbot-component-onebot-v11-core-jvm:$VERSION")
-```
-
-</tab>
-<tab title="Gradle(Groovy)" group-key="groovy">
-
-```Groovy
-implementation 'love.forte.simbot.component:simbot-component-onebot-v11-core:$VERSION'
-```
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Groovy
-implementation 'love.forte.simbot.component:simbot-component-onebot-v11-core-jvm:$VERSION'
-```
-
-</tab>
-<tab title="Maven" group-key="maven">
-
-```xml
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-onebot-v11-core-jvm</artifactId>
-    <version>${VERSION}</version>
-</dependency>
-```
-
-</tab>
-</tabs>
-</tab>
-</tabs>
 <tabs id="tg-build" group="build">
 <tab title="Gradle(Kotlin DSL)" group-key="kts">
 
@@ -253,6 +173,15 @@ implementation 'love.forte.simbot.component:simbot-component-telegram-core-jvm:$
 </tab>
 </tabs>
 
+<snippet id="pre-component-install">
+<note>
+在安装组件库之前，确保你已经安装了可用的核心库实现，比如 
+<a href="start-use-core.md">核心库</a>
+或 
+<a href="Spring-Boot.md">Spring Boot starter</a>
+。
+</note>
+</snippet>
 
 <snippet id="engine-choose">
 
@@ -518,5 +447,16 @@ implementation 'io.ktor:ktor-client-darwin:$ktor_version'
 
 </tab>
 </tabs>
+
+</snippet>
+
+<snippet id="qg-stdlib-will-be-removed">
+
+<warning>
+
+标准库模块可能会在未来被**弃用并移除**。
+前往议题 [#168](https://github.com/simple-robot/simbot-component-qq-guild/issues/168) 了解更多。
+
+</warning>
 
 </snippet>

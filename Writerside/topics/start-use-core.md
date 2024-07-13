@@ -1,5 +1,5 @@
 ---
-switcher-label: Java API
+switcher-label: JavaAPI风格
 ---
 
 # 使用核心库
@@ -90,7 +90,7 @@ application.joinBlocking();
 
 ## 安装组件
 
-前往 [**官方维护的组件库**](official-components.md) 选择你想要使用的组件，或者选择某个/些你想要使用的第三方组件，
+前往 [**组件库**](components-intro.md) 选择你想要使用的组件，或者选择某个/些你想要使用的第三方组件，
 根据它们的手册安装、配置到你的 `Application` 中。
 
 ## 运行

@@ -24,7 +24,16 @@ simbot Spring Boot starter 基于核心库实现，提供对 Spring Boot 应用�
 
 ## 安装
 
-<procedure>
+<procedure id="install-spring">
+<step><control>准备Java</control>
+
+我们推荐您使用 Spring Boot 3.x。因此 Java 的版本至少为 **Java17** 。
+
+> 如果你打算使用 Spring Boot 2.x，
+> 请参阅下文有关 2.x 版本的兼容模块的说明，
+> 其 Java 的版本至少为 **Java11** 。
+
+</step>
 <step><control>准备 Spring Boot 项目</control>
 
 前往 [start.spring.io][spring.start] 选择、创建一个 Spring Boot 项目下载。
@@ -96,7 +105,7 @@ _开放源码软件支持(OSS support)_ ，并会在 2026 年之前彻底结束�
 
 simbot的组件是功能的主要提供者，是**重要**的核心概念之一。
 你可以前往 
-<a href="official-components.md"></a>
+<a href="components-intro.md"></a>
 选择你所需要的组件并添加它们，而它们的手册通常都会有各自相应的**快速开始**或**安装**章节。
 
 <note>
@@ -482,7 +491,7 @@ starter 提供了大量的 `*Configurer` 类型来支持你对启动过程中的
 
 你可以在上面的配置中看到，组件 `Component` 和 `Plugin` 默认情况下都是通过 SPI **自动加载** 的。
 
-因此一般情况下, 你只需要前往 [**官方维护的组件库**](official-components.md) 选择你想要使用的组件, 或者选择某个/些你想要使用的第三方组件,
+因此一般情况下, 你只需要前往 [**组件库**](components-intro.md) 选择你想要使用的组件, 或者选择某个/些你想要使用的第三方组件,
 然后将它们添加到你的运行时环境中即可。
 
 如果你想要添加更多定制化的配置或注册额外的组件、插件，

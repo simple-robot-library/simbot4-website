@@ -4,26 +4,15 @@ switcher-label: JavaAPI风格
 
 # 开始使用
 
-## 前期准备
-
-<include from="component-onebot.md" element-id="OneBot11-前期准备"></include>
-
-<tip>
-参考
-<a href="component-onebot.md#OneBot11-前期准备">前期准备</a> 。
-</tip>
-
 ## 安装
 
-<include from="component-onebot.md" element-id="OneBot11-安装依赖"></include>
+<include from="component-qq-guild.md" element-id="install-core" />
 
-<tip>
-参考
-<a href="component-onebot.md#OneBot11-安装依赖">安装依赖</a> 。
-</tip>
+> 参考
+<a href="component-qq-guild.md#安装" />
+。
 
 ## 使用
-
 ### 创建Application
 
 <tabs group="simbot4impl">
@@ -36,8 +25,9 @@ switcher-label: JavaAPI风格
 
 ```Kotlin
 val app = launchSimpleApplication {
-    // 使用OneBot组件相关的内容。
-    useOneBot11()
+    // 使用QQ机器人组件相关的内容。
+    // 代表同时安装 `QQGuildComponent` 和 `QQGuildBotManager`
+    useQQGuild()
     // 其他配置...
 }
 
@@ -51,9 +41,9 @@ app.join() // 挂起app直到cancel它
 final var applicationAsync = Applications.launchApplicationAsync(
     Simple.INSTANCE,
     configurer -> {
-        // 安装OneBot组件相关内容
-        configurer.install(OneBot11Component.Factory);
-        configurer.install(OneBotBotManager.Factory);
+        // 安装 `QQGuildComponent` 和 `QQGuildBotManager`
+        configurer.install(QQGuildComponent.Factory);
+        configurer.install(QQGuildBotManager.Factory);
         // 其他...
     }
 );
@@ -71,9 +61,9 @@ applicationAsync
 final var application = Applications.launchApplicationBlocking(
     Simple.INSTANCE,
     configurer -> {
-        // 安装OneBot组件相关内容
-        configurer.install(OneBot11Component.Factory);
-        configurer.install(OneBotBotManager.Factory);
+        // 安装 `QQGuildComponent` 和 `QQGuildBotManager`
+        configurer.install(QQGuildComponent.Factory);
+        configurer.install(QQGuildBotManager.Factory);
         // 其他...
     }
 );
@@ -87,9 +77,9 @@ application.joinBlocking();
 var applicationAsync = Applications.launchApplicationAsync(
         Simple.INSTANCE,
         configurer -> {
-            // 安装OneBot组件相关内容
-            configurer.install(OneBot11Component.Factory);
-            configurer.install(OneBotBotManager.Factory);
+            // 安装 `QQGuildComponent` 和 `QQGuildBotManager`
+            configurer.install(QQGuildComponent.Factory);
+            configurer.install(QQGuildBotManager.Factory);
             // 其他...
         }
 );
@@ -117,8 +107,8 @@ mono.block();
 在 Spring Boot 中，不需要你手动构建 `Application`。
 你只需要在你的启动类上标记 `@EnableSimbot` 来启用 simbot 即可。
 
-OneBot组件支持SPI自动加载，因此默认情况下不需要手动安装
-`OneBot11Component` 和 `OneBotBotManager` 。
+QQ机器人组件支持SPI自动加载，因此默认情况下不需要手动安装
+`QQGuildComponent` 和 `QQGuildBotManager` 。
 
 <tabs group="code">
 <tab title="Kotlin" group-key="Kotlin">
@@ -158,7 +148,7 @@ public class BotApplication {
 <tab group-key="core" title="核心库">
 
 在 Application 构建完成后，即可从 `Application.botManagers`
-中寻找你所需的管理器（比如OneBot的Bot管理器：`OneBotBotManager`）
+中寻找你所需的管理器（比如组件的Bot管理器：`QQGuildBotManager`）
 并注册你的Bot。
 
 <tabs group="code">
@@ -167,7 +157,7 @@ public class BotApplication {
 ```Kotlin
 suspend fun main() {
     val app = launchSimpleApplication {
-        useOneBot11()
+        useQQGuild()
         // ...
     }
 
@@ -177,21 +167,30 @@ suspend fun main() {
 
 suspend fun Application.configure() {
     // 寻找、获得所需的BotManager
-    val botManager = botManagers.firstOneBotBotManager()
+    val botManager = botManagers.firstQQGuildBotManager()
     // 注册你所需的bot
     val bot = botManager.register(
-        OneBotBotConfiguration().apply {
-            // 这几个是必选属性
-            /// 在OneBot组件中用于区分不同Bot的唯一ID， 建议可以直接使用QQ号。
-            botUniqueId = "11112222"
-            apiServerHost = Url("http://127.0.0.1:3000")
-            eventServerHost = Url("ws://127.0.0.1:3001")
-            // 其他配置, 一般都是可选属性
-            /// token
-            accessToken = null
-            /// ...
+        appId = "...",
+        secret = "...",
+        token = "...",
+    ) {
+        // 一些其他的可选配置属性
+        // 大部分属性都在 botConfigure 内配置
+        botConfigure = ConfigurerFunction {
+            // 比如添加订阅QQ群聊和C2C的事件。
+            // 如果不配置，默认情况下仅订阅：
+            // - 频道相关事件
+            // - 频道成员相关事件
+            // - 公域消息相关事件
+            intents += EventIntents.GroupAndC2CEvent.intents
+            // 比如切换服务地址为沙箱频道的服务地址
+            useSandboxServerUrl()
+            // 其他...
         }
-    )
+        // 外层是独属于组件类型的某些配置
+        cacheConfig = null
+        // 其他...
+    }
     
     // 启动你的bot
     bot.start()
@@ -206,9 +205,9 @@ public static void main(String[] args) {
     final var applicationAsync = Applications.launchApplicationAsync(
         Simple.INSTANCE,
         configurer -> {
-            // 安装OneBot组件相关内容
-            configurer.install(OneBot11Component.Factory);
-            configurer.install(OneBotBotManager.Factory);
+            // 安装QQGuild组件相关内容
+            configurer.install(QQGuildComponent.Factory);
+            configurer.install(QQGuildBotManager.Factory);
             // 其他...
         }
     );
@@ -230,43 +229,48 @@ public static void configure(Application application) {
     // 寻找所需的BotManager
     // 可以选择遍历寻找
     final var found = application.getBotManagers().stream()
-        .filter(it -> it instanceof OneBotBotManager)
-        .map(it -> (OneBotBotManager) it)
-        .findFirst()
-        .orElseThrow();
+            .filter(it -> it instanceof QQGuildBotManager)
+            .map(it -> (QQGuildBotManager) it)
+            .findFirst()
+            .orElseThrow();
 
     // 也可以选择使用辅助API
-    final var oneBotBotManager = OneBotBotManagerUsageKt
-        .firstOneBotBotManager(application.getBotManagers());
+    final var qqGuildBotManager = QQGuildBotManagerUsageKt
+            .firstQQGuildBotManager(application.getBotManagers());
 
     // 注册Bot
-    /// 准备配置类
-    final var botConfiguration = new OneBotBotConfiguration();
-    // 这几个是必选属性
-    /// 在OneBot组件中用于区分不同Bot的唯一ID， 建议可以直接使用QQ号。
-    botConfiguration.setBotUniqueId("11112222");
-    /// API 的服务地址。默认localhost:3000
-    botConfiguration.setApiServerHost(URLUtilsKt.Url("http://localhost:3000"));
-    /// 连接事件的服务地址。默认localhost:3001
-    botConfiguration.setEventServerHost(URLUtilsKt.Url("ws://localhost:3001"));
-    // 其他配置, 一般都是可选属性
-    /// token
-    botConfiguration.accessToken(null);
-    // 或
-    botConfiguration.setApiAccessToken(null);
-    botConfiguration.setEventAccessToken(null);
-    /// ...
-
     // 注册
-    final var bot = oneBotBotManager.register(botConfiguration);
+    final var bot = qqGuildBotManager.register(
+            "appid",
+            "secret",
+            "token",
+            config -> {
+                // 一些其他的可选配置属性
+                // 大部分属性都在 botConfigure 内配置
+                config.botConfig(botConfig -> {
+                    // 比如添加订阅QQ群聊和C2C的事件。
+                    // 如果不配置，默认情况下仅订阅：
+                    // - 频道相关事件
+                    // - 频道成员相关事件
+                    // - 公域消息相关事件
+                    botConfig.setIntentsValue(
+                            // 位运算合并 QQ群聊和C2C事件 的intents值
+                            botConfig.getIntentsValue() | EventIntents.GroupAndC2CEvent.INSTANCE.getIntentsValue()
+                    );
+                });
+
+                // 外层是独属于组件类型的某些配置
+                config.setCacheConfig(null);
+                // 其他...
+            });
     // 启动
     final var future = bot.startAsync().whenComplete((r, ex) -> {
         // 在使用 Future 的时候，记得处理异常
         if (ex != null) {
             Logger.getGlobal().log(
-                Level.SEVERE,
-                "bot启动出现异常！",
-                ex
+                    Level.SEVERE,
+                    "bot启动出现异常！",
+                    ex
             );
         }
     });
@@ -280,9 +284,9 @@ public static void main(String[] args) {
     final var application = Applications.launchApplicationBlocking(
             Simple.INSTANCE,
             configurer -> {
-                // 安装OneBot组件相关内容
-                configurer.install(OneBot11Component.Factory);
-                configurer.install(OneBotBotManager.Factory);
+                // 安装QQGuild组件相关内容
+                configurer.install(QQGuildComponent.Factory);
+                configurer.install(QQGuildBotManager.Factory);
                 // 其他...
             }
     );
@@ -295,35 +299,40 @@ public static void configure(Application application) {
     // 寻找所需的BotManager
     // 可以选择遍历寻找
     final var found = application.getBotManagers().stream()
-            .filter(it -> it instanceof OneBotBotManager)
-            .map(it -> (OneBotBotManager) it)
+            .filter(it -> it instanceof QQGuildBotManager)
+            .map(it -> (QQGuildBotManager) it)
             .findFirst()
             .orElseThrow();
 
     // 也可以选择使用辅助API
-    final var oneBotBotManager = OneBotBotManagerUsageKt
-        .firstOneBotBotManager(application.getBotManagers());
+    final var qqGuildBotManager = QQGuildBotManagerUsageKt
+            .firstQQGuildBotManager(application.getBotManagers());
 
     // 注册Bot
-    /// 准备配置类
-    final var botConfiguration = new OneBotBotConfiguration();
-    // 这几个是必选属性
-    /// 在OneBot组件中用于区分不同Bot的唯一ID， 建议可以直接使用QQ号。
-    botConfiguration.setBotUniqueId("11112222");
-    /// API 的服务地址。默认localhost:3000
-    botConfiguration.setApiServerHost(URLUtilsKt.Url("http://localhost:3000"));
-    /// 连接事件的服务地址。默认localhost:3001
-    botConfiguration.setEventServerHost(URLUtilsKt.Url("ws://localhost:3001"));
-    // 其他配置, 一般都是可选属性
-    /// token
-    botConfiguration.accessToken(null);
-    // 或
-    botConfiguration.setApiAccessToken(null);
-    botConfiguration.setEventAccessToken(null);
-    /// ...
-
     // 注册
-    final var bot = oneBotBotManager.register(botConfiguration);
+    final var bot = qqGuildBotManager.register(
+            "appid",
+            "secret",
+            "token",
+            config -> {
+                // 一些其他的可选配置属性
+                // 大部分属性都在 botConfigure 内配置
+                config.botConfig(botConfig -> {
+                    // 比如添加订阅QQ群聊和C2C的事件。
+                    // 如果不配置，默认情况下仅订阅：
+                    // - 频道相关事件
+                    // - 频道成员相关事件
+                    // - 公域消息相关事件
+                    botConfig.setIntentsValue(
+                            // 位运算合并 QQ群聊和C2C事件 的intents值
+                            botConfig.getIntentsValue() | EventIntents.GroupAndC2CEvent.INSTANCE.getIntentsValue()
+                    );
+                });
+
+                // 外层是独属于组件类型的某些配置
+                config.setCacheConfig(null);
+                // 其他...
+            });
     // 启动
     bot.startBlocking();
 }
@@ -335,9 +344,9 @@ public static void main(String[] args) {
     var applicationAsync = Applications.launchApplicationAsync(
         Simple.INSTANCE,
         configurer -> {
-            // 安装OneBot组件相关内容
-            configurer.install(OneBot11Component.Factory);
-            configurer.install(OneBotBotManager.Factory);
+            // 安装QQ机器人组件相关内容
+            configurer.install(QQGuildComponent.Factory);
+            configurer.install(QQGuildBotManager.Factory);
             // 其他...
         }
     );
@@ -361,49 +370,54 @@ public static void configure(Application application) {
     // 寻找所需的BotManager
     // 可以选择遍历寻找
     final var found = application.getBotManagers().stream()
-        .filter(it -> it instanceof OneBotBotManager)
-        .map(it -> (OneBotBotManager) it)
-        .findFirst()
-        .orElseThrow();
+            .filter(it -> it instanceof QQGuildBotManager)
+            .map(it -> (QQGuildBotManager) it)
+            .findFirst()
+            .orElseThrow();
 
     // 也可以选择使用辅助API
-    final var oneBotBotManager = OneBotBotManagerUsageKt
-        .firstOneBotBotManager(application.getBotManagers());
+    final var qqGuildBotManager = QQGuildBotManagerUsageKt
+            .firstQQGuildBotManager(application.getBotManagers());
 
     // 注册Bot
-    /// 准备配置类
-    final var botConfiguration = new OneBotBotConfiguration();
-    // 这几个是必选属性
-    /// 在OneBot组件中用于区分不同Bot的唯一ID， 建议可以直接使用QQ号。
-    botConfiguration.setBotUniqueId("11112222");
-    /// API 的服务地址。默认localhost:3000
-    botConfiguration.setApiServerHost(URLUtilsKt.Url("http://localhost:3000"));
-    /// 连接事件的服务地址。默认localhost:3001
-    botConfiguration.setEventServerHost(URLUtilsKt.Url("ws://localhost:3001"));
-    // 其他配置, 一般都是可选属性
-    /// token
-    botConfiguration.accessToken(null);
-    // 或
-    botConfiguration.setApiAccessToken(null);
-    botConfiguration.setEventAccessToken(null);
-    /// ...
-
     // 注册
-    final var bot = oneBotBotManager.register(botConfiguration);
+    final var bot = qqGuildBotManager.register(
+            "appid",
+            "secret",
+            "token",
+            config -> {
+                // 一些其他的可选配置属性
+                // 大部分属性都在 botConfigure 内配置
+                config.botConfig(botConfig -> {
+                    // 比如添加订阅QQ群聊和C2C的事件。
+                    // 如果不配置，默认情况下仅订阅：
+                    // - 频道相关事件
+                    // - 频道成员相关事件
+                    // - 公域消息相关事件
+                    botConfig.setIntentsValue(
+                            // 位运算合并 QQ群聊和C2C事件 的intents值
+                            botConfig.getIntentsValue() | EventIntents.GroupAndC2CEvent.INSTANCE.getIntentsValue()
+                    );
+                });
+
+                // 外层是独属于组件类型的某些配置
+                config.setCacheConfig(null);
+                // 其他...
+            });
     // 启动
     bot.startReserve()
-        .transform(SuspendReserves.mono())
-        // 在使用响应式编程的时候，记得处理异常
-        .doOnError(ex -> {
-            Logger.getGlobal().log(
-                Level.SEVERE,
-                "bot启动出现异常！",
-                ex
-            );
-        })
-        // 你也可以选择返回Mono然后做进一步处理
-        // 此处直接使其在异步中运行。
-        .subscribe();
+            .transform(SuspendReserves.mono())
+            // 在使用响应式编程的时候，记得处理异常
+            .doOnError(ex -> {
+                Logger.getGlobal().log(
+                        Level.SEVERE,
+                        "bot启动出现异常！",
+                        ex
+                );
+            })
+            // 你也可以选择返回Mono然后做进一步处理
+            // 此处直接使其在异步中运行。
+            .subscribe();
 }
 ```
 {switcher-key=%jr%}
@@ -421,7 +435,7 @@ public static void configure(Application application) {
 <path>/simbot-bots/</path> ，
 然后前往参考
 <b>
-<a href="component-onebot-v11-bot-config.md" />
+<a href="component-qq-guild-bot-config.md" />
 </b> 
 并配置你的 JSON 格式的配置文件，例如 `abc.bot.json`。
 
@@ -432,7 +446,7 @@ public static void configure(Application application) {
 上述的 _资源目录 `/simbot-bots/`_ 、_自动启动_、以及 _在异步中启动_ 这些都是可配置的。
 
 有关Spring Boot环境下可用的**配置信息**，可前往
-[集成 Spring Boot](Spring-Boot.md)
+[集成Spring Boot](Spring-Boot.md)
 参考更多。
 </tip>
 
@@ -472,10 +486,10 @@ suspend fun Application.configure() {
         }
 
         // 使用 process 监听一个事件
-        // 此处监听的是OneBot组件中的专属类型：OneBot的好友消息事件
-        process<OneBotFriendMessageEvent> { event ->
+        // 此处监听的是QQ机器人组件中的专属类型：文字子频道中的At消息事件
+        process<QGAtMessageCreateEvent> { event ->
             println("Event: $event")
-            if (event.messageContent.plainText?.trim() == "你好") {
+            if (event.messageContent.plainText.trim() == "你好") {
                 event.reply("你也好")
             }
 
@@ -496,26 +510,39 @@ public static void configure(Application application) {
 
     final var eventDispatcher = application.getEventDispatcher();
 
-    // 监听一个OneBot组件中的专属类型：OneBot的好友消息事件
+    // 监听一个QQ机器人组件中的专属类型：QQ频道中文字子频道的At消息事件
     eventDispatcher.register(
-        EventListeners.async(
-            OneBotFriendMessageEvent.class,
-            (context, event) -> {
-                System.out.println("Event: " + event);
-                if ("你好".equals(event.getMessageContent().getPlainText())) {
-                    // 返回一个异步的EventResult类型的结果
-                    return event.replyAsync("你也好")
-                        .thenApply(result -> EventResult.empty());
-                }
+            EventListeners.async(
+                    QGAtMessageCreateEvent.class,
+                    (context, event) -> {
+                        System.out.println("Event: " + event);
+                        if ("你好".equals(event.getMessageContent().getPlainText())) {
+                            // 返回一个异步的EventResult类型的结果
+                            return event.replyAsync("你也好")
+                                    .thenApply(result -> EventResult.empty());
+                        }
 
-                // 返回一个异步的EventResult类型的结果
-                return CompletableFuture.completedFuture(EventResult.empty());
-            }
-        )
+                        // 返回一个异步的EventResult类型的结果
+                        return CompletableFuture.completedFuture(EventResult.empty());
+                    }
+            )
     );
 }
 ```
 {switcher-key=%ja%}
+
+<tip switcher-key="%ja%">
+
+也可以使用 `EventListeners.nonBlock` 后返回一个内容为 `Future` 的 `CompletableFuture`:
+
+```Java
+var future = ...
+return EventResult.of(future);
+```
+
+此方式与响应式风格的API方式类似。
+
+</tip>
 
 ```Java
 // 省略构建Application相关内容...
@@ -525,10 +552,10 @@ public static void configure(Application application) {
     
     final var eventDispatcher = application.getEventDispatcher();
 
-    // 监听一个OneBot组件中的专属类型：OneBot的好友消息事件
+    // 监听一个QQ机器人组件中的专属类型：QQ频道中文字子频道的At消息事件
     eventDispatcher.register(
         EventListeners.block(
-            OneBotFriendMessageEvent.class,
+            QGAtMessageCreateEvent.class,
             (context, event) -> {
                 System.out.println("Event: " + event);
                 if ("你好".equals(event.getMessageContent().getPlainText())) {
@@ -552,34 +579,46 @@ public static void configure(Application application) {
 
     final var eventDispatcher = application.getEventDispatcher();
 
-    // 监听一个OneBot组件中的专属类型：OneBot的好友消息事件
+    // 监听一个QQ机器人组件中的专属类型：QQ频道中文字子频道的At消息事件
     eventDispatcher.register(
-        EventListeners.async(
-            OneBotFriendMessageEvent.class,
-            (context, event) -> {
-                System.out.println("Event: " + event);
-                if ("你好".equals(event.getMessageContent().getPlainText())) {
-                    return event.replyReserve("你也好")
-                        .transform(SuspendReserves.mono())
-                        .thenReturn(EventResult.empty())
-                        // 返回一个异步的EventResult类型的结果
-                        .toFuture();
-                }
+            EventListeners.nonBlock(
+                    QGAtMessageCreateEvent.class,
+                    (context, event) -> {
+                        System.out.println("Event: " + event);
+                        if ("你好".equals(event.getMessageContent().getPlainText())) {
+                            // 返回一个内容是响应式类型的EventResult类型的结果
+                            final var mono = event.replyReserve("你也好")
+                                    .transform(SuspendReserves.mono())
+                                    .then();
 
-                // 返回一个异步的EventResult类型的结果
-                return Mono.just(
-                    EventResult.empty()
-                ).toFuture();
-            }
-        )
+                            return EventResult.of(mono);
+                        }
+
+                        // 返回一个空的EventResult类型的结果
+                        return EventResult.empty();
+                    }
+            )
     );
 }
 ```
 {switcher-key=%jr%}
 
+<tip switcher-key="%jr%">
+
+`EventResult.of(...)` 的内容可以是异步的或响应式的，
+事件处理器会对这种结果进行一次收集或挂起。
+
+</tip>
+
 </tab>
 </tabs>
 
+<note>
+
+更多有关 `EventResult` 的信息可参考 
+<a href="basic-event-listener.md#EventResult">EventResult</a>
+
+</note>
 
 </tab>
 <tab group-key="spring" title="Spring">
@@ -602,6 +641,7 @@ public static void configure(Application application) {
 class MyHandles {
     /**
      * 此处是一个标准库中通用的类型：聊天群消息事件
+     * 在QQ机器人组件中，它的真实实现类型会是QGGroupAtMessageCreateEvent
      */
     @Listener
     suspend fun onGroupMessage(event: ChatGroupMessageEvent) {
@@ -609,14 +649,14 @@ class MyHandles {
     }
     
     /**
-     * 此处监听的是OneBot组件中的专属类型：OneBot的好友消息事件
+     * 此处监听的是QQ机器人组件中的专属类型：QQ频道中文字子频道的At消息。
      * 并且过滤消息：消息中的文本消息去除前后空字符后，等于 '你好'
      */
     @Listener
     @ContentTrim
     @Filter("你好")
-    suspend fun onFriendMessage(event: OneBotFriendMessageEvent) {
-        println("OneBotFriendMessageEvent: $event")
+    suspend fun onMessage(event: QGAtMessageCreateEvent) {
+        println("QGAtMessageCreateEvent: $event")
         // 回复消息
         event.reply("你也好")
     }
@@ -633,6 +673,7 @@ class MyHandles {
 public class MyHandles {
     /**
      * 此处是一个标准库中通用的类型：聊天群消息事件
+     * 在QQ机器人组件中，它的真实实现类型会是QGGroupAtMessageCreateEvent
      */
     @Listener
     public void onGroupMessage(ChatGroupMessageEvent event) {
@@ -640,16 +681,17 @@ public class MyHandles {
     }
 
     /**
-     * 此处监听的是OneBot组件中的专属类型：OneBot的好友消息事件
+     * 此处监听的是QQ机器人组件中的专属类型：QQ频道中文字子频道的At消息。
      * 并且过滤消息：消息中的文本消息去除前后空字符后，等于 '你好'
      */
     @Listener
     @ContentTrim
     @Filter("你好")
-    public CompletableFuture<?> onFriendMessage(OneBotFriendMessageEvent event) {
-        System.out.println("OneBotFriendMessageEvent: " + event);
+    public CompletableFuture<?> onMessage(QGAtMessageCreateEvent event) {
+        System.out.println("QGAtMessageCreateEvent: " + event);
         return event.replyAsync("你也好");
-        // 可以直接返回任意 CompletableFuture 类型
+        // 可以直接返回任意 Future 类型，
+        // 或者返回 EventResult，其中包裹着 Future 类型。
     }
 }
 ```
@@ -660,6 +702,7 @@ public class MyHandles {
 public class MyHandles {
     /**
      * 此处是一个标准库中通用的类型：聊天群消息事件
+     * 在QQ机器人组件中，它的真实实现类型会是QGGroupAtMessageCreateEvent
      */
     @Listener
     public void onGroupMessage(ChatGroupMessageEvent event) {
@@ -667,14 +710,14 @@ public class MyHandles {
     }
 
     /**
-     * 此处监听的是OneBot组件中的专属类型：OneBot的好友消息事件
+     * 此处监听的是QQ机器人组件中的专属类型：QQ频道中文字子频道的At消息。
      * 并且过滤消息：消息中的文本消息去除前后空字符后，等于 '你好'
      */
     @Listener
     @ContentTrim
     @Filter("你好")
-    public void onFriendMessage(OneBotFriendMessageEvent event) {
-        System.out.println("OneBotFriendMessageEvent: " + event);
+    public void onMessage(QGAtMessageCreateEvent event) {
+        System.out.println("QGAtMessageCreateEvent: " + event);
         event.replyBlocking("你也好");
     }
 }
@@ -686,6 +729,7 @@ public class MyHandles {
 public class MyHandles {
     /**
      * 此处是一个标准库中通用的类型：聊天群消息事件
+     * 在QQ机器人组件中，它的真实实现类型会是QGGroupAtMessageCreateEvent
      */
     @Listener
     public void onGroupMessage(ChatGroupMessageEvent event) {
@@ -693,19 +737,20 @@ public class MyHandles {
     }
 
     /**
-     * 此处监听的是OneBot组件中的专属类型：OneBot的好友消息事件
+     * 此处监听的是QQ机器人组件中的专属类型：QQ频道中文字子频道的At消息。
      * 并且过滤消息：消息中的文本消息去除前后空字符后，等于 '你好'
      */
     @Listener
     @ContentTrim
     @Filter("你好")
-    public Mono<?> onFriendMessage(OneBotFriendMessageEvent event) {
-        System.out.println("OneBotFriendMessageEvent: " + event);
+    public Mono<?> onMessage(QGAtMessageCreateEvent event) {
+        System.out.println("QGAtMessageCreateEvent: " + event);
         return event.replyReserve("你也好")
             .transform(SuspendReserves.mono());
         // 可以直接返回任意(kotlinx.coroutines支持的)响应式类型，
         // 不过需要注意，确保运行时环境中有对应的依赖，
         // 以Mono为例，需要添加 [[[kotlinx-coroutines-reactor|https://github.com/Kotlin/kotlinx.coroutines/tree/master/reactive]]]
+        // 也可以返回 EventResult，其中包裹着响应式类型。
     }
 }
 ```

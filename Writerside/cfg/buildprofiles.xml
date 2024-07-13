@@ -6,7 +6,6 @@
         <primary-color>ruby</primary-color>
         <custom-favicons>logo-icon.svg</custom-favicons>
         <header-logo>logo-icon-white.svg</header-logo>
-        <product-web-url>https://github.com/simple-robot/simpler-robot</product-web-url>
         <download-title>GitHub</download-title>
         <download-page>https://github.com/simple-robot/simpler-robot</download-page>
         <showDownloadButton>true</showDownloadButton>
@@ -15,12 +14,14 @@
         <locale-code>zh-CN</locale-code>
         <noindex-content>false</noindex-content>
         <include-in-head>head-script.html</include-in-head>
-<!--        <include-after-body>after-body.html</include-after-body>-->
-<!--        <analytics-head-script-file>head-script.html</analytics-head-script-file>-->
         <algolia-id>VLLZ4JZE8Z</algolia-id>
         <algolia-index>doc</algolia-index>
         <algolia-api-key>e60d9ee16618a0ad3a338ecc73cb840e</algolia-api-key>
         <web-root>https://simbot.forte.love</web-root>
+        <feedback-support>true</feedback-support>
+        <feedback-url>https://github.com/simple-robot-library/simbot4-website/issues/</feedback-url>
+<!--        <color-preset>vivid</color-preset>-->
+<!--        <color-preset>soft</color-preset>-->
     </variables>
 
     <build-profile instance="s4">

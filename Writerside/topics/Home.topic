@@ -50,25 +50,28 @@
         <secondary>
             <title>开始使用💪</title>
             <a href="how-to-use.md" summary="如何使用？开始使用概述"/>
-            <a href="start-use-core.md" summary="使用、安装核心库"/>
-            <a href="start-use-spring-boot-3.md" summary="使用 Spring Boot 3 starter"/>
+            <a href="Spring-Boot.md" summary="与 Spring Boot 快速集成！"/>
             <a href="start-use-components.md" summary="使用、安装组件库"/>
         </secondary>
+
 
         <!--    Optionally add additional cards and links to topics that are not in this section but may be relevant.    -->
         <misc>
             <cards>
                 <title>组件库🧩</title>
-                <a href="https://simple-robot.github.io/simbot-component-qq-guild/" summary="前往simbot官方实现的QQ频道组件手册">
-                    QQ频道组件
+                <a href="component-qq-guild.md" summary="对接官方API的QQ与QQ频道组件">
+                    QQ与QQ频道组件
                 </a>
-                <a href="https://simple-robot.github.io/simbot-component-kook/" summary="前往simbot官方实现的KOOK组件手册">
+                <a href="component-onebot.md" summary="实现OneBot客户端协议的组件">
+                    OneBot组件
+                </a>
+                <a href="component-kook.md" summary="对接官方API的KOOK组件">
                     KOOK组件
                 </a>
-                <a href="component-telegram.md" summary="simbot官方实现的Telegram组件">
+                <a href="component-telegram.md" summary="对接官方API的Telegram组件">
                     Telegram组件
                 </a>
-                <a href="component-discord.md" summary="simbot官方实现的Discord组件">
+                <a href="component-discord.md" summary="对接官方API的Discord组件">
                     Discord组件
                 </a>
             </cards>
