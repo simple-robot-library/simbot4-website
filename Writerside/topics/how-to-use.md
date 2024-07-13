@@ -51,7 +51,7 @@ simbot4 提供了两个这样的库：`simbot-core` (也就是 **“核心库”
 依赖于标准库, 但各自独立。
 下文会将它们称为 **“组件库”** 。
 
-以我们 [**官方维护的组件库**](official-components.md) 为例, 它们都会有各自的应用手册, 
+以我们 [**官方维护的组件库**](components-intro.md) 为例, 它们都会有各自的应用手册, 
 手册中也会各自提供类似于“快速开始”的章节, 会提供如何进行配置, 如何搭建一个项目。
 
 你接下来所要做的, 便是选择你希望使用的组件库(们), 将它们所需的依赖也添加下来, 然后进行配置就好了。
@@ -67,8 +67,8 @@ simbot4 提供了两个这样的库：`simbot-core` (也就是 **“核心库”
 // 使用核心库
 implementation("love.forte.simbot:simbot-core:%version%")
 // 添加组件库, 假设有两个叫做 foo1、bar2 的组件实现
-implementation("com.example.component:foo1-core:1.14")
-implementation("io.github.Jojo.cp:bar2-impl:5.14")
+implementation("com.example.component:foo1-core:x.xx")
+implementation("io.github.Jojo.cp:bar2-impl:x.xx")
 ```
 
 </tab>
@@ -78,8 +78,8 @@ implementation("io.github.Jojo.cp:bar2-impl:5.14")
 // 使用核心库
 implementation 'love.forte.simbot:simbot-core:%version%'
 // 添加组件库, 假设有两个叫做 foo1、bar2 的组件实现
-implementation 'com.example.component:foo1-core:1.14'
-implementation 'io.github.Jojo.cp:bar2-impl:5.14'
+implementation 'com.example.component:foo1-core:x.xx'
+implementation 'io.github.Jojo.cp:bar2-impl:x.xx'
 ```
 
 </tab>
@@ -96,12 +96,12 @@ implementation 'io.github.Jojo.cp:bar2-impl:5.14'
 <dependency>
     <groupId>com.example.component</groupId>
     <artifactId>foo1-core</artifactId>
-    <version>1.14</version>
+    <version>x.xx</version>
 </dependency>
 <dependency>
     <groupId>io.github.Jojo.cp</groupId>
     <artifactId>bar2-impl</artifactId>
-    <version>5.14</version>
+    <version>x.xx</version>
 </dependency>
 ```
 
@@ -110,7 +110,7 @@ implementation 'io.github.Jojo.cp:bar2-impl:5.14'
 
 ### 官方组件
 
-- 前往 [**官方维护的组件库**](official-components.md) 寻找你所需的组件, 并根据引导或手册添加依赖并使用。
+- 前往 [**组件库**](components-intro.md) 寻找你所需的组件, 并根据引导或手册添加依赖并使用。
 
 ### 社区组件
 
