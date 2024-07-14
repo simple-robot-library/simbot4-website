@@ -32,6 +32,18 @@ QQ机器人组件目前仍然处于
 是一个 [Kotlin 多平台](https://kotlinlang.org/docs/multiplatform.html) 的 [**QQ机器人官方API**][qg bot doc] SDK实现库，
 也是 Simple Robot 标准API下实现的组件库，异步高效、Java友好！
 
+现在支持的事件范围有：
+
+- 频道所有**公域**事件
+- 论坛相关的私域事件
+- QQ群聊相关  (从4.0.0-beta6开始)
+- C2C单聊相关 (从4.0.0-beta6开始)
+
+私域相关的事件由于时间有限、且这方面的反馈与需求几乎没有，
+因此优先级不高。
+如果您有需要或希望协助，
+可前往 [反馈](https://github.com/simple-robot/simbot-component-qq-guild/issues) 或 [协助](https://github.com/simple-robot/simbot-component-qq-guild/pulls) 了解更多~
+
 > 序列化和网络请求相关分别基于 [Kotlin serialization](https://github.com/Kotlin/kotlinx.serialization)
 > 和 [Ktor](https://ktor.io/).
 
