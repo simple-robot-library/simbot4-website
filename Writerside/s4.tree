@@ -6,10 +6,12 @@
                  name="Simple Robot"
                   start-page="Home.topic">
     <toc-element topic="Home.topic"/>
-    <toc-element topic="outline.md"/>
-    <toc-element topic="java-friendly.md"/>
-    <toc-element topic="use-kotlin.md"/>
-    <toc-element topic="features.md"/>
+    <toc-element topic="outline.md">
+        <toc-element topic="features.md"/>
+        <toc-element topic="semantic-versioning.md"/>
+        <toc-element topic="java-friendly.md"/>
+        <toc-element topic="use-kotlin.md"/>
+    </toc-element>
     <toc-element topic="quick-preview.md"/>
     <toc-element topic="how-to-use.md">
         <toc-element topic="installation.md"/>
