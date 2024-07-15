@@ -192,7 +192,13 @@ bot开发配置中的 `Token`。
 <def title="type='nameBased'">
 
 通过名称寻找所有可用的 `EventIntents` 并合并为最终的 `intents`。
-名称基于继承了 `EventIntents` 的 object 的简单类名，例如 `Guilds`。
+名称基于继承了 `EventIntents` 的 object 的简单名称，例如 `Guilds`。
+
+名称支持开头大写或小写的驼峰，例如 `Guilds`, `guilds`,
+或者全大写或全小写的snack(下划线)格式，例如 `PUBLIC_GUILD_MESSAGES`, `public_guild_messages`。
+
+虽然支持的格式比较宽松，但名称匹配仍然是**区分大小写**的，
+比如一个混用大小写的snack格式就是不允许的：`public_GUILD_messages` ❌。
 
 ```json
 {
@@ -200,6 +206,23 @@ bot开发配置中的 `Token`。
   "names": ["Guilds", "PublicGuildMessages"]
 }
 ```
+
+</def>
+<def title="type='bitBased'">
+<note>自 <code>4.0.0-beta7</code> 开始支持</note>
+
+通过 `intents` 的位索引值来配置 `intents` 的结果。
+
+```json
+{
+  "type": "bitBased",
+  "bits": [0, 1, 30]
+}
+```
+
+上面的 `0, 1, 30` 即代表订阅 `1<<0 | 1<<1 | 1<<30`。
+
+`bits` 的元素值应当在 0 ~ 31 之内，但是代码内不做校验。
 
 </def>
 </deflist>
