@@ -174,6 +174,8 @@ bot开发配置中的 `Token`。
 
 根据 `type` 的不同可选的属性不同。
 
+> 有关 `intents` 的更多信息可参考 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/event-emit.html#事件订阅Intents)
+
 <deflist>
 <def title="type='raw'">
 
@@ -195,10 +197,13 @@ bot开发配置中的 `Token`。
 名称基于继承了 `EventIntents` 的 object 的简单名称，例如 `Guilds`。
 
 名称支持开头大写或小写的驼峰，例如 `Guilds`, `guilds`,
-或者全大写或全小写的snack(下划线)格式，例如 `PUBLIC_GUILD_MESSAGES`, `public_guild_messages`。
+或者全大写或全小写的snake(下划线)格式，例如 `PUBLIC_GUILD_MESSAGES`, `public_guild_messages`。
 
 虽然支持的格式比较宽松，但名称匹配仍然是**区分大小写**的，
-比如一个混用大小写的snack格式就是不允许的：`public_GUILD_messages` ❌。
+比如一个混用大小写的snake格式就是不允许的：`public_GUILD_messages` ❌。
+
+> 开头小写的驼峰以及snake格式自 `v4.0.0-beta7` 开始支持，
+> 在此之前仅支持开头大写的驼峰格式，例如 `Guild`。
 
 ```json
 {
