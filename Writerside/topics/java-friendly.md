@@ -155,8 +155,11 @@ var block = reserve.transform(SuspendReserves.block());
 var future = reserve.transform(SuspendReserves.async());
 ```
 
-## Spring Boot 支持
+## 集成 Spring Boot
 
-simbot4 提供了基于 **Spring Boot 3** 的快速应用实现模块：`simbot-core-spring-boot-starter`。
+simbot 提供 Spring Boot starter 模块，具有对 Spring Boot 的集成能力。
+Spring Boot starter 模块也实现了 [量子猫](advanced-quantcat.md) 模块, 提供基于**注解**的高效开发方案。
 
-starter 模块也实现了 [量子猫](advanced-quantcat.md) 模块, 提供基于**注解**的高效开发方案。
+有关集成SpringBoot的更多信息可以前往 [**集成SpringBoot**](Spring-Boot.md) 。
+
+
