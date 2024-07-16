@@ -93,45 +93,6 @@ implementation 'love.forte.simbot:simbot-core-spring-boot-starter-v2:%version%'
 </tabs>
 
 
-<tabs id="kook-build" group="build">
-<tab title="Gradle(Kotlin DSL)" group-key="kts">
-
-```Kotlin
-implementation("love.forte.simbot.component:simbot-component-kook-core:$VERSION")
-```
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Kotlin
-implementation("love.forte.simbot.component:simbot-component-kook-core-jvm:$VERSION")
-```
-
-</tab>
-<tab title="Gradle(Groovy)" group-key="groovy">
-
-```Groovy
-implementation 'love.forte.simbot.component:simbot-component-kook-core:$VERSION'
-```
-
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
-
-```Groovy
-implementation 'love.forte.simbot.component:simbot-component-kook-core-jvm:$VERSION'
-```
-
-</tab>
-<tab title="Maven" group-key="maven">
-
-```xml
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-kook-core-jvm</artifactId>
-    <version>${VERSION}</version>
-</dependency>
-```
-
-</tab>
-</tabs>
 
 <tabs id="tg-build" group="build">
 <tab title="Gradle(Kotlin DSL)" group-key="kts">

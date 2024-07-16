@@ -47,7 +47,7 @@ QQ机器人组件目前仍然处于
 > 序列化和网络请求相关分别基于 [Kotlin serialization](https://github.com/Kotlin/kotlinx.serialization)
 > 和 [Ktor](https://ktor.io/).
 
-- 前往 [**QQ机器人组件** GitHub 仓库](https://github.com/simple-robot/simbot-component-qq-guild)
+- 前往**QQ机器人组件**的 [ GitHub 仓库](https://github.com/simple-robot/simbot-component-qq-guild)
 
 ## 命名说明
 
