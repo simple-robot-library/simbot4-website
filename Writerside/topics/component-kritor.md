@@ -1,4 +1,4 @@
-# 🚧 Kritor
+# Kritor 🚧
 
 ![](https://img.shields.io/github/v/release/simple-robot/simbot-component-kritor)
 

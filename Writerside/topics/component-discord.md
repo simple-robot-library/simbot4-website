@@ -1,4 +1,4 @@
-# 🚧 Discord
+# Discord 🚧
 
 ![](https://img.shields.io/github/v/release/simple-robot/simbot-component-discord)
 
