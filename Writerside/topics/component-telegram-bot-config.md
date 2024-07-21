@@ -9,7 +9,7 @@
 > 注释实际上是不支持的，
 > 如果要复制，记得清理掉注释
 
-```json5
+```json
 {
     "component": "simbot.telegram",
     "ticket": {
@@ -28,7 +28,7 @@
 如果你希望通过长轮询的方式达成主动 **_订阅_** 事件的效果，
 记得配置 `longPolling`.
 
-```json5
+```json
 {
     "component": "simbot.telegram",
     "ticket": {
