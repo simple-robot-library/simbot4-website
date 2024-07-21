@@ -68,7 +68,7 @@ QQ机器人组件命名为 `simbot-component-qq-guild`，
 <include from="refers.md" element-id="pre-component-install" />
 </step>
 <step>
-<control>安装组件的核心库依赖</control>
+<control>安装组件库</control>
 
 `simbot-component-qq-guild-core` 
 即为QQ机器人组件的核心库，
