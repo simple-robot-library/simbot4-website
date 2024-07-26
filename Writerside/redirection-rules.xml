@@ -38,4 +38,8 @@
         <description>Created after removal of "官方组件" from Simple Robot 4</description>
         <accepts>official-components.html</accepts>
     </rule>
+    <rule id="ae9f86">
+        <description>Created after removal of "Kritor 🚧" from Simple Robot</description>
+        <accepts>component-kritor.html</accepts>
+    </rule>
 </rules>

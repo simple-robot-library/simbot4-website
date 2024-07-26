@@ -110,7 +110,6 @@
             <toc-element topic="component-telegram-bot-config.md"/>
         </toc-element>
         <toc-element topic="component-discord.md"/>
-        <toc-element topic="component-kritor.md"/>
         <toc-element topic="community-components.md"/>
     </toc-element>
     <toc-element topic="advanced.md">
