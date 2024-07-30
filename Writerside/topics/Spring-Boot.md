@@ -625,6 +625,113 @@ bot的配置文件路径默认为
 
 ## 常见问题
 
+### 获取 Application、BotManager 或 Bot {id=get-bot}
+
+
+在配合使用 Spring Boot 时，你可以直接通过bean注入的方式得到 `Application` 实例。
+
+<tabs group="Code">
+<tab title="Kotlin" group-key="Kotlin">
+
+```Kotlin
+@Component
+class MyComponent 
+@Autowired // 其实注解可以省略，这里只是为了让'注入'行为比较显眼儿 
+constructor(
+    private val application: Application // 构造注入 Application
+    
+) {
+    // ...
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```Java
+@Component
+public class MyComponent {
+    private final Application application;
+    
+    @Autowired // 其实注解可以省略，这里只是为了让'注入'行为比较显眼儿 
+    public MyComponent(Application application) { // 构造注入 Application
+        this.application = application;
+    }
+    
+    // ...
+}
+```
+
+</tab>
+</tabs>
+
+你也可以基于此间接地获取 `BotManager`、`Bot` 等其他信息。
+
+<tabs group="Code">
+<tab title="Kotlin" group-key="Kotlin">
+
+```Kotlin
+@Component
+class MyComponent(
+    private val application: Application
+) {
+    // 假设这里是个定时任务
+    // 或者其他什么跟事件没关系的地方
+    fun runTask() {
+        // 得到所有的BotManager并遍历
+        for (botManager in application.botManagers) {
+            // ...
+            // 得到每一个BotManager中的所有已注册且未被关闭的Bot并遍历
+            for (bot in botManager.all()) {
+                // ...
+            }
+        }
+    }
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```Java
+@Component
+public class MyComponent {
+    private final Application application;
+
+    public MyComponent(Application application) {
+        this.application = application;
+    }
+
+    // 假设这里是个定时任务
+    // 或者其他什么跟事件没关系的地方
+    public void runTask() {
+        // 得到所有的BotManager并遍历
+        for (var botManager : application.getBotManagers()) {
+            // ...
+            // 得到每一个BotManager中的所有已注册且未被关闭的Bot并遍历
+            for (var it = botManager.all().iterator(); it.hasNext(); ) {
+                var bot = it.next();
+                // ...
+            }
+        }
+    }
+}
+```
+
+</tab>
+</tabs>
+
+这通常用于主动获取已注册的 Bot，然后用于主动发送消息等。
+
+<warning title="注意！">
+
+在 Spring 中，Bot的启动是**异步地**，因此在程序刚刚启动时并不能保证一定能够获取到对应的 Bot，例如获取时 Bot 仍处于启动中的状态。
+
+你可以选择监听事件 `BotStartedEvent` (是否有这些事件取决于对应的组件是否实现了它，大部分官方组件库均有实现) 来监听并获得一个已经完成启动流程的bot，
+或在获取时通过逻辑进行判断，如果bot没有找到（即尚未启动完成）则暂时跳过你的本次业务逻辑。
+
+</warning>
+
 
 
 [spring.start]: https://start.spring.io

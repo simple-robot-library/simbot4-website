@@ -41,3 +41,64 @@
 
 > 但是这样也可能使得一些由 Kotlin 而来的异常/警告检测失效，
 > 比如尝试在 Java 中引用 `internal` 级别的类型。
+
+## Q: 如何主动获取Bot {collapsible="true"}
+
+在非事件的情况下（例如一个定时任务或初始化任务），你可以通过构建的 `Application` 获取到 `BotManagers`，
+而又可以通过各个 `BotManager` 进一步获取到你想要的 `Bot`。
+
+<tabs group="code">
+<tab title="Kotlin" group-key="Kotlin">
+
+```Kotlin
+val application: Application = ... // 你的 Application
+// 可以得到 BotManagers
+val botManagers = application.botManagers
+
+// 你可以选择直接使用 allBots()、firstBot() 等辅助API来遍历或快捷获取某种bot
+botManagers.allBots().forEach { bot -> ... }
+
+// 也可以自行遍历，精准选择你所需要的bot
+for (botManager in botManagers) {
+    // 假设这里你想要寻找QQ机器人的BotManager
+    if (botManager is QQGuildBotManager) {
+        // 找到指定 appid 的bot，
+        // 然后你可以保存、操作，或者做点儿什么。
+        val bot = botManager[123456789.ID]
+        
+        // 你已经找到了你需要的bot，结束循环
+        break
+    }
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```Java
+var application = ...; // 你的 Application
+// 可以得到 BotManagers
+var botManagers = application.getBotManagers();
+// 你可以选择直接使用 allBots()、firstBot() 等辅助API来遍历或快捷获取某种bot
+botManagers.allBots().iterator().forEachRemaining(bot -> { ... });
+
+// 也可以自行遍历，精准选择你所需要的bot
+for (var botManager : botManagers) {
+    // 假设这里你想要寻找QQ机器人的BotManager
+    if (botManager instanceof QQGuildBotManager qgBotManager) {
+        // 找到指定 appid 的bot，
+        // 然后你可以保存、操作，或者做点儿什么。
+        var bot = qgBotManager.get(Identifies.of(123456789));
+
+        // 你已经找到了你需要的bot，结束循环
+        break;
+    }
+}
+```
+
+</tab>
+</tabs>
+
+在集成 Spring 的情况下获取 `Application`，你可以参考: [](Spring-Boot.md#get-bot) 。
+
+
