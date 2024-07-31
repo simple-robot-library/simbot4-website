@@ -18,7 +18,7 @@
     <section-starting-page>
         <title>Simple Robot 4</title>
         <description>
-            🐱 基于 Kotlin 协程的多平台 Bot 风格事件调度框架，异步高效、Java友好！😽
+            🐱 Bot 风格的 Kotlin 多平台事件调度框架，异步高效、Java友好！😽
         </description>
 
         <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
@@ -27,7 +27,6 @@
                summary="🎉前往 GitHub 组织库首页了解更多内容！">
                 组织库
             </a>
-<!--            <a href="https://github.com/orgs/simple-robot/discussions" type="search"-->
             <a href="communities.md" type="search"
                summary="😊前往社群信息寻找、加入一个心仪的社群或讨论区并与其他人或维护者友好交流吧~">
                 社群
@@ -69,10 +68,10 @@
                     KOOK组件
                 </a>
                 <a href="component-telegram.md" summary="对接官方API的Telegram组件">
-                    Telegram组件
+                    🚧Telegram组件
                 </a>
                 <a href="component-discord.md" summary="对接官方API的Discord组件">
-                    Discord组件
+                    🚧Discord组件
                 </a>
             </cards>
             <cards>
