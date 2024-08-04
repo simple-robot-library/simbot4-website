@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE labels SYSTEM "https://resources.jetbrains.com/writerside/1.0/labels-list.dtd">
+<labels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/labels.xsd">
+    <primary-label short-name="WIP" id="wip" name="WIP" color="red">Work in progress</primary-label>
+    <primary-label short-name="DOC TODO" id="doc-wip" name="文档施工中" color="red">文档尚在施工中...</primary-label>
+
+    <primary-label id="label" short-name="L" name="Label">
+        This is an example label
+    </primary-label>
+
+    <primary-label id="jetbrains" short-name="JB" name="JetBrains" href="https://www.jetbrains.com" color="red">
+        Go to www.jetbrains.com
+    </primary-label>
+
+    <secondary-label id="wip" name="WIP" color="purple">Work in progress</secondary-label>
+    <secondary-label id="beta" name="β" color="tangerine">Beta</secondary-label>
+
+    <secondary-label id="experimental" name="实验性" color="purple">这是一个尚处于实验性阶段的内容</secondary-label>
+    <!-- versions -->
+    <secondary-label id="version" name="%label-v%" color="purple">一个在版本%label-v%后开始支持的内容</secondary-label>
+</labels>
