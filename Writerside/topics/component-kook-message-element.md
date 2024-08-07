@@ -110,4 +110,12 @@ KOOK 组件进行特殊实现的 `Message.Element` 均继承自 `love.forte.simb
 
 </def>
 <def title="KookAssetImage"></def>
+<def title="KookQuote">
+
+> 添加自 `4.0.0-beta5`
+
+通过 `MessageContent.reference()` 查询得到的消息引用信息。
+
+
+</def>
 </deflist>

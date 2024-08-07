@@ -227,6 +227,31 @@ var image = OfflineImage.ofResource(resource);
 </deflist>
 
 </def>
+
+<def title="MessageReference">
+
+> 添加自 `v4.5.0` 。
+
+一个用于表示“消息引用”的元素。
+默认只有一个抽象属性 `id` 来表示引用目标的消息ID。
+
+<tip>
+
+当某个平台存在 _消息引用_ 的概念，
+但是无法使用 `MessageReference` 进行描述（例如它通过多重ID确定唯一身份，而不是唯一ID）， 
+则需要由平台实现者自行实现，无法使用 `MessageReference`，也无法使用 `MessageContent.reference`。
+
+</tip>
+
+<deflist>
+<def title="MessageIdReference">
+
+一个仅实现 `id` 的 `MessageReference` 简单实现。
+
+</def>
+</deflist>
+
+</def>
 </deflist>
 
 ### 扩展消息元素
@@ -368,13 +393,36 @@ var messagesDecoded = json.decodeFromString(Messages.serializer(), jsonStr);
 从接收到的消息中提取出的纯文本内容（一般来讲是 `PlainText` 类型的消息元素）拼接在一起的结果。
 
 </def>
+<def title="reference()">
+
+> 添加自 `v4.5.0` 。
+
+尝试获取一个消息引用 `MessageReference`。
+
+`reference()` 在明确不支持或直接通过 `messages` 寻找获取时，
+不会发生挂起。否则当需要通过网络查询结果时会产生挂起。
+
+`reference` 所得结果**不一定**是 `messages` 中的元素。
+如上所述，如果需要通过网络查询才能得到结果，则 `reference()` 
+的结果不会包含在 `messages` 中。
+
+- 如果实现者尚未针对性地实现此API，则默认逻辑为：
+从 `messages` 中寻找第一个类型为 `MessageReference` 的元素。
+- 如果实现者的所属平台不存在、不支持 _消息引用_ 的概念，则可能始终得到 `null`。
+- 如果实现者的所属平台有明确的 _消息引用_ 概念，但是无法通过 `MessageReference` 这个类型进行表述，
+则使用 `reference` 时应当抛出信息明确的 `UnsupportedOperationException` 异常。
+
+</def>
 <def title="delete(...)">
 
 删除这个消息。“删除”也可以理解为撤回, 如果平台某种类型的消息内容不支持被删除, 
 则可能会抛出 `UnsupportedOperationException`。
 
 </def>
+
 </deflist>
+
+
 
 ## 消息的发送
 
