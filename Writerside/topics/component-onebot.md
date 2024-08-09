@@ -81,8 +81,6 @@ OneBot11协议作为一个simbot组件的实现模块。通常会是你**真正�
 
 ## 安装
 
-<include from="refers.md" element-id="pre-component-install" />
-
 ### 安装OneBot11组件
 
 <procedure title="前期准备" id="OneBot11-前期准备">
@@ -108,6 +106,12 @@ OneBot组件是一个OneBot协议的**客户端**实现，
 </procedure>
 
 <procedure title="安装依赖" id="OneBot11-安装依赖">
+<step>
+<control>安装simbot核心库实现</control>
+
+<include from="refers.md" element-id="pre-component-install" />
+
+</step>
 <step>
 <control>安装 <code>simbot-component-onebot-v11-core</code> 依赖</control>
 

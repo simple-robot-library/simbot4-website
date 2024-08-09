@@ -5,7 +5,8 @@
 implementation("love.forte.simbot:simbot-core:%version%")
 ```
 
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
+如果使用 Java 而不配合使用 Gradle 的 [Kotlin 插件](https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin),
+那么你需要指定依赖的后缀为 `-jvm`。
 
 ```Kotlin
 implementation("love.forte.simbot:simbot-core-jvm:%version%")
@@ -18,7 +19,8 @@ implementation("love.forte.simbot:simbot-core-jvm:%version%")
 implementation 'love.forte.simbot:simbot-core:%version%'
 ```
 
-如果使用 Java 而不配合使用 Gradle 的 `kotlin` 插件, 那么你需要指定依赖的后缀为 `-jvm`。
+如果使用 Java 而不配合使用 Gradle 的 [Kotlin 插件](https://kotlinlang.org/docs/gradle-configure-project.html#apply-the-plugin), 
+那么你需要指定依赖的后缀为 `-jvm`。
 
 ```Groovy
 implementation 'love.forte.simbot:simbot-core-jvm:%version%'
@@ -104,6 +106,30 @@ implementation 'love.forte.simbot:simbot-core-spring-boot-starter-v2:%version%'
 <a href="Spring-Boot.md">Spring Boot starter</a>
 。
 </note>
+
+<tabs>
+<tab title="核心库">
+<include from="refers.md" element-id="simbot-core-build"></include>
+
+<tip>
+前往
+<a href="start-use-core.md">核心库</a>
+了解更多内容。
+</tip>
+
+</tab>
+<tab title="Spring Boot starter">
+<include from="refers.md" element-id="simbot-spring-3-build"></include>
+
+<tip>
+前往
+<a href="Spring-Boot.md">集成Spring Boot</a>
+了解更多内容。
+</tip>
+</tab>
+</tabs>
+
+
 </snippet>
 
 <snippet id="engine-choose">
