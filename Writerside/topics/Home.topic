@@ -58,8 +58,8 @@
         <misc>
             <cards>
                 <title>组件库🧩</title>
-                <a href="component-qq-guild.md" summary="对接官方API的QQ与QQ频道组件">
-                    QQ与QQ频道组件
+                <a href="component-qq-guild.md" summary="对接官方API的QQ机器人组件">
+                    QQ机器人组件
                 </a>
                 <a href="component-onebot.md" summary="实现OneBot客户端协议的组件">
                     OneBot组件
