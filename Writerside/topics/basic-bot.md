@@ -122,6 +122,36 @@ bot.startBlocking(); // 启动它
 其他详细内容下文会介绍。
 
 </def>
+<def title="messageFromId(ID)">
+
+<note>自 <code>v4.6.0</code> 起添加。</note>
+
+根据一个 **消息ID** 获取它对应地源消息。
+
+- 如果实现者尚未实现此功能则会抛出 `UnsupportedOperationException`。
+- 如果存在消息ID、但对应平台明确由于各种原因无法根据ID查询源消息时会抛出 `UnsupportedOperationException`。
+- 如果存在消息ID、但无法仅通过一个 `ID` 来进行查询时 (例如需要其他附加的复合信息查询)
+会抛出 `UnsupportedOperationException`。此时实现者应当提供另外可供使用的专属API。
+- 否则，将根据 `ID` 查询并得到其对应地 `MessageContent`。
+
+</def>
+<def title="messageFromReference(MessageReference)">
+
+<note>自 <code>v4.6.0</code> 起添加。</note>
+
+根据一个 **消息引用** (`MessageReference`) 查询或获取它对应地源消息。
+
+- 如果实现者尚未实现此功能则会抛出 `UnsupportedOperationException`。
+- 如果实现的对应平台明确存在**引用**的概念、但由于各种原因无法查询引用源消息时，
+将会抛出 `UnsupportedOperationException`。
+- 如果实现的对应平台明确存在**引用**的概念、但消息引用无法使用 `MessageReference` 进行表达时，
+将会抛出 `UnsupportedOperationException`。
+(如果是此原因，则实现者应当提供另外可供使用的专属API。)
+- 否则，将根据具体地引用信息查询并得到其对应地 `MessageContent`。
+
+如果一个消息引用等同于一个消息的ID，那么 `messageFromReference` 的效果等同于 `messageFromId`。
+
+</def>
 </deflist>
 
 ## 行为对象交互

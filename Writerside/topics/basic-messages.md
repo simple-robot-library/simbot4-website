@@ -393,9 +393,15 @@ var messagesDecoded = json.decodeFromString(Messages.serializer(), jsonStr);
 从接收到的消息中提取出的纯文本内容（一般来讲是 `PlainText` 类型的消息元素）拼接在一起的结果。
 
 </def>
+<def title="delete(...)">
+
+删除这个消息。“删除”也可以理解为撤回, 如果平台某种类型的消息内容不支持被删除,
+则可能会抛出 `UnsupportedOperationException`。
+
+</def>
 <def title="reference()">
 
-> 添加自 `v4.5.0` 。
+<note>添加自 <code>v4.5.0</code> 。</note>
 
 尝试获取一个消息引用 `MessageReference`。
 
@@ -413,12 +419,22 @@ var messagesDecoded = json.decodeFromString(Messages.serializer(), jsonStr);
 则使用 `reference` 时应当抛出信息明确的 `UnsupportedOperationException` 异常。
 
 </def>
-<def title="delete(...)">
+<def title="referenceMessage()">
 
-删除这个消息。“删除”也可以理解为撤回, 如果平台某种类型的消息内容不支持被删除, 
-则可能会抛出 `UnsupportedOperationException`。
+<note>添加自 <code>v4.6.0</code> 。</note>
+
+根据 **消息引用** (或具体实现内部的某种真实引用) 查询此引用的源消息。
+
+- 如果实现者尚未实现此功能，或 `reference` 返回 `null`,
+则 `referenceMessage` 的结果为 `null`。
+- 如果实现的对应平台明确存在**引用**的概念、但由于各种原因无法查询引用源消息时，
+`referenceMessage` 将会抛出 `UnsupportedOperationException`。
+- 否则，将根据具体地引用信息查询并得到其对应地 `MessageContent`。
+与 `reference` 不同，`referenceMessage` 大概率会产生网络请求和挂起行为，
+但具体行为还是以具体实现为准。
 
 </def>
+
 
 </deflist>
 
