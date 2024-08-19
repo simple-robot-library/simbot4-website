@@ -12,16 +12,6 @@
 </category>
 </seealso>
 
-<warning>
-
-KOOK组件目前仍然处于
-<control>Beta</control> 阶段，
-在后续的更新中API很可能会产生包括不兼容行为的变化。
-
-因此在进行更新时，请注意阅读相关版本的更新日志。
-
-</warning>
-
 ## 概述
 
 **KOOK组件**

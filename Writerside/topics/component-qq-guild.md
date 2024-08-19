@@ -12,20 +12,6 @@
 </category>
 </seealso>
 
-<warning>
-
-QQ机器人组件目前仍然处于
-<control>Beta</control> 阶段，
-在后续的更新中API很可能会产生包括不兼容行为的变化。
-
-因此在进行更新时，请注意阅读相关版本的更新日志。
-
-目前已知可能会在未来、正式版之前产生大范围影响的不兼容变更提案：
-
-- [#168](https://github.com/simple-robot/simbot-component-qq-guild/issues/168)
-
-</warning>
-
 ## 概述
 
 **QQ机器人组件**
