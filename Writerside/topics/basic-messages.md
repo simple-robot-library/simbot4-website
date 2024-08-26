@@ -1,3 +1,5 @@
+<show-structure for="chapter,procedure" depth="3"/>
+
 # 消息元素与消息链
 
 在 simbot 中, **消息**是一个重要的类型之一。
@@ -369,6 +371,14 @@ var messagesDecoded = json.decodeFromString(Messages.serializer(), jsonStr);
 </tab>
 </tabs>
 
+<warning title="敏感信息">
+
+消息元素中有可能会存在一些敏感信息，比如token等，这取决于组件实现。
+
+因此请尽可能避免将序列化结果不做处理或加密就暴露在公开环境，
+以免隐私或敏感信息泄露造成不可预知的严重后果。
+
+</warning>
 
 ## 事件消息内容 MessageContent
 
