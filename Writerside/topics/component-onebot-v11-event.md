@@ -8,40 +8,118 @@
 
 <deflist>
 <def id="RawMetaEvent" title="元事件 RawMetaEvent">
+
+[元事件](https://github.com/botuniverse/onebot-11/blob/master/event/meta.md)
+
 <deflist>
-<def id="RawHeartbeatEvent" title="RawHeartbeatEvent"></def>
-<def id="RawLifecycleEvent" title="RawLifecycleEvent"></def>
+<def id="RawHeartbeatEvent" title="RawHeartbeatEvent">
+
+[心跳](https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#心跳)
+
+</def>
+<def id="RawLifecycleEvent" title="RawLifecycleEvent">
+
+[生命周期](https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#生命周期)
+
+</def>
 </deflist>
 </def>
 <def id="RawMessageEvent" title="消息事件 RawMessageEvent">
+
+[消息事件](https://github.com/botuniverse/onebot-11/blob/master/event/message.md#消息事件)
+
 <deflist>
-<def id="RawGroupMessageEvent" title="RawGroupMessageEvent"></def>
-<def id="RawPrivateMessageEvent" title="RawPrivateMessageEvent"></def>
+<def id="RawGroupMessageEvent" title="RawGroupMessageEvent">
+
+[群消息事件](https://github.com/botuniverse/onebot-11/blob/master/event/message.md#群消息)
+
+</def>
+<def id="RawPrivateMessageEvent" title="RawPrivateMessageEvent">
+
+[私聊消息事件](https://github.com/botuniverse/onebot-11/blob/master/event/message.md#私聊消息)
+
+</def>
 </deflist>
 </def>
 <def id="RawRequestEvent" title="请求事件 RawRequestEvent">
+
+[请求事件](https://github.com/botuniverse/onebot-11/blob/master/event/request.md)
+
 <deflist>
-<def id="RawFriendRequestEvent" title="RawFriendRequestEvent"></def>
-<def id="RawGroupRequestEvent" title="RawGroupRequestEvent"></def>
+<def id="RawFriendRequestEvent" title="RawFriendRequestEvent">
+
+[加好友请求](https://github.com/botuniverse/onebot-11/blob/master/event/request.md#加好友请求)
+
+</def>
+<def id="RawGroupRequestEvent" title="RawGroupRequestEvent">
+
+[加群请求／邀请](https://github.com/botuniverse/onebot-11/blob/master/event/request.md#加群请求邀请)
+
+</def>
 </deflist>
 </def>
 <def id="RawNoticeEvent" title="通知事件 RawNoticeEvent">
+
+[通知事件](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md)
+
 <deflist>
-<def id="RawFriendAddEvent" title="RawFriendAddEvent"></def>
-<def id="RawFriendRecallEvent" title="RawFriendRecallEvent"></def>
-<def id="RawGroupAdminEvent" title="RawGroupAdminEvent"></def>
-<def id="RawGroupBanEvent" title="RawGroupBanEvent"></def>
-<def id="RawGroupDecreaseEvent" title="RawGroupDecreaseEvent"></def>
-<def id="RawGroupIncreaseEvent" title="RawGroupIncreaseEvent"></def>
-<def id="RawGroupRecallEvent" title="RawGroupRecallEvent"></def>
-<def id="RawGroupUploadEvent" title="RawGroupUploadEvent"></def>
-<def id="RawNotifyEvent" title="RawNotifyEvent"></def>
+<def id="RawFriendAddEvent" title="RawFriendAddEvent">
+
+[好友添加](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#好友添加)
+
+</def>
+<def id="RawFriendRecallEvent" title="RawFriendRecallEvent">
+
+[好友消息撤回](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#好友消息撤回)
+
+</def>
+<def id="RawGroupAdminEvent" title="RawGroupAdminEvent">
+
+[群管理员变动](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群管理员变动)
+
+</def>
+<def id="RawGroupBanEvent" title="RawGroupBanEvent">
+
+[群禁言](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群禁言)
+
+</def>
+<def id="RawGroupDecreaseEvent" title="RawGroupDecreaseEvent">
+
+[群成员减少](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群成员减少)
+
+</def>
+<def id="RawGroupIncreaseEvent" title="RawGroupIncreaseEvent">
+
+[群成员增加](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群成员增加)
+
+</def>
+<def id="RawGroupRecallEvent" title="RawGroupRecallEvent">
+
+[群消息撤回](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群消息撤回)
+
+</def>
+<def id="RawGroupUploadEvent" title="RawGroupUploadEvent">
+
+[群文件上传](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群文件上传)
+
+</def>
+<def id="RawNotifyEvent" title="RawNotifyEvent">
+
+[群成员荣誉变更](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群成员荣誉变更)、
+[群红包运气王](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群红包运气王)、
+[群内戳一戳](https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#群内戳一戳)
+等通知相关的事件。
+
+</def>
 </deflist>
 </def>
 <def id="UnknownEvent" title="未知事件 UnknownEvent">
 
 一个特殊的事件类型。
-它是当遇到无法被上述这些类型所解析时使用的兜底类型，
+它是当遇到无法被上述这些类型所解析时使用的兜底类型，比如遇到未知的
+`type`
+或由于各种原因导致反序列化失败。
+
 它不可序列化，除 `time`、`selfId`、`postType`
 之外直接提供 `raw` 属性(也就是原始的JSON字符串)。
 
@@ -124,12 +202,40 @@
 <def id="OneBotGroupMemberDecreaseEvent" title="OneBotGroupMemberDecreaseEvent">群成员离开事件</def>
 <def id="OneBotGroupRecallEvent" title="OneBotGroupRecallEvent">群消息撤回事件</def>
 <def id="OneBotGroupUploadEvent" title="OneBotGroupUploadEvent">群文件上传事件</def>
-<def id="OneBotNotifyEvent" title="OneBotNotifyEvent">群荣耀事件、红包人气王事件或戳一戳事件</def>
+<def id="OneBotNotifyEvent" title="OneBotNotifyEvent">
+群荣耀事件、红包人气王事件或戳一戳事件。
+
+<warning title="实现接口的变更">
+
+v1.4.0 之前，`OneBotNotifyEvent` 实现 `MemberEvent` ，
+从 `v1.4.0` 开始则不再实现 `MemberEvent`，并独立出一个下述的 `OneBotGroupNotifyEvent` 类型，
+改为由此类型实现 `MemberEvent`。
+
+</warning>
+
+<deflist>
+<def title="OneBotGroupNotifyEvent" id="OneBotGroupNotifyEvent" collapsible="true">
+
+`v1.4.0` 后添加，是 `OneBotNotifyEvent` 的子类型，用来描述那些发生在群里的通知事件。
+
+<deflist>
 <def id="OneBotHonorEvent" title="OneBotHonorEvent">群荣耀事件</def>
 <def id="OneBotLuckyKingEvent" title="OneBotLuckyKingEvent">红包人气王事件</def>
 <def id="OneBotPokeEvent" title="OneBotPokeEvent">戳一戳事件</def>
 <def id="OneBotMemberPokeEvent" title="OneBotMemberPokeEvent">戳一戳(普通群成员被戳)事件</def>
 <def id="OneBotBotSelfPokeEvent" title="OneBotBotSelfPokeEvent">戳一戳(Bot被戳)事件</def>
+</deflist>
+
+</def>
+<def title="OneBotPrivatePokeEvent" id="OneBotPrivatePokeEvent">
+
+`v1.4.0` 后添加，用来描述私聊里的戳一戳事件，实现 `OneBotPokeEvent`。
+此事件中的 `groupId` 始终为 `null`。
+
+</def>
+</deflist>
+
+</def>
 </deflist>
 </def>
 
@@ -165,40 +271,42 @@
 
 简单列举一下原始事件与可能对应的组件事件之间的关系。
 
-| 原始事件类型                                              | 组件事件                                   |
-|-----------------------------------------------------|----------------------------------------|
-| `RawMetaEvent`                                      | `OneBotMetaEvent`                      |
-| > `RawLifecycleEvent`                               | > `OneBotLifecycleEvent`               |
-| > `RawHeartbeatEvent`                               | > `OneBotHeartbeatEvent`               |
-| `RawMessageEvent`                                   | `OneBotMessageEvent`                   |
-| > `RawGroupMessageEvent`                            | > `OneBotGroupMessageEvent`            |
-| > `RawGroupMessageEvent`                            | > > `OneBotNormalGroupMessageEvent`    |
-| > `RawGroupMessageEvent`                            | > > `OneBotAnonymousGroupMessageEvent` |
-| > `RawGroupMessageEvent`                            | > > `OneBotNoticeGroupMessageEvent`    |
-| > `RawPrivateMessageEvent`                          | > `OneBotPrivateMessageEvent`          |
-| > `RawPrivateMessageEvent`                          | > > `OneBotFriendMessageEvent`         |
-| > `RawPrivateMessageEvent`                          | > > `OneBotGroupPrivateMessageEvent`   |
-| `RawRequestEvent`                                   | `OneBotRequestEvent`                   |
-| > `RawFriendRequestEvent`                           | > `OneBotFriendRequestEvent`           |
-| > `RawGroupRequestEvent`                            | > `OneBotGroupRequestEvent`            |
-| `RawNoticeEvent`                                    | `OneBotNoticeEvent`                    |
-| > `RawFriendAddEvent`                               | > `OneBotFriendAddEvent`               |
-| > `RawFriendRecallEvent`                            | > `OneBotFriendRecallEvent`            |
-| > `RawGroupAdminEvent`                              | > `OneBotGroupAdminEvent`              |
-| > `RawGroupBanEvent`                                | > `OneBotGroupBanEvent`                |
-| > `RawGroupIncreaseEvent` 或 `RawGroupDecreaseEvent` | > `OneBotGroupChangeEvent`             |
-| > `RawGroupIncreaseEvent`                           | > > `OneBotGroupMemberIncreaseEvent`   |
-| > `RawGroupDecreaseEvent`                           | > > `OneBotGroupMemberDecreaseEvent`   |
-| > `RawGroupRecallEvent`                             | > `OneBotGroupRecallEvent`             |
-| > `RawGroupUploadEvent`                             | > `OneBotGroupUploadEvent`             |
-| > `RawNotifyEvent`                                  | > `OneBotNotifyEvent`                  |
-| > `RawNotifyEvent`                                  | > > `OneBotHonorEvent`                 |
-| > `RawNotifyEvent`                                  | > > `OneBotLuckyKingEvent`             |
-| > `RawNotifyEvent`                                  | > > `OneBotPokeEvent`                  |
-| > `RawNotifyEvent`                                  | > > > `OneBotMemberPokeEvent`          |
-| > `RawNotifyEvent`                                  | > > > `OneBotBotSelfPokeEvent`         |
-| `UnknownEvent`                                      | > `UnknownEvent`                       |
-| 无                                                   | `OneBotBotStageEvent`                  |
-| 无                                                   | > `OneBotBotRegisteredEvent`           |
-| 无                                                   | > `OneBotBotStartedEvent`              |
-| 任意未支持事件                                             | `OneBotUnsupportedEvent`               |
+| 原始事件类型                                              | 组件事件                                                       |
+|-----------------------------------------------------|------------------------------------------------------------|
+| `RawMetaEvent`                                      | `OneBotMetaEvent`                                          |
+| > `RawLifecycleEvent`                               | > `OneBotLifecycleEvent`                                   |
+| > `RawHeartbeatEvent`                               | > `OneBotHeartbeatEvent`                                   |
+| `RawMessageEvent`                                   | `OneBotMessageEvent`                                       |
+| > `RawGroupMessageEvent`                            | > `OneBotGroupMessageEvent`                                |
+| > `RawGroupMessageEvent`                            | > > `OneBotNormalGroupMessageEvent`                        |
+| > `RawGroupMessageEvent`                            | > > `OneBotAnonymousGroupMessageEvent`                     |
+| > `RawGroupMessageEvent`                            | > > `OneBotNoticeGroupMessageEvent`                        |
+| > `RawPrivateMessageEvent`                          | > `OneBotPrivateMessageEvent`                              |
+| > `RawPrivateMessageEvent`                          | > > `OneBotFriendMessageEvent`                             |
+| > `RawPrivateMessageEvent`                          | > > `OneBotGroupPrivateMessageEvent`                       |
+| `RawRequestEvent`                                   | `OneBotRequestEvent`                                       |
+| > `RawFriendRequestEvent`                           | > `OneBotFriendRequestEvent`                               |
+| > `RawGroupRequestEvent`                            | > `OneBotGroupRequestEvent`                                |
+| `RawNoticeEvent`                                    | `OneBotNoticeEvent`                                        |
+| > `RawFriendAddEvent`                               | > `OneBotFriendAddEvent`                                   |
+| > `RawFriendRecallEvent`                            | > `OneBotFriendRecallEvent`                                |
+| > `RawGroupAdminEvent`                              | > `OneBotGroupAdminEvent`                                  |
+| > `RawGroupBanEvent`                                | > `OneBotGroupBanEvent`                                    |
+| > `RawGroupIncreaseEvent` 或 `RawGroupDecreaseEvent` | > `OneBotGroupChangeEvent`                                 |
+| > `RawGroupIncreaseEvent`                           | > > `OneBotGroupMemberIncreaseEvent`                       |
+| > `RawGroupDecreaseEvent`                           | > > `OneBotGroupMemberDecreaseEvent`                       |
+| > `RawGroupRecallEvent`                             | > `OneBotGroupRecallEvent`                                 |
+| > `RawGroupUploadEvent`                             | > `OneBotGroupUploadEvent`                                 |
+| > `RawNotifyEvent`                                  | > `OneBotNotifyEvent`                                      |
+| > `RawNotifyEvent`                                  | <p> > > `OneBotGroupNotifyEvent`</p> (since `v1.4.0`)      |
+| > `RawNotifyEvent`                                  | > > > `OneBotHonorEvent`                                   |
+| > `RawNotifyEvent`                                  | > > > `OneBotLuckyKingEvent`                               |
+| > `RawNotifyEvent`                                  | > > > `OneBotPokeEvent`                                    |
+| > `RawNotifyEvent`                                  | > > > > `OneBotMemberPokeEvent`                            |
+| > `RawNotifyEvent`                                  | > > > > `OneBotBotSelfPokeEvent`                           |
+| > `RawNotifyEvent`                                  | <p> > > > > `OneBotPrivatePokeEvent` </p> (since `v1.4.0`) |
+| `UnknownEvent`                                      | > `UnknownEvent`                                           |
+| 无                                                   | `OneBotBotStageEvent`                                      |
+| 无                                                   | > `OneBotBotRegisteredEvent`                               |
+| 无                                                   | > `OneBotBotStartedEvent`                                  |
+| 任意未支持事件                                             | `OneBotUnsupportedEvent`                                   |
