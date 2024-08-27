@@ -234,3 +234,17 @@ var sourceBot = bot.getSource();
 
 </tab>
 </tabs>
+
+## 日志
+
+你可以通过开启名称前缀为 `love.forte.simbot.qguild.api` 的 DEBUG 级别日志来查看所有API在进行请求过程的部分详细信息，
+例如出入参等。
+
+在 JVM 中，日志系统委托给了 `SLF4J2 API`，在native平台中，可以通过 `LoggerFactory.defaultLoggerLevel` 修改全局的默认日志级别。
+
+JVM中默认会为日志中的部分片段染色。
+如果希望关闭日志中的染色，添加JVM参数：
+
+```
+-Dsimbot.qguild.api.logger.color.enable=false
+```
