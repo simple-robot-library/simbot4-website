@@ -20,6 +20,7 @@
             <toc-element topic="start-use-spring-boot-3.md"/>
         </toc-element>
         <toc-element topic="start-use-components.md"/>
+        <toc-element topic="codegen.md"/>
     </toc-element>
     <toc-element toc-title="集成">
         <toc-element topic="Spring-Boot.md"/>
