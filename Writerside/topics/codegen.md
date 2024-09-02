@@ -8,7 +8,7 @@
 
 <tip>
 
-生成器为纯前端，无后端交互，主要使用 `Compose HTML` 和 `kotlinpoet` 构建并完成代码生成逻辑。
+生成器为纯前端，无后端交互，主要使用 `Compose` 和 `kotlinpoet` 构建并完成代码生成逻辑。
 `kotlinpoet` 生成的代码中可能会携带 `public` 修饰符，在 Kotlin 的非严格模式下这是不必要的，如有需要可自行清理删除。
 
 </tip>
