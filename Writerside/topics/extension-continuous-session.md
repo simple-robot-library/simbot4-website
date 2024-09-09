@@ -1,11 +1,11 @@
 # 持续会话 Continuous Session
 
 <primary-label ref="doc-wip" />
-<secondary-label ref="experimental" />
+<secondary-label ref="experimental-sec" />
 
 <warning>
 
-施工中...
+文档待施工...
 
 </warning>
 
