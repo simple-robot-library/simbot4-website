@@ -1,10 +1,6 @@
 # Bot配置文件
 
-<warning>
-
-待施工
-
-</warning>
+<include from="refers.md" element-id="doc-TODO"></include>
 
 > 注释实际上是不支持的，
 > 如果要复制，记得清理掉注释
