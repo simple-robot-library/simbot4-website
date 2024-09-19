@@ -30,12 +30,6 @@ Telegram组件仍处于**早期开发阶段**，并且积极地期待着**贡献
 
 </warning>
 
-<warning>
-
-文档内容尚在施工中。。。
-
-</warning>
-
 ## 概述
 
 **Telegram组件**

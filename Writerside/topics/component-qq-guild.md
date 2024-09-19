@@ -8,7 +8,7 @@
 <category ref="links">
 <a href="https://github.com/simple-robot/simbot-component-qq-guild">QQ机器人组件仓库</a>
 <a href="https://ktor.io/">Ktor首页</a>
-<a href="https://bot.q.qq.com/wiki/develop/api/">QQ机器人开放平台</a>
+<a href="https://bot.q.qq.com/wiki/develop/api-v2/">QQ机器人开放平台</a>
 </category>
 </seealso>
 
@@ -127,4 +127,4 @@ QQ机器人组件使用 [Ktor](https://ktor.io) 作为 HTTP 客户端实现，
 </procedure>
 
 
-[qg bot doc]: https://bot.q.qq.com/wiki/develop/api/
+[qg bot doc]: https://bot.q.qq.com/wiki/develop/api-v2/

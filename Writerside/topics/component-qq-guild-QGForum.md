@@ -4,7 +4,7 @@ switcher-label: JavaAPI风格
 
 # 论坛 QGForum
 
-QQ频道中有一些针对 `论坛子频道` 的API。([参考文档](https://bot.q.qq.com/wiki/develop/api/openapi/forum/model.html#thread))
+QQ频道中有一些针对 `论坛子频道` 的API。([参考文档](https://bot.q.qq.com/wiki/develop/api-v2/server-inter/channel/content/forum/open_forum.html))
 
 ## API
 
@@ -321,7 +321,7 @@ API模块实现了与论坛相关的事件类型，它们的类型（与继承�
 
 对应的 `instents` 为 `EventIntents.OpenForumsEvent.intents`
 
-更多可参考 [官方文档](https://bot.q.qq.com/wiki/develop/api/gateway/open_forum.html#oepn-forum-event-intents-open-forum-event)
+更多可参考 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/server-inter/channel/content/forum/open_forum.html)
 
 :::
 
@@ -343,7 +343,7 @@ API模块实现了与论坛相关的事件类型，它们的类型（与继承�
 
 对应的 `instents` 为 `EventIntents.ForumsEvent.intents`
 
-更多可参考 [官方文档](https://bot.q.qq.com/wiki/develop/api/gateway/forum.html)
+更多可参考 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/server-inter/channel/content/forum/forum.html)
 
 :::
 

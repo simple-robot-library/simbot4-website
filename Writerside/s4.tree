@@ -24,6 +24,7 @@
     </toc-element>
     <toc-element toc-title="集成">
         <toc-element topic="Spring-Boot.md"/>
+        <toc-element topic="other-integration.md"/>
     </toc-element>
     <toc-element toc-title="基本内容">
         <toc-element topic="basic-ID.md"/>
