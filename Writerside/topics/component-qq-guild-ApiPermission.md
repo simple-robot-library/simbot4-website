@@ -70,6 +70,6 @@ var isContains = apiPermissions.contains(GetGuildApi.Factory);
 
 在API模块中，`DemandApiPermissionApi` 可以用来创建一个 API 接口权限授权链接。
 
-> 参考官方文档: [创建频道 API 接口权限授权链接](https://bot.q.qq.com/wiki/develop/api/openapi/api_permissions/post_api_permission_demand.html)
+> 参考官方文档: [发送机器人在频道接口权限的授权链接](https://bot.q.qq.com/wiki/develop/api-v2/server-inter/channel/api_permissions/post_api_permission_demand.html)
 
 此API请求成功后的返回值类型即为 `ApiPermissionDemand`。
