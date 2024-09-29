@@ -1,5 +1,7 @@
 # Telegram 🚧
 
+<primary-label ref="doc-wip" />
+
 <a href="https://github.com/simple-robot/simbot-component-telegram/releases/latest">
 <img alt="release" src="https://img.shields.io/github/v/release/simple-robot/simbot-component-telegram" />
 </a>
