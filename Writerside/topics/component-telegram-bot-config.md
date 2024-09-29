@@ -169,8 +169,7 @@ Telegram 的 [长轮询](https://core.telegram.org/bots/api#getupdates)
       "limit": 100,
       "timeout": 1800,
       "allowedUpdates": null,
-      "retry": null,
-      "handleRetry": null
+      "retry": null
     }
   }
 }
