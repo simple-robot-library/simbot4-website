@@ -42,7 +42,7 @@
 > 但是这样也可能使得一些由 Kotlin 而来的异常/警告检测失效，
 > 比如尝试在 Java 中引用 `internal` 级别的类型。
 
-## 如何主动获取Bot {collapsible="true"}
+## 如何主动获取Bot/主动发送消息 {collapsible="true"}
 
 在非事件的情况下（例如一个定时任务或初始化任务），你可以通过构建的 `Application` 获取到 `BotManagers`，
 而又可以通过各个 `BotManager` 进一步获取到你想要的 `Bot`。
@@ -101,6 +101,9 @@ for (var botManager : botManagers) {
 
 在集成 Spring 的情况下获取 `Application`，你可以参考: [](Spring-Boot.md#get-bot) 。
 
+而对于主动发送消息，当你拿到了 Bot，就可以用来获取其中的行为对象了（比如群、频道等），
+届时即可直接使用它们的 `send` API 进行发送。
+
 ## ClassNotFoundException: kotlin.enums.EnumEntriesKt {collapsible="true"}
 
 <tip title="相关参考">
@@ -150,3 +153,17 @@ Spring Boot 3.2及以下 (包括 2.x) 文档: <b>Dependency Versions / Version P
 或
 [issues](https://github.com/simple-robot/simpler-robot/issues)
 反馈详情。
+
+## QQ机器人组件监听不到群聊消息 {collapsible="true"}
+
+首先确保你配置了沙箱群（如果是测试环境），并启动成功无误。
+
+然后，检查你配置中的 `config.intents` 的值 **是否包含群聊相关** 的事件的订阅值。
+
+由于**群聊相关**的事件不是默认的，因此你需要自行添加对其的订阅配置。
+
+你可以在 [《QQ机器人 - Bot配置文件 - intents》](component-qq-guild-bot-config.md#config.intents)
+中了解到更多。
+
+
+
