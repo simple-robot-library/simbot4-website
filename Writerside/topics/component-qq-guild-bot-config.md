@@ -172,6 +172,17 @@ bot开发配置中的 `Token`。
 - 频道成员相关事件
 - 公域消息相关事件
 
+```json
+{
+  "config": {
+    "intents": {
+      "type": "raw",
+      "intents": 1073741827
+    }
+  }
+}
+```
+
 根据 `type` 的不同可选的属性不同。
 
 <tip>
@@ -182,8 +193,7 @@ bot开发配置中的 `Token`。
 
 </tip>
 
-
-```yaml
+```
 GUILDS (1 << 0)
   - GUILD_CREATE           // 当机器人加入新guild时
   - GUILD_UPDATE           // 当guild资料发生变更时
@@ -285,6 +295,121 @@ PUBLIC_GUILD_MESSAGES (1 << 30) // 消息事件，此为公域的消息事件
 {
   "type": "nameBased",
   "names": ["Guilds", "PublicGuildMessages"]
+}
+```
+
+<tip title="可选值参考">
+
+`nameBased` 的具体可选值可参考 `EventIntentsAggregation.getByName` 的
+[API文档](https://docs.simbot.forte.love/components/qq-guild/simbot-component-qq-guild-api/love.forte.simbot.qguild.event/-event-intents-aggregation/get-by-name.html)
+或源码的文档注释。
+
+此处会简单列举一下可选值的参考，但不保证绝对准确性，以实际代码中的效果与描述为准。
+
+<deflist collapsible="true" default-state="collapsed" type="medium">
+<def title="GUILDS">
+<list>
+<li>当机器人加入新guild时</li>
+<li>当guild资料发生变更时</li>
+<li>当机器人退出guild时</li>
+<li>当channel被创建时</li>
+<li>当channel被更新时</li>
+<li>当channel被删除时</li>
+</list>
+</def>
+<def title="GUILD_MEMBERS">
+<list>
+<li>当成员加入时</li>
+<li>当成员资料变更时</li>
+<li>当成员被移除时</li>
+</list>
+</def>
+<def title="GUILD_MESSAGES">
+
+消息事件，仅 **私域** 机器人能够设置此 intents。
+
+<list>
+<li>发送消息事件，代表频道内的全部消息，而不只是 at 机器人的消息。内容与 AT_MESSAGE_CREATE 相同</li>
+<li>删除（撤回）消息事件</li>
+</list>
+</def>
+<def title="GUILD_MESSAGE_REACTIONS">
+<list>
+<li>为消息添加表情表态</li>
+<li>为消息删除表情表态</li>
+</list>
+</def>
+<def title="DIRECT_MESSAGE">
+<list>
+<li>当收到用户发给机器人的私信消息时</li>
+<li>删除（撤回）消息事件</li>
+</list>
+</def>
+<def title="GROUP_AND_C2C_EVENT">
+<list>
+<li>用户单聊发消息给机器人时候</li>
+<li>用户添加使用机器人</li>
+<li>用户删除机器人</li>
+<li>用户在机器人资料卡手动关闭"主动消息"推送</li>
+<li>用户在机器人资料卡手动开启"主动消息"推送开关</li>
+<li>用户在群里@机器人时收到的消息</li>
+<li>机器人被添加到群聊</li>
+<li>机器人被移出群聊</li>
+<li>群管理员主动在机器人资料页操作关闭通知</li>
+<li>群管理员主动在机器人资料页操作开启通知</li>
+</list>
+</def>
+<def title="INTERACTION">
+<list>
+<li>互动事件创建时</li>
+</list>
+</def>
+<def title="MESSAGE_AUDIT">
+<list>
+<li>消息审核通过</li>
+<li>消息审核不通过</li>
+</list>
+</def>
+<def title="FORUMS_EVENT">
+
+论坛事件，仅 **私域** 机器人能够设置此 intents。
+
+<list>
+<li>当用户创建主题时</li>
+<li>当用户更新主题时</li>
+<li>当用户删除主题时</li>
+<li>当用户创建帖子时</li>
+<li>当用户删除帖子时</li>
+<li>当用户回复评论时</li>
+<li>当用户回复评论时</li>
+<li>当用户发表审核通过时</li>
+</list>
+</def>
+<def title="AUDIO_ACTION">
+<list>
+<li>音频开始播放时</li>
+<li>音频播放结束时</li>
+<li>上麦时</li>
+<li>下麦时</li>
+</list>
+</def>
+<def title="PUBLIC_GUILD_MESSAGES">
+消息事件，此为公域的消息事件
+<list>
+<li>当收到@机器人的消息时</li>
+<li>当频道的消息被删除时</li>
+</list>
+</def>
+</deflist>
+</tip>
+
+
+再举个例子，如果你想要订阅频道事件和**群聊消息事件**：
+
+```json
+{
+  "type": "nameBased",
+  "names": ["Guilds", "PublicGuildMessages", "GROUP_AND_C2C_EVENT"]
 }
 ```
 
