@@ -2,9 +2,11 @@
 
 发送图片是一个经常使用、且经常被问及“怎么发图片”的内容。
 
-本章节介绍在QQ频道组件中，如何发送一个图片。
+本章节介绍在QQ机器人组件中，如何发送一个图片。
 
 ## API模块 {id='api-module'}
+
+以在**频道**中为例：
 
 假如你只使用了API模块，那么就需要普通地使用API来发送图片:
 使用 `MessageSendApi` 中的 `fileImage` 或 `image` 属性上传图片。
@@ -104,6 +106,8 @@ XxxRequests.requestXxx(...)
 > <a href="component-qq-guild-api.md" />
 
 ## 组件库模块 {id='core-module'}
+
+以在**频道**中为例：
 
 更多的时候也可能是想要在使用组件库配合simbot的时候发送一个图片。
 
