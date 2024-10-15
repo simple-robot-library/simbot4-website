@@ -9,8 +9,8 @@
         <download-title>GitHub</download-title>
         <download-page>https://github.com/simple-robot/simpler-robot</download-page>
         <showDownloadButton>true</showDownloadButton>
-        <browser-edits-url>https://github.com/simple-robot-library/simbot4-website/tree/master/Writerside/</browser-edits-url>
-        <enable-browser-edits>true</enable-browser-edits>
+        <enable-contribution>true</enable-contribution>
+        <contribute-url>https://github.com/simple-robot-library/simbot4-website/tree/master/Writerside/</contribute-url>
         <locale-code>zh-CN</locale-code>
         <noindex-content>false</noindex-content>
         <include-in-head>head-script.html</include-in-head>
@@ -20,6 +20,7 @@
         <web-root>https://simbot.forte.love</web-root>
         <feedback-support>true</feedback-support>
         <feedback-url>https://github.com/simple-robot-library/simbot4-website/issues/</feedback-url>
+        <versions-switcher>https://kodo.forte.love/simbot/help-versions.json</versions-switcher>
 <!--        <color-preset>vivid</color-preset>-->
 <!--        <color-preset>soft</color-preset>-->
     </variables>
