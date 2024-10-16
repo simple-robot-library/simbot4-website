@@ -20,7 +20,7 @@
         <web-root>https://simbot.forte.love</web-root>
         <feedback-support>true</feedback-support>
         <feedback-url>https://github.com/simple-robot-library/simbot4-website/issues/</feedback-url>
-        <versions-switcher>https://kodo.forte.love/simbot/help-versions.json</versions-switcher>
+<!--        <versions-switcher>https://kodo.forte.love/simbot/help-versions.json</versions-switcher>-->
 <!--        <color-preset>vivid</color-preset>-->
 <!--        <color-preset>soft</color-preset>-->
     </variables>
