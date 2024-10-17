@@ -185,6 +185,9 @@ suspend fun Application.configure() {
             intents += EventIntents.GroupAndC2CEvent.intents
             // 比如切换服务地址为沙箱频道的服务地址
             useSandboxServerUrl()
+            // 如果要使用 [[[Webhook|component-qq-guild-Webhook.md]]] 的订阅方式，
+            // 通过此属性取消 ws 的连接
+            disableWs = true
             // 其他...
         }
         // 外层是独属于组件类型的某些配置
@@ -257,6 +260,10 @@ public static void configure(Application application) {
                             // 位运算合并 QQ群聊和C2C事件 的intents值
                             botConfig.getIntentsValue() | EventIntents.GroupAndC2CEvent.INSTANCE.getIntentsValue()
                     );
+                    
+                    // 如果要使用 [[[Webhook|component-qq-guild-Webhook.md]]] 的订阅方式，
+                    // 通过此属性取消 ws 的连接
+                    botConfig.setDisableWs(true);
                 });
 
                 // 外层是独属于组件类型的某些配置
@@ -452,6 +459,10 @@ public static void configure(Application application) {
 
 </tab>
 </tabs>
+
+### Webhook
+
+使用 Webhook 接收事件参考 [](component-qq-guild-Webhook.md) 。
 
 ### 事件监听
 
@@ -762,3 +773,4 @@ public class MyHandles {
 
 </tab>
 </tabs>
+

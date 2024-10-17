@@ -1,0 +1,376 @@
+# Webhook
+
+<tip>
+
+从组件 `v4.1.0` 开始支持 Webhook ，
+参考:
+- [#223](https://github.com/simple-robot/simbot-component-qq-guild/pull/223)
+
+</tip>
+
+根据官方文档的说法：
+
+![QQ机器人-websocket不再维护.png](QQ机器人-websocket不再维护.png)
+
+因此后续应该就只剩下 webhook 一种事件订阅方式了，也就是客户端作为被动接受事件的一方。
+
+本章节简单介绍下在QQ机器人组件中如何使用 webhook 的方式接收事件。
+
+## 禁用Websocket
+
+首先，在配置中禁用 ws 的连接。
+
+<tabs>
+<tab title="配置文件">
+
+如果你在使用配置文件（常见于在配合spring时），添加配置项 `config.disableWs=true`
+
+```json
+{
+  "ticket": {
+    "appId": "...",
+    "secret": "...",
+    "secret": "...",
+  },
+ "config": {
+   "disableWs"：true
+ } 
+}
+```
+
+</tab>
+<tab title="代码配置">
+Second tab content
+</tab>
+</tabs>
+
+## 处理HTTP请求
+
+Webhook 通过接收来自QQ的事件推送请求来实现事件监听。
+在组件中，暂不支持内嵌的 HTTP 服务器 (参考 [#224](https://github.com/simple-robot/simbot-component-qq-guild/issues/224))，
+因此你需要自行搭建 HTTP 服务器。
+
+此处给出在 Spring Boot 和 Ktor server 场景下的示例。
+
+<tabs>
+<tab title="Spring web">
+
+<tabs>
+<tab title="Kotlin" group-key="Kotlin">
+
+```kotlin
+private const val SIGNATURE_HEAD = "X-Signature-Ed25519"
+private const val TIMESTAMP_HEAD = "X-Signature-Timestamp"
+
+/**
+ * 处理所有qq机器人的回调请求的处理器。
+ */
+@RestController("/callback")
+class CallbackHandler(
+    private val application: Application
+) {
+    /**
+     * 处理 `/callback/qq/{appId}` 的事件回调请求，
+     * 找到对应的 bot 并向其推送事件。
+     */
+    @PostMapping("/qq/{appId}")
+    fun handleEvent(
+        @PathVariable("appId") appId: String,
+        @RequestHeader(SIGNATURE_HEAD) signature: String,
+        @RequestHeader(TIMESTAMP_HEAD) timestamp: String,
+        @RequestBody payload: String,
+    ): CompletableFuture<out ResponseEntity<Any?>> {
+        // 寻找指定 `appId` 的 QGBot
+        val targetBot = application.botManagers
+            .filterIsQQGuildBotManagers()
+            .firstNotNullOfOrNull {
+                it.all().firstOrNull { bot ->
+                    bot.source.ticket.appId == appId
+                }
+            }
+
+        // 如果找不到，响应 404 异常
+        if (targetBot == null) {
+            throw ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "app $appId not found"
+            )
+        }
+
+        // 在 servlet web 中，在异步中处理.
+        // 作用域、是否要用异步等根据你的项目情况调整。
+        val entityAsync = application.async {
+            val result = targetBot.emitEvent(
+                payload,
+            ) {
+                // 配置 ed25519SignatureVerification, 即代表进行签名校验
+                ed25519SignatureVerification = Ed25519SignatureVerification(
+                    signature,
+                    timestamp
+                )
+            }
+
+            val body: Any? = when (result) {
+                is EmitResult.Verified -> result.verified
+                else -> null
+            }
+
+            // 响应结果。
+            ResponseEntity.ok(body)
+        }
+
+        return entityAsync.asCompletableFuture()
+    }
+}
+```
+
+</tab>
+</tabs>
+</tab>
+<tab title="Spring webflux">
+
+<tabs>
+<tab title="Kotlin" group-key="Kotlin">
+
+```kotlin
+private const val SIGNATURE_HEAD = "X-Signature-Ed25519"
+private const val TIMESTAMP_HEAD = "X-Signature-Timestamp"
+
+/**
+ * 处理所有qq机器人的回调请求的处理器。
+ */
+@RestController("/callback")
+class CallbackHandler(
+    private val application: Application
+) {
+    /**
+     * 处理 `/callback/qq/{appId}` 的事件回调请求，
+     * 找到对应的 bot 并向其推送事件。
+     */
+    @PostMapping("/qq/{appId}")
+    suspend fun handleEvent(
+        @PathVariable("appId") appId: String,
+        @RequestHeader(SIGNATURE_HEAD) signature: String,
+        @RequestHeader(TIMESTAMP_HEAD) timestamp: String,
+        @RequestBody payload: String,
+    ): ResponseEntity<Any?> {
+        // 寻找指定 `appId` 的 QGBot
+        val targetBot = application.botManagers
+            .filterIsQQGuildBotManagers()
+            .firstNotNullOfOrNull {
+                it.all().firstOrNull { bot ->
+                    bot.source.ticket.appId == appId
+                }
+            }
+
+        // 如果找不到，响应 404 异常
+        if (targetBot == null) {
+            throw ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "app $appId not found"
+            )
+        }
+
+        val result = targetBot.emitEvent(
+            payload,
+        ) {
+            // 配置 ed25519SignatureVerification, 即代表进行签名校验
+            ed25519SignatureVerification = Ed25519SignatureVerification(
+                signature,
+                timestamp
+            )
+        }
+
+        val body: Any? = when (result) {
+            is EmitResult.Verified -> result.verified
+            else -> null
+        }
+
+        // 响应结果
+        return ResponseEntity.ok(body)
+    }
+}
+```
+
+</tab>
+</tabs>
+
+</tab>
+<tab title="Ktor server">
+
+```kotlin
+private const val SIGNATURE_HEAD = "X-Signature-Ed25519"
+private const val TIMESTAMP_HEAD = "X-Signature-Timestamp"
+
+// 你也可以考虑直接把注册好的 bot 保存起来，而不只是保存 application
+// 或者使用一些DI方案，都可以。
+lateinit var simbotApplication: love.forte.simbot.application.Application
+
+suspend fun main() {
+    // 启动simbot application,
+    // 然后启动内嵌的 HTTP 服务
+    // 当然，具体的启动顺序或逻辑根据你的项目需求而定。
+    simbotApplication = launchSimbot()
+
+    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
+        .start(wait = true)
+
+}
+
+/**
+ * 启动 simbot application
+ */
+suspend fun launchSimbot(): love.forte.simbot.application.Application {
+    val application = launchSimpleApplication {
+        useQQGuild()
+    }
+
+    // 这里配置你的 bot、事件监听等...
+    // 你也可以考虑直接把注册好的 bot 保存起来，而不只是保存 application
+
+    return application
+}
+
+fun Application.module() {
+    configureRouting()
+}
+
+fun Application.configureRouting() {
+    routing {
+        post("/callback/qq/{appId}") {
+            val appId = call.parameters["appId"]
+
+            // 寻找指定 `appId` 的 QGBot
+            val targetBot = simbotApplication.botManagers
+                .filterIsQQGuildBotManagers()
+                .firstNotNullOfOrNull {
+                    it.all().firstOrNull { bot ->
+                        bot.source.ticket.appId == appId
+                    }
+                }
+
+            // 如果找不到，响应 404 异常
+            if (targetBot == null) {
+                call.respond(HttpStatusCode.NotFound)
+                return@post
+            }
+
+            // 准备参数
+            val signature = call.request.header(SIGNATURE_HEAD)
+                ?: run {
+                    call.respond(
+                        HttpStatusCode.BadRequest,
+                        "Required header $SIGNATURE_HEAD is missing"
+                    )
+                    return@post
+                }
+
+            val timestamp = call.request.header(TIMESTAMP_HEAD)
+                ?: run {
+                    call.respond(
+                        HttpStatusCode.BadRequest,
+                        "Required header $TIMESTAMP_HEAD is missing"
+                    )
+                    return@post
+                }
+            val payload = call.receiveText()
+
+            val result = targetBot.emitEvent(
+                payload,
+            ) {
+                // 配置 ed25519SignatureVerification, 即代表进行签名校验
+                ed25519SignatureVerification = Ed25519SignatureVerification(
+                    signature,
+                    timestamp
+                )
+            }
+
+            val respond: String? = when (result) {
+                is EmitResult.Verified ->
+                    // 如果你安装了插件 ContentNegotiation,
+                    // 那么也可以直接响应对象。
+                    // 这里懒得装了，所以提前序列化成JSON字符串
+                    Json.encodeToString(result.verified)
+
+                else -> null
+            }
+
+            call.respondText(
+                respond ?: "{}",
+                ContentType.Application.Json
+            )
+        }
+    }
+}
+```
+
+</tab>
+</tabs>
+
+### Opcode=13 路径验证
+
+在首次配置回调地址时，服务端会对此地址发送 `opcode=13` 的校验请求。
+
+> 参考 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/event-emit.html#webhook方式)
+
+组件默认支持处理此事件，如果 `opcode=13`, `emitEvent` 则会返回 `EmitResult.Verified`，
+其中的 `verified` 就是 `opcode=13` 时服务端所需要的结果。
+
+
+```kotlin
+val respond: Any? = when (result) {
+    is EmitResult.Verified -> result.verified
+    else -> null
+}
+```
+
+直接将 `verified` 响应即可。
+
+> 此类型默认基于 `kotlinx-serialization` 支持序列化，
+> 如果你打算使用其他序列化方案，请注意字段的下划线转化。
+
+### Ed25519 签名校验
+
+在接收到事件推送时，可以通过请求头中的签名信息结合bot的 `secret` 校验本次请求。
+
+> 参考 [官方文档](https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/sign.html)
+
+组件默认支持进行请求头校验，在使用 `emitEvent` 时提供所需的校验信息即可。
+
+<tabs>
+<tab title="Java" group-key="Java">
+
+```java
+var options = new EmitEventOptions();
+options.setEd25519SignatureVerification(
+    new Ed25519SignatureVerification(
+        // X-Signature-Ed25519
+        signature, 
+        // X-Signature-Timestamp
+        timestamp
+    );
+);
+
+bot.emitEventXxx(payload, options);
+// emitEventBlocking(...);
+// emitEventAsync(...);
+// emitEventReserve(...);
+```
+
+</tab>
+<tab title="Kotlin" group-key="Kotlin">
+
+```kotlin
+bot.emitEvent(payload) {
+    // 配置 ed25519SignatureVerification, 即代表进行签名校验
+    ed25519SignatureVerification = Ed25519SignatureVerification(
+        // X-Signature-Ed25519
+        signature, 
+        // X-Signature-Timestamp
+        timestamp 
+    )
+}
+```
+
+</tab>
+</tabs>

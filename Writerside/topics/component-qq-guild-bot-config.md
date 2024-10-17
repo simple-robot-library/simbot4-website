@@ -56,6 +56,7 @@
       "dynamic": null,
       "dispatcher": null
     }
+    "disableWs": false
   }
 }
 ```
@@ -501,17 +502,38 @@ API请求中的超时请求配置。参考 [HttpTimeout][HttpTimeout] 中的相�
 缓存相关配置。
 
 ```json
-"config": {
+{
+  "config": {
     "cache": {
-        "transmit": {
-            "enable": true
-        }
+      "transmit": {
+        "enable": true
+      }
     }
+  }
 }
 ```
 
 有关 `transmit` 的详细描述，
 请参考 `TransmitCacheConfig` 的文档注释或 API Doc。
+
+</def>
+<def title="disableWs" id="disableWs">
+
+> 添加自 `4.1.0`
+
+`Boolean`
+
+是否禁用ws的连接。如果为 `true`, 则启动bot时不会创建 websocket 连接。
+
+默认为 `false`。
+
+```json
+{
+  "config": {
+    "disableWs": false
+  }
+}
+```
 
 </def>
 </deflist>

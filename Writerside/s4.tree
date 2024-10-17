@@ -46,6 +46,7 @@
         <toc-element topic="components-intro.md"/>
         <toc-element topic="component-qq-guild.md">
             <toc-element topic="component-qq-guild-start-using.md"/>
+            <toc-element topic="component-qq-guild-Webhook.md"/>
             <toc-element topic="component-qq-guild-bot-config.md"/>
             <toc-element toc-title="基础内容">
                 <toc-element topic="component-qq-guild-api.md">
