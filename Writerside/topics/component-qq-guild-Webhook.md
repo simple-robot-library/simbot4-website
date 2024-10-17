@@ -40,7 +40,12 @@
 
 </tab>
 <tab title="代码配置">
-Second tab content
+
+```kotlin
+// 设置 disableWs 为 true
+configuration.disableWs = true
+```
+
 </tab>
 </tabs>
 
@@ -374,3 +379,7 @@ bot.emitEvent(payload) {
 
 </tab>
 </tabs>
+
+## 示例
+
+可以在仓库的 [samples](https://github.com/simple-robot/simbot-component-qq-guild/tree/dev/main/samples) 模块下找到示例模块。
