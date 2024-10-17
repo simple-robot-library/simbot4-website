@@ -219,7 +219,6 @@ suspend fun main() {
 
     embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
         .start(wait = true)
-
 }
 
 /**
@@ -278,6 +277,7 @@ fun Application.configureRouting() {
                     )
                     return@post
                 }
+
             val payload = call.receiveText()
 
             val result = targetBot.emitEvent(
@@ -300,6 +300,7 @@ fun Application.configureRouting() {
                 else -> null
             }
 
+            // 响应成功结果
             call.respondText(
                 respond ?: "{}",
                 ContentType.Application.Json
@@ -334,7 +335,7 @@ val respond: Any? = when (result) {
 > 此类型默认基于 `kotlinx-serialization` 支持序列化，
 > 如果你打算使用其他序列化方案，请注意字段的下划线转化。
 
-### Ed25519 签名校验
+### 签名校验
 
 在接收到事件推送时，可以通过请求头中的签名信息结合bot的 `secret` 校验本次请求。
 
