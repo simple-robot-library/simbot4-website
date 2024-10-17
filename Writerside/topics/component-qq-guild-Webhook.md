@@ -335,6 +335,16 @@ val respond: Any? = when (result) {
 > 此类型默认基于 `kotlinx-serialization` 支持序列化，
 > 如果你打算使用其他序列化方案，请注意字段的下划线转化。
 
+<warning>
+
+由于目前 Kotlin 多平台下对 Ed25519 可靠的库少之又少，
+因此暂无法保证签名校验和路径验证中的加密可以在 **JVM以外** 的平台上运行良好。
+
+如果你有好的方案或推荐，欢迎通过 [Issue](https://github.com/simple-robot/simbot-component-qq-guild/issues/new/choose)
+向我们反馈！
+
+</warning>
+
 ### 签名校验
 
 在接收到事件推送时，可以通过请求头中的签名信息结合bot的 `secret` 校验本次请求。
@@ -380,6 +390,16 @@ bot.emitEvent(payload) {
 
 </tab>
 </tabs>
+
+<warning>
+
+由于目前 Kotlin 多平台下对 Ed25519 可靠的库少之又少，
+因此暂无法保证签名校验和路径验证中的加密可以在 **JVM以外** 的平台上运行良好。
+
+如果你有好的方案或推荐，欢迎通过 [Issue](https://github.com/simple-robot/simbot-component-qq-guild/issues/new/choose)
+向我们反馈！
+
+</warning>
 
 ## 示例
 
