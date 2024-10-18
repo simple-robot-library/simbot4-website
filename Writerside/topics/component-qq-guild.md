@@ -58,6 +58,8 @@ QQ机器人组件命名为 `simbot-component-qq-guild`，
 
 你可以在你的机器人后台中查看、配置你自己的回调服务地址。
 
+有关组件中 Webhook 的配置方式，前往 [](component-qq-guild-Webhook.md) 了解更多。
+
 ## 安装
 
 ### 安装组件库
