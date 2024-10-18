@@ -29,6 +29,7 @@
     <toc-element toc-title="基本内容">
         <toc-element topic="basic-ID.md"/>
         <toc-element topic="basic-timestamp.md"/>
+        <toc-element topic="basic-resources.md"/>
         <toc-element topic="basic-messages.md"/>
         <toc-element topic="basic-bot.md"/>
         <toc-element topic="basic-actor.md"/>
