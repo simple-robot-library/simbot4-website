@@ -13,6 +13,125 @@ switcher-label: JavaAPI风格
 。
 
 ## 使用
+
+### 启用沙箱
+
+如果你的机器人尚未发布为正式版，那么你可能需要启用沙箱地址。
+
+<tabs>
+<tab title="代码配置">
+
+<tabs>
+<tab title="Kotlin" group-key="Kotlin">
+
+```kotlin
+botManager.register("..", "..", "..") {
+    botConfig {
+        // 启用沙箱地址
+        useSandboxServerUrl()
+    }
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```java
+QQGuildBotManager manager = ...;
+botManager.register("..", "..", "..", qgBotConfig -> {
+    qgBotConfig.botConfig(botConfig -> {
+        botConfig.useSandboxServerUrl();
+    });
+});
+```
+
+</tab>
+</tabs>
+
+</tab>
+<tab title="配置文件(在Spring中)">
+
+```json
+{
+  "component": "simbot.qqguild",
+  "ticket": {
+    "appId": "...",
+    "secret": "...",
+    "token": "..."
+  },
+  "config": {
+    "serverUrl": "SANDBOX"
+  }
+}
+```
+
+> 有关配置文件更多内容和属性说明，参考 [](component-qq-guild-bot-config.md) 。
+
+</tab>
+</tabs>
+
+### 事件监听配置
+
+如果你不使用 [webhook](component-qq-guild-Webhook.md) 订阅事件，
+那么你 _可能_ 需要配置事件订阅的 `intents`，因为 `intents` 的默认值只有三个类型的事件。
+
+<tabs>
+<tab title="代码配置">
+
+<tabs>
+<tab title="Kotlin" group-key="Kotlin">
+
+```kotlin
+botManager.register("..", "..", "..") {
+    botConfig {
+        // 配置Intents，例如追加群聊事件支持
+        intents += EventIntents.GroupAndC2CEvent.intents
+    }
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```java
+QQGuildBotManager manager = ...;
+botManager.register("..", "..", "..", qgBotConfig -> {
+    qgBotConfig.botConfig(botConfig -> {
+        botConfig.addIntents(EventIntents.GroupAndC2CEvent.getIntents());
+    });
+});
+```
+
+</tab>
+</tabs>
+
+</tab>
+<tab title="配置文件(在Spring中)">
+
+示例中的 `intents` 的数值为在默认值的基础上添加了 `group_and_c2c_event` 类型事件的位值的最终数值。
+
+```json
+{
+  "component": "simbot.qqguild",
+  "ticket": {
+    "appId": "...",
+    "secret": "...",
+    "token": "..."
+  },
+  "config": {
+    "intents": {
+      "type": "raw",
+      "intents": 1107296259
+    }
+  }
+}
+```
+
+> 有关配置文件更多内容和属性说明，参考 [](component-qq-guild-bot-config.md) 。
+
+</tab>
+</tabs>
+
 ### 创建Application
 
 <tabs group="simbot4impl">
