@@ -24,6 +24,62 @@ switcher-label: JavaAPI风格
 
 ## 使用
 
+### 启用沙箱
+
+如果你的机器人尚未发布为正式版，那么你可能需要启用沙箱地址。
+
+<tabs>
+<tab title="代码配置">
+
+<tabs>
+<tab title="Kotlin" group-key="Kotlin">
+
+```kotlin
+botManager.register("", "", "") {
+    botConfig {
+        // 启用沙箱地址
+        useSandboxServerUrl()
+    }
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```java
+QQGuildBotManager manager = ...;
+manager.register("", "", "", qgBotConfig -> {
+    qgBotConfig.botConfig(botConfig -> {
+        botConfig.useSandboxServerUrl();
+    });
+});
+```
+
+</tab>
+</tabs>
+
+</tab>
+<tab title="配置文件(在Spring中)">
+
+```json
+{
+  "component": "simbot.qqguild",
+  "ticket": {
+    "appId": "...",
+    "secret": "...",
+    "token": "..."
+  },
+  "config": {
+    "serverUrl": "SANDBOX"
+  }
+}
+```
+
+有关配置文件更多内容和属性说明，参考 [](component-qq-guild-bot-config.md) 。
+
+</tab>
+</tabs>
+
 ### 创建Application
 
 <tabs group="simbot4impl">

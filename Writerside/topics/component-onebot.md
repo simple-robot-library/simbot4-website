@@ -88,17 +88,14 @@ OneBot11协议作为一个simbot组件的实现模块。通常会是你**真正�
 <control>准备OneBot11协议服务端</control>
 
 OneBot组件是一个OneBot协议的**客户端**实现，
-因此在使用之前，你需要安装、下载、启动一个支持OneBot11协议的**服务端**。
+因此在使用之前，你需要安装、下载、启动一个支持OneBot11协议的**服务端** ，
+例如 `NapCat`, `Language.OneBot` 等。
 
 <warning>
 
 鉴于OneBot协议的主要应用场景的特殊性，
 大多数服务端的实现库都**不建议、不允许**公开讨论、宣传有关它们的信息，
-因此此处将 **不做列举**。
-
-你可以选择去GitHub等开源网站搜索各种实现库，
-或者可以前往 [社群](https://simbot.forte.love/communities.html)
-向其他人寻求帮助。
+因此此处不列举或提供它们的相关链接，你可以自行通过GitHub等途径搜索它们。
 
 </warning>
 </step>

@@ -12,7 +12,19 @@ OneBot组件的OneBot11模块选择使用
 
 ### 反向？
 
+#### 反向 HTTP
+
 如果你真的想要通过反向HTTP来接收事件推送，那么你需要自行搭建 HTTP 服务端，然后使用 `OneBotBot.push` 手动推送原始事件的JSON字符串。
 你可以前往参考
 `OneBotBot` 的
 <a href="component-onebot-v11-OneBotBot.md#外部事件" /> 。
+
+#### 反向 WebSocket
+
+目前OneBot11组件尚未支持通过 _反向 WebSocket_ 的而不是HTTP API形式来进行API请求，因为我们认为这个功能没有那么的**有必要**，
+因为与上述的正向 HTTP 和正向 WebSocket 相比，反向的方式似乎没有什么非用不可的场景。
+
+你可以参考并参与到 [#72](https://github.com/simple-robot/simbot-component-onebot/issues/72) 中的讨论，
+如果你有合适的应用场景，欢迎提出，如果需求合理，也许会考虑添加对两个反向的支持。
+
+
