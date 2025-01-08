@@ -1,10 +1,5 @@
 # 拦截器 Interceptor
 
-<primary-label ref="doc-wip" />
-
-<include from="refers.md" element-id="doc-TODO"></include>
-
-
 在构建 `Application` 的过程中，可以通过 `eventDispatcher` 作用域来配置事件调度器，
 而在其中可以为整个调度器增加拦截器。
 
