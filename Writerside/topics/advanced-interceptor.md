@@ -193,12 +193,12 @@ Java 中，由于存在挂起函数，你无法直接实现 `EventInterceptor`�
 
 > 通过文档右上角可以切换展示的API风格。
 
-<p switcher-key="%ja%">
+<tip switcher-key="%ja%">
 
 使用 `JAsyncEventInterceptor` 可使用异步API实现 `EventInterceptor`。
 对于性能来讲，其优于阻塞API。
 
-</p>
+</tip>
 
 <br/>
 
@@ -227,12 +227,12 @@ public class MyContentTrimAnnotationEventInterceptorFactory implements Annotatio
 ```
 {switcher-key="%ja%"}
 
-<p switcher-key="%jb%">
+<tip switcher-key="%jb%">
 
 使用 `JBlockEventInterceptor` 可使用阻塞API实现 `EventInterceptor`。
 对于一些复杂的逻辑，它可能会更简单一些。
 
-</p>
+</tip>
 
 ```Java
 public class MyContentTrimAnnotationEventInterceptorFactory implements AnnotationEventInterceptorFactory {
