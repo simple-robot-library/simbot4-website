@@ -130,6 +130,87 @@ class CallbackHandler(
 ```
 
 </tab>
+<tab title="Java" group-key="Java">
+
+```Java
+/**
+ * 处理所有qq机器人的回调请求的处理器。
+ */
+@RestController("/callback")
+public class CallbackHandler {
+    private static final String SIGNATURE_HEAD = "X-Signature-Ed25519";
+    private static final String TIMESTAMP_HEAD = "X-Signature-Timestamp";
+
+    private final Application application;
+
+    public CallbackHandler(Application application) {
+        this.application = application;
+    }
+
+    /**
+     * 处理 `/callback/qq/{appId}` 的事件回调请求，
+     * 找到对应的 bot 并向其推送事件。
+     */
+    @PostMapping("/qq/{appId}")
+    public CompletableFuture<ResponseEntity<?>> handleEvent(
+            @PathVariable("appId") String appId,
+            @RequestHeader(SIGNATURE_HEAD) String signature,
+            @RequestHeader(TIMESTAMP_HEAD) String timestamp,
+            @RequestBody String payload
+    ) {
+        // 寻找指定 `appId` 的 QGBot
+        final var targetBot = application.getBotManagers().stream()
+                // 1. 寻找类型是 QQGuildBotManager 的 BotManager
+                .filter(manager -> manager instanceof QQGuildBotManager)
+                .map(QQGuildBotManager.class::cast)
+                // 2. 寻找 appId 匹配的 bot
+                .flatMap(manager ->
+                        // 使用 manager.all() 可以直接访问 QGBot 类型，
+                        // 而使用 manager.allStreamable() 得到的是 Bot 类型，需要再转化一次
+                        // 二者都可以，这里选择第一个方案
+                        Streamable.of(manager.all()).asStream())
+                .filter(bot -> {
+                    // 寻找 bot.appId 为函数入参 appId 的 bot
+                    // bot.id 本质上也是使用的 appId, 因此直接使用 bot.getId().toString() 也是可以的。
+                    var botAppId = bot.getSource().getTicket().getAppId();
+                    return appId.equals(botAppId);
+                })
+                // 得到第一个符合条件的bot
+                .findFirst()
+                // 如果没找到，自行处理。这里选择抛出异常并响应404。
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "app " + appId + " not found"));
+
+        // 在 servlet web 中，在异步中处理.
+        // 作用域、是否要用异步等根据你的项目情况调整。
+
+        // 如果要进行接口校验，配置 ed25519 校验所需要的内容
+        final var options = new EmitEventOptions();
+        options.setEd25519SignatureVerification(
+                new Ed25519SignatureVerification(
+                        signature,
+                        timestamp
+                )
+        );
+
+        // 推送事件。如有需要，你也可以选择使用阻塞API (emitEventAsyncBlocking)
+        var future = targetBot.emitEventAsync(payload, options);
+
+        // 得到处理结果（的future），并返回body
+        // 如果没有需要返回的body，也可以是null
+        return future.thenApply(result -> {
+            var body = switch (result) {
+                case EmitResult.Verified verified -> verified.getVerified();
+                default -> null;
+            };
+
+            // 将 Body 放到响应体中，返回。
+            return ResponseEntity.ok(body);
+        });
+    }
+}
+```
+
+</tab>
 </tabs>
 </tab>
 <tab title="Spring webflux">
@@ -193,6 +274,91 @@ class CallbackHandler(
 
         // 响应结果
         return ResponseEntity.ok(body)
+    }
+}
+```
+
+</tab>
+<tab title="Java" group-key="Java">
+
+```Java
+/**
+ * 处理所有qq机器人的回调请求的处理器。
+ */
+@RestController("/callback")
+public class CallbackHandler {
+    private static final String SIGNATURE_HEAD = "X-Signature-Ed25519";
+    private static final String TIMESTAMP_HEAD = "X-Signature-Timestamp";
+
+    private final Application application;
+
+    public CallbackHandler(Application application) {
+        this.application = application;
+    }
+
+    /**
+     * 处理 `/callback/qq/{appId}` 的事件回调请求，
+     * 找到对应的 bot 并向其推送事件。
+     */
+    @PostMapping("/qq/{appId}")
+    public Mono<ResponseEntity<?>> handleEvent(
+            @PathVariable("appId") String appId,
+            @RequestHeader(SIGNATURE_HEAD) String signature,
+            @RequestHeader(TIMESTAMP_HEAD) String timestamp,
+            @RequestBody String payload
+    ) {
+        // 寻找指定 `appId` 的 QGBot
+        final var targetBot = application.getBotManagers().stream()
+                // 1. 寻找类型是 QQGuildBotManager 的 BotManager
+                .filter(manager -> manager instanceof QQGuildBotManager)
+                .map(QQGuildBotManager.class::cast)
+                // 2. 寻找 appId 匹配的 bot
+                .flatMap(manager ->
+                        // 使用 manager.all() 可以直接访问 QGBot 类型，
+                        // 而使用 manager.allStreamable() 得到的是 Bot 类型，需要再转化一次
+                        // 二者都可以，这里选择第一个方案
+                        Streamable.of(manager.all()).asStream())
+                .filter(bot -> {
+                    // 寻找 bot.appId 为函数入参 appId 的 bot
+                    // bot.id 本质上也是使用的 appId, 因此直接使用 bot.getId().toString() 也是可以的。
+                    var botAppId = bot.getSource().getTicket().getAppId();
+                    return appId.equals(botAppId);
+                })
+                // 得到第一个符合条件的bot
+                .findFirst()
+                // 如果没找到，自行处理。这里选择抛出异常并响应404。
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "app " + appId + " not found"));
+
+        // 在 servlet web 中，在异步中处理.
+        // 作用域、是否要用异步等根据你的项目情况调整。
+
+        // 如果要进行接口校验，配置 ed25519 校验所需要的内容
+        final var options = new EmitEventOptions();
+        options.setEd25519SignatureVerification(
+                new Ed25519SignatureVerification(
+                        signature,
+                        timestamp
+                )
+        );
+
+        targetBot.joinReserve().transform(SuspendReserves.mono())
+
+        // 以响应式的方式推送事件
+        final var mono = targetBot
+                .emitEventReserve(payload, options)
+                .transform(SuspendReserves.mono());
+
+        // 得到处理结果，并返回body
+        // 如果没有需要返回的body，也可以是null
+        return mono.map(result -> {
+            var body = switch (result) {
+                case EmitResult.Verified verified -> verified.getVerified();
+                default -> null;
+            };
+
+            // 将 Body 放到响应体中，返回。
+            return ResponseEntity.ok(body);
+        });
     }
 }
 ```
