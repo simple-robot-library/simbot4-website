@@ -5,6 +5,12 @@
 
 <include from="refers.md" element-id="doc-TODO"></include>
 
+<warning>
+
+这部分暂时懒得写，有需要可以先去看看 [API文档](http://docs.simbot.forte.love/main-v4/simbot-extensions/simbot-extension-continuous-session/love.forte.simbot.extension.continuous.session/-continuous-session-context/index.html) ~
+当然，如果你**迫切地**需要帮助，也可以前往社群或issue催更！
+
+</warning>
 
 ## 概述
 
