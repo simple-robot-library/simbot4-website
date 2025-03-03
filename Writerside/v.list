@@ -24,8 +24,8 @@
 
 <!DOCTYPE vars SYSTEM "https://resources.jetbrains.com/writerside/1.0/vars.dtd">
 <vars>
-    <var name="version" value="4.10.0" />
-    <var name="kt-version" value="2.0.20" />
+    <var name="version" value="4.11.0" />
+    <var name="kt-version" value="2.1.0" />
     <!-- 组件版本 -->
     <var name="ob-version" value="1.5.0" />
     <var name="qg-version" value="4.1.4" />
@@ -33,9 +33,9 @@
     <var name="tg-version" value="0.0.12" />
 
     <var name="api-doc" value="https://docs.simbot.forte.love"/>
-    <var name="kstcpVersion" value="2.0.20-0.9.4" />
+    <var name="kstcpVersion" value="2.1.0-0.11.0" />
     <var name="jb" value="阻塞"/>
     <var name="ja" value="异步"/>
     <var name="jr" value="响应式"/>
-    <var name="copyright-year" value="2021-2024" />
+    <var name="copyright-year" value="2021-2025" />
 </vars>
