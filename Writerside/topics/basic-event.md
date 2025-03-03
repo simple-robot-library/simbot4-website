@@ -730,6 +730,546 @@
 </def>
 </deflist>
 
+## 内部事件
+
+一些仅在内部流转、与外界无关的事件，通常用于一些内部的状态通知或功能拦截。
+
+<warning>
+
+所有的内部事件对于组件来讲都仅仅是一个可选的建议。
+这些事件是否被实现取决于组件的实现情况。
+
+组件在实现时可能会提供更进一步的事件类型或额外的扩展类型。
+
+</warning>
+
+### InternalEvent
+
+<deflist>
+<def title="InternalEvent" id="InternalEvent">
+
+一些仅在内部流转、与外界无关的事件，通常用于一些内部的状态通知或功能拦截。
+
+<deflist type="medium">
+<def title="InternalNotificationEvent" id="InternalNotificationEvent">
+一个内部通知事件。 通知性质的内部事件通常仅用作“通知”，即它不会对某些行为造成影响。
+</def>
+<def title="InternalInterceptionEvent" id="InternalInterceptionEvent">
+一个内部拦截事件。
+
+拦截性质的内部事件通常用作“拦截”，即它会对某些行为进行拦截，并有可能会产生影响，
+例如改变原本行为的参数、或者通过抛出异常直接阻止某些行为的发生。
+</def>
+</deflist>
+</def>
+</deflist>
+
+### BotStageEvent
+
+<deflist>
+<def title="BotStageEvent" id="BotStageEvent">
+
+与 Bot 相关的阶段性事件。 例如bot被注册了、bot被启动了。
+
+```plantuml
+@startuml
+
+interface Event
+interface ComponentEvent extends Event
+interface BotEvent extends ComponentEvent
+interface InternalEvent extends Event
+interface InternalNotificationEvent extends InternalEvent
+
+interface BotStageEvent ##[bold]LightSeaGreen extends InternalNotificationEvent, BotEvent
+interface BotRegisteredEvent ##[bold]LightSeaGreen extends BotStageEvent
+interface BotStartedEvent ##[bold]LightSeaGreen extends BotStageEvent
+
+@enduml
+```
+
+继承 [InternalEvent](#InternalEvent), [BotEvent](#d-bot-event)。
+
+<deflist type="medium">
+<def title="BotRegisteredEvent" id="BotRegisteredEvent">
+
+当一个 Bot 已经在某个 `BotManager` 中被注册后的事件。
+
+</def>
+<def title="BotStartedEvent" id="BotStartedEvent">
+当一个 Bot **首次** 启动成功后的事件。
+</def>
+</deflist>
+
+</def>
+</deflist>
+
+### InternalMessageInteractionEvent 内部消息行为事件
+
+<deflist>
+<def title="InternalMessageInteractionEvent" id="InternalMessageInteractionEvent">
+
+在内部一个跟 `Message` 的交互有关的事件。
+
+```plantuml
+@startuml
+
+interface InternalEvent extends Event
+interface InternalNotificationEvent extends InternalEvent
+interface InternalInterceptionEvent extends InternalEvent
+
+interface InternalMessageInteractionEvent ##[bold]LightSeaGreen extends InternalEvent
+interface InternalMessagePreSendEvent ##[bold]LightSeaGreen extends InternalInterceptionEvent, InternalMessageInteractionEvent
+interface InternalMessagePostSendEvent ##[bold]LightSeaGreen extends InternalMessageInteractionEvent, InternalNotificationEvent
+
+@enduml
+```
+
+继承 [InternalEvent](#InternalEvent) 。
+
+<deflist type="medium">
+<def title="InternalMessagePreSendEvent" id="InternalMessagePreSendEvent">
+针对消息交互时的内部拦截事件，可以对其中的参数进行修改。
+</def>
+<def title="InternalMessagePostSendEvent" id="InternalMessagePostSendEvent">
+
+针对消息发送 (例如 `SendSupport.send` 或 `ReplySupport.reply`) 成功后的内部通知事件。
+会在相关API执行成功后带着它的相关结果进行异步通知
+
+</def>
+</deflist>
+</def>
+</deflist>
+
+#### SendSupportInteractionEvent SendSupport 行为事件
+
+<deflist>
+<def title="SendSupportInteractionEvent" id="SendSupportInteractionEvent">
+
+针对 `SendSupport` 的内部交互事件，包括送信前的拦截与送信成功后的通知。
+
+```plantuml
+@startuml
+
+interface Event
+interface BotEvent extends Event
+interface InternalMessageInteractionEvent extends Event
+interface InternalMessagePreSendEvent extends InternalMessageInteractionEvent
+interface InternalMessagePostSendEvent extends InternalMessageInteractionEvent
+
+interface SendSupportInteractionEvent ##[bold]LightSeaGreen extends BotEvent, InternalMessageInteractionEvent
+interface SendSupportPreSendEvent ##[bold]LightSeaGreen extends SendSupportInteractionEvent, InternalMessagePreSendEvent
+interface SendSupportPostSendEvent ##[bold]LightSeaGreen extends SendSupportInteractionEvent, InternalMessagePostSendEvent
+
+@enduml
+```
+
+<deflist>
+<def title="SendSupportPreSendEvent" id="SendSupportPreSendEvent">
+
+针对 `SendSupport.send` 的内部拦截事件。可以对其中的参数进行修改。
+
+</def>
+<def title="SendSupportPostSendEvent" id="SendSupportPostSendEvent">
+
+针对 `SendSupport.send` 的内部通知事件。会在 `SendSupport.send` 执行成功后带着它的相关结果进行异步通知。
+
+</def>
+</deflist>
+</def>
+<def title="ContactInteractionEvent" id="ContactInteractionEvent">
+
+针对 `Contact.send` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface Event
+interface InternalMessageInteractionEvent extends Event
+interface InternalMessagePreSendEvent extends InternalMessageInteractionEvent
+interface InternalMessagePostSendEvent extends InternalMessageInteractionEvent
+
+interface SendSupportInteractionEvent extends InternalMessageInteractionEvent
+interface SendSupportPreSendEvent extends SendSupportInteractionEvent, InternalMessagePreSendEvent
+interface SendSupportPostSendEvent extends SendSupportInteractionEvent, InternalMessagePostSendEvent
+
+interface ContactInteractionEvent ##[bold]LightSeaGreen extends SendSupportInteractionEvent
+interface ContactPreSendEvent ##[bold]LightSeaGreen extends ContactInteractionEvent, SendSupportPreSendEvent
+interface ContactPostSendEvent ##[bold]LightSeaGreen extends ContactInteractionEvent, SendSupportPostSendEvent
+
+@enduml
+```
+
+<deflist type="medium">
+<def title="ContactPreSendEvent" id="ContactPreSendEvent">
+
+针对 `Contact.send` 的内部交互事件, 在 `Contact.send` 执行前拦截。
+
+</def>
+<def title="ContactPostSendEvent" id="ContactPostSendEvent">
+
+针对 `Contact.send` 的内部交互事件, 在 `Contact.send` 执行后通知。
+
+</def>
+</deflist>
+
+</def>
+
+<def title="MemberInteractionEvent" id="MemberInteractionEvent">
+
+```plantuml
+@startuml
+
+interface Event
+interface InternalMessageInteractionEvent extends Event
+interface InternalMessagePreSendEvent extends InternalMessageInteractionEvent
+interface InternalMessagePostSendEvent extends InternalMessageInteractionEvent
+
+interface SendSupportInteractionEvent extends InternalMessageInteractionEvent
+interface SendSupportPreSendEvent extends SendSupportInteractionEvent, InternalMessagePreSendEvent
+interface SendSupportPostSendEvent extends SendSupportInteractionEvent, InternalMessagePostSendEvent
+
+interface MemberInteractionEvent ##[bold]LightSeaGreen extends SendSupportInteractionEvent
+interface MemberPreSendEvent ##[bold]LightSeaGreen extends MemberInteractionEvent, SendSupportPreSendEvent
+interface MemberPostSendEvent ##[bold]LightSeaGreen extends MemberInteractionEvent, SendSupportPostSendEvent
+
+@enduml
+```
+
+<deflist type="medium">
+<def title="MemberPreSendEvent" id="MemberPreSendEvent">
+
+针对 `Member.send` 的内部交互事件, 在 `Member.send` 执行前拦截。
+
+</def>
+<def title="MemberPostSendEvent" id="MemberPostSendEvent">
+
+针对 `Member.send` 的内部交互事件, 在 `Member.send` 执行后通知。
+
+</def>
+</deflist>
+
+</def>
+
+<def title="ChatRoomInteractionEvent" id="ChatRoomInteractionEvent">
+
+针对 `ChatRoom` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface Event
+interface InternalMessageInteractionEvent extends Event
+interface InternalMessagePreSendEvent extends InternalMessageInteractionEvent
+interface InternalMessagePostSendEvent extends InternalMessageInteractionEvent
+
+interface SendSupportInteractionEvent extends InternalMessageInteractionEvent
+interface SendSupportPreSendEvent extends SendSupportInteractionEvent, InternalMessagePreSendEvent
+interface SendSupportPostSendEvent extends SendSupportInteractionEvent, InternalMessagePostSendEvent
+
+interface ChatRoomInteractionEvent ##[bold]LightSeaGreen extends SendSupportInteractionEvent
+interface ChatRoomPreSendEvent ##[bold]LightSeaGreen extends ChatRoomInteractionEvent, SendSupportPreSendEvent
+interface ChatRoomPostSendEvent ##[bold]LightSeaGreen extends ChatRoomInteractionEvent, SendSupportPostSendEvent
+
+interface ChatGroupInteractionEvent ##[bold]LightSkyBlue extends ChatRoomInteractionEvent
+interface ChatGroupPreSendEvent ##[bold]LightSkyBlue extends ChatGroupInteractionEvent, ChatRoomPreSendEvent
+interface ChatGroupPostSendEvent ##[bold]LightSkyBlue extends ChatGroupInteractionEvent, ChatRoomPostSendEvent
+interface ChatChannelInteractionEvent ##[bold]LightSkyBlue extends ChatRoomInteractionEvent
+interface ChatChannelPreSendEvent ##[bold]LightSkyBlue extends ChatChannelInteractionEvent, ChatRoomPreSendEvent
+interface ChatChannelPostSendEvent ##[bold]LightSkyBlue extends ChatChannelInteractionEvent, ChatRoomPostSendEvent
+@enduml
+```
+
+<deflist type="medium">
+<def title="ChatRoomPreSendEvent" id="ChatRoomPreSendEvent">
+
+针对 `ChatRoom.send` 的内部交互事件, 在 `ChatRoom.send` 执行前拦截。
+
+</def>
+<def title="ChatRoomPostSendEvent" id="ChatRoomPostSendEvent">
+
+针对 `ChatRoom.send` 的内部交互事件, 在 `ChatRoom.send` 执行后通知。
+
+</def>
+<def title="ChatGroupInteractionEvent" id="ChatGroupInteractionEvent">
+
+针对 `ChatGroup` 的内部交互事件
+
+</def>
+<def title="ChatGroupPreSendEvent" id="ChatGroupPreSendEvent">
+
+针对 `ChatGroup.send` 的内部交互事件, 在 `ChatGroup.send` 执行前拦截。
+
+</def>
+<def title="ChatGroupPostSendEvent" id="ChatGroupPostSendEvent">
+
+针对 `ChatGroup.send` 的内部交互事件, 在 `ChatGroup.send` 执行后通知。
+
+</def>
+<def title="ChatChannelInteractionEvent" id="ChatChannelInteractionEvent">
+
+针对 `ChatChannel` 的内部交互事件
+
+<def title="ChatChannelPreSendEvent" id="ChatChannelPreSendEvent">
+
+针对 `ChatChannel.send` 的内部交互事件, 在 `ChatChannel.send` 执行前拦截。
+
+</def>
+<def title="ChatChannelPostSendEvent" id="ChatChannelPostSendEvent">
+
+针对 `ChatChannel.send` 的内部交互事件, 在 `ChatChannel.send` 执行后通知。
+
+</def>
+</def>
+</deflist>
+</def>
+
+</deflist>
+
+#### ReplySupportInteractionEvent ReplySupport 行为事件
+
+<deflist>
+<def title="ReplySupportInteractionEvent" id="ReplySupportInteractionEvent">
+
+针对 `ReplySupport` 的内部交互事件，包括送信前的拦截与送信成功后的通知。
+
+```plantuml
+@startuml
+
+interface Event
+interface BotEvent extends Event
+interface InternalMessageInteractionEvent extends Event
+interface InternalMessagePreSendEvent extends InternalMessageInteractionEvent
+interface InternalMessagePostSendEvent extends InternalMessageInteractionEvent
+
+interface ReplySupportInteractionEvent ##[bold]LightSeaGreen extends BotEvent, InternalMessageInteractionEvent
+interface ReplySupportPreReplyEvent ##[bold]LightSeaGreen extends ReplySupportInteractionEvent, InternalMessagePreSendEvent
+interface ReplySupportPostReplyEvent ##[bold]LightSeaGreen extends ReplySupportInteractionEvent, InternalMessagePostSendEvent
+@enduml
+```
+
+<deflist type="medium">
+<def title="ReplySupportPreReplyEvent" id="ReplySupportPreReplyEvent">
+
+针对 `ReplySupport.reply` 的内部拦截事件。 可以对其中的参数进行修改。
+
+</def>
+<def title="ReplySupportPostReplyEvent" id="ReplySupportPostReplyEvent">
+
+针对 `ReplySupport.reply` 的内部通知事件。 会在 `ReplySupport.reply` 执行成功后带着它的相关结果进行异步通知。
+
+</def>
+</deflist>
+
+</def>
+<def title="MessageEventInteractionEvent" id="MessageEventInteractionEvent">
+
+针对 `MessageEvent.reply` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface InternalMessageInteractionEvent extends Event
+
+interface ReplySupportInteractionEvent extends InternalMessageInteractionEvent
+interface ReplySupportPreReplyEvent extends ReplySupportInteractionEvent
+interface ReplySupportPostReplyEvent extends ReplySupportInteractionEvent
+
+interface MessageEventInteractionEvent ##[bold]LightSeaGreen extends ReplySupportInteractionEvent
+interface MessageEventPreReplyEvent ##[bold]LightSeaGreen extends MessageEventInteractionEvent, ReplySupportPreReplyEvent
+interface MessageEventPostReplyEvent ##[bold]LightSeaGreen extends MessageEventInteractionEvent, ReplySupportPostReplyEvent
+@enduml
+```
+
+<deflist type="medium">
+<def title="MessageEventPreReplyEvent" id="MessageEventPreReplyEvent">
+
+针对 `MessageEvent.reply` 的内部拦截事件。 可以对其中的参数进行修改。
+
+</def>
+<def title="MessageEventPostReplyEvent" id="MessageEventPostReplyEvent">
+
+针对 `MessageEvent.reply` 的内部通知事件。 会在 `MessageEvent.reply` 执行成功后带着它的相关结果进行异步通知。
+
+</def>
+</deflist>
+</def>
+
+<def title="ContactMessageEventInteractionEvent" id="ContactMessageEventInteractionEvent">
+
+针对 `ContactMessageEvent.reply` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface InternalMessageInteractionEvent extends Event
+
+interface MessageEventInteractionEvent extends InternalMessageInteractionEvent
+interface MessageEventPreReplyEvent extends MessageEventInteractionEvent
+interface MessageEventPostReplyEvent extends MessageEventInteractionEvent
+
+
+interface ContactMessageEventInteractionEvent ##[bold]LightSeaGreen extends MessageEventInteractionEvent
+interface ContactMessageEventPreReplyEvent ##[bold]LightSeaGreen extends ContactMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface ContactMessageEventPostReplyEvent ##[bold]LightSeaGreen extends ContactMessageEventInteractionEvent, MessageEventPostReplyEvent
+@enduml
+```
+
+<deflist type="medium">
+<def title="ContactMessageEventPreReplyEvent" id="ContactMessageEventPreReplyEvent">
+
+针对 `ContactMessageEvent.reply` 的拦截事件。
+
+</def>
+<def title="ContactMessageEventPostReplyEvent" id="ContactMessageEventPostReplyEvent">
+
+针对 `ContactMessageEvent.reply` 的通知事件。
+
+</def>
+</deflist>
+
+</def>
+<def title="ChatRoomMessageEventInteractionEvent" id="ChatRoomMessageEventInteractionEvent">
+
+针对 `ChatRoomMessageEvent.reply` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface InternalMessageInteractionEvent extends Event
+
+interface MessageEventInteractionEvent extends InternalMessageInteractionEvent
+interface MessageEventPreReplyEvent extends MessageEventInteractionEvent
+interface MessageEventPostReplyEvent extends MessageEventInteractionEvent
+
+interface ChatRoomMessageEventInteractionEvent ##[bold]LightSeaGreen extends MessageEventInteractionEvent
+interface ChatRoomMessageEventPreReplyEvent ##[bold]LightSeaGreen extends ChatRoomMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface ChatRoomMessageEventPostReplyEvent ##[bold]LightSeaGreen extends ChatRoomMessageEventInteractionEvent, MessageEventPostReplyEvent
+
+interface ChatGroupMessageEventInteractionEvent ##[bold]LightSkyBlue extends ChatRoomMessageEventInteractionEvent
+interface ChatGroupMessageEventPreReplyEvent ##[bold]LightSkyBlue extends ChatGroupMessageEventInteractionEvent, ChatRoomMessageEventPreReplyEvent
+interface ChatGroupMessageEventPostReplyEvent ##[bold]LightSkyBlue extends ChatGroupMessageEventInteractionEvent, ChatRoomMessageEventPostReplyEvent
+interface ChatChannelMessageEventInteractionEvent ##[bold]LightBlue extends ChatRoomMessageEventInteractionEvent
+interface ChatChannelMessageEventPreReplyEvent ##[bold]LightBlue extends ChatChannelMessageEventInteractionEvent, ChatRoomMessageEventPreReplyEvent
+interface ChatChannelMessageEventPostReplyEvent ##[bold]LightBlue extends ChatChannelMessageEventInteractionEvent, ChatRoomMessageEventPostReplyEvent
+
+@enduml
+```
+
+<deflist type="medium">
+<def title="ChatRoomMessageEventPreReplyEvent" id="ChatRoomMessageEventPreReplyEvent">
+
+针对 `ChatRoomMessageEvent.reply` 的拦截事件。
+
+</def>
+<def title="ChatRoomMessageEventPostReplyEvent" id="ChatRoomMessageEventPostReplyEvent">
+
+针对 `ChatRoomMessageEvent.reply` 的通知事件。
+
+</def>
+</deflist>
+
+</def>
+<def title="MemberMessageEventInteractionEvent" id="MemberMessageEventInteractionEvent">
+
+针对 `MemberMessageEvent.reply` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface InternalMessageInteractionEvent extends Event
+
+interface MessageEventInteractionEvent extends InternalMessageInteractionEvent
+interface MessageEventPreReplyEvent extends MessageEventInteractionEvent
+interface MessageEventPostReplyEvent extends MessageEventInteractionEvent
+
+interface MemberMessageEventInteractionEvent ##[bold]LightSeaGreen extends MessageEventInteractionEvent
+interface MemberMessageEventPreReplyEvent ##[bold]LightSeaGreen extends MemberMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface MemberMessageEventPostReplyEvent ##[bold]LightSeaGreen extends MemberMessageEventInteractionEvent, MessageEventPostReplyEvent
+@enduml
+```
+
+<deflist type="medium">
+<def title="MemberMessageEventPreReplyEvent" id="MemberMessageEventPreReplyEvent">
+
+针对 `MemberMessageEvent.reply` 的拦截事件。
+
+</def>
+<def title="MemberMessageEventPostReplyEvent" id="MemberMessageEventPostReplyEvent">
+
+针对 `MemberMessageEvent.reply` 的通知事件。
+
+</def>
+</deflist>
+
+</def>
+<def title="GuildMemberMessageEventInteractionEvent" id="GuildMemberMessageEventInteractionEvent">
+
+针对 `GuildMemberMessageEvent.reply` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface InternalMessageInteractionEvent extends Event
+
+interface MessageEventInteractionEvent extends InternalMessageInteractionEvent
+interface MessageEventPreReplyEvent extends MessageEventInteractionEvent
+interface MessageEventPostReplyEvent extends MessageEventInteractionEvent
+
+interface GuildMemberMessageEventInteractionEvent ##[bold]LightSeaGreen extends MessageEventInteractionEvent
+interface GuildMemberMessageEventPreReplyEvent ##[bold]LightSeaGreen extends GuildMemberMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface GuildMemberMessageEventPostReplyEvent ##[bold]LightSeaGreen extends GuildMemberMessageEventInteractionEvent, MessageEventPostReplyEvent
+@enduml
+```
+
+<deflist type="medium">
+<def title="GuildMemberMessageEventPreReplyEvent" id="GuildMemberMessageEventPreReplyEvent">
+
+针对 `GuildMemberMessageEvent.reply` 的拦截事件。
+
+</def>
+<def title="GuildMemberMessageEventPostReplyEvent" id="GuildMemberMessageEventPostReplyEvent">
+
+针对 `GuildMemberMessageEvent.reply` 的通知事件。
+
+</def>
+</deflist>
+
+</def>
+<def title="ChatGroupMemberMessageEventInteractionEvent" id="ChatGroupMemberMessageEventInteractionEvent">
+
+针对 `ChatGroupMemberMessageEvent.reply` 的内部交互事件。
+
+```plantuml
+@startuml
+
+interface InternalMessageInteractionEvent extends Event
+
+interface MessageEventInteractionEvent extends InternalMessageInteractionEvent
+interface MessageEventPreReplyEvent extends MessageEventInteractionEvent
+interface MessageEventPostReplyEvent extends MessageEventInteractionEvent
+
+interface ChatGroupMemberMessageEventInteractionEvent ##[bold]LightSeaGreen extends MessageEventInteractionEvent
+interface ChatGroupMemberMessageEventPreReplyEvent ##[bold]LightSeaGreen extends ChatGroupMemberMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface ChatGroupMemberMessageEventPostReplyEvent ##[bold]LightSeaGreen extends ChatGroupMemberMessageEventInteractionEvent, MessageEventPostReplyEvent
+@enduml
+```
+<deflist type="medium">
+<def title="ChatGroupMemberMessageEventPreReplyEvent" id="ChatGroupMemberMessageEventPreReplyEvent">
+
+针对 `ChatGroupMemberMessageEvent.reply` 的拦截事件。
+
+</def>
+<def title="ChatGroupMemberMessageEventPostReplyEvent" id="ChatGroupMemberMessageEventPostReplyEvent">
+
+针对 `ChatGroupMemberMessageEvent.reply` 的通知事件。
+
+</def>
+</deflist>
+
+</def>
+
+</deflist>
+
 ## 完整类关系图
 
 > 自动生成的。
@@ -749,12 +1289,21 @@ interface ChatChannelEvent extends ChannelEvent, ChatRoomEvent
 interface MemberEvent extends ActorEvent, OrganizationSourceEvent
 interface ChatGroupMemberEvent extends MemberEvent
 interface GuildMemberEvent extends MemberEvent
+interface BotStageEvent extends InternalNotificationEvent, BotEvent
+interface BotRegisteredEvent extends BotStageEvent
+interface BotStartedEvent extends BotStageEvent
 interface Event
 interface ComponentEvent extends Event
 interface BotEvent extends ComponentEvent
 interface ContentEvent extends Event
 interface SourceEvent extends Event
 interface ChangeEvent extends ContentEvent
+interface InternalEvent extends Event
+interface InternalNotificationEvent extends InternalEvent
+interface InternalInterceptionEvent extends InternalEvent
+interface InternalMessageInteractionEvent extends InternalEvent
+interface InternalMessagePreSendEvent extends InternalInterceptionEvent, InternalMessageInteractionEvent
+interface InternalMessagePostSendEvent extends InternalMessageInteractionEvent
 interface MemberChangeEvent extends ChangeEvent, MemberEvent
 interface GuildMemberChangeEvent extends ChangeEvent, GuildMemberEvent
 interface GroupMemberChangeEvent extends ChangeEvent, ChatGroupMemberEvent
@@ -780,11 +1329,56 @@ interface ChatGroupMemberDecreaseEvent extends MemberDecreaseEvent, ChatGroupMem
 interface GuildMemberIncreaseOrDecreaseEvent extends MemberIncreaseOrDecreaseEvent, GuildEvent
 interface GuildMemberIncreaseEvent extends MemberIncreaseEvent, GuildMemberIncreaseOrDecreaseEvent
 interface GuildMemberDecreaseEvent extends MemberDecreaseEvent, GuildMemberIncreaseOrDecreaseEvent
+interface ReplySupportInteractionEvent extends BotEvent, InternalMessageInteractionEvent
+interface ReplySupportPreReplyEvent extends ReplySupportInteractionEvent, InternalMessagePreSendEvent
+interface ReplySupportPostReplyEvent extends ReplySupportInteractionEvent, InternalMessagePostSendEvent
+interface MessageEventInteractionEvent extends ReplySupportInteractionEvent
+interface MessageEventPreReplyEvent extends MessageEventInteractionEvent, ReplySupportPreReplyEvent
+interface MessageEventPostReplyEvent extends MessageEventInteractionEvent, ReplySupportPostReplyEvent
+interface ContactMessageEventInteractionEvent extends MessageEventInteractionEvent
+interface ContactMessageEventPreReplyEvent extends ContactMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface ContactMessageEventPostReplyEvent extends ContactMessageEventInteractionEvent, MessageEventPostReplyEvent
+interface ChatRoomMessageEventInteractionEvent extends MessageEventInteractionEvent
+interface ChatRoomMessageEventPreReplyEvent extends ChatRoomMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface ChatRoomMessageEventPostReplyEvent extends ChatRoomMessageEventInteractionEvent, MessageEventPostReplyEvent
+interface ChatGroupMessageEventInteractionEvent extends ChatRoomMessageEventInteractionEvent
+interface ChatGroupMessageEventPreReplyEvent extends ChatGroupMessageEventInteractionEvent, ChatRoomMessageEventPreReplyEvent
+interface ChatGroupMessageEventPostReplyEvent extends ChatGroupMessageEventInteractionEvent, ChatRoomMessageEventPostReplyEvent
+interface ChatChannelMessageEventInteractionEvent extends ChatRoomMessageEventInteractionEvent
+interface ChatChannelMessageEventPreReplyEvent extends ChatChannelMessageEventInteractionEvent, ChatRoomMessageEventPreReplyEvent
+interface ChatChannelMessageEventPostReplyEvent extends ChatChannelMessageEventInteractionEvent, ChatRoomMessageEventPostReplyEvent
+interface MemberMessageEventInteractionEvent extends MessageEventInteractionEvent
+interface MemberMessageEventPreReplyEvent extends MemberMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface MemberMessageEventPostReplyEvent extends MemberMessageEventInteractionEvent, MessageEventPostReplyEvent
+interface GuildMemberMessageEventInteractionEvent extends MessageEventInteractionEvent
+interface GuildMemberMessageEventPreReplyEvent extends GuildMemberMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface GuildMemberMessageEventPostReplyEvent extends GuildMemberMessageEventInteractionEvent, MessageEventPostReplyEvent
+interface ChatGroupMemberMessageEventInteractionEvent extends MessageEventInteractionEvent
+interface ChatGroupMemberMessageEventPreReplyEvent extends ChatGroupMemberMessageEventInteractionEvent, MessageEventPreReplyEvent
+interface ChatGroupMemberMessageEventPostReplyEvent extends ChatGroupMemberMessageEventInteractionEvent, MessageEventPostReplyEvent
 interface RequestEvent extends BotEvent
 interface OrganizationRequestEvent extends RequestEvent, OrganizationEvent
-interface OrganizationJoinRequestEvent extends OrganizationEvent
+interface OrganizationJoinRequestEvent extends OrganizationRequestEvent
 interface ChatGroupJoinRequestEvent extends OrganizationJoinRequestEvent, ChatGroupEvent
 interface GuildJoinRequestEvent extends OrganizationJoinRequestEvent, GuildEvent
+interface SendSupportInteractionEvent extends BotEvent, InternalMessageInteractionEvent
+interface SendSupportPreSendEvent extends SendSupportInteractionEvent, InternalMessagePreSendEvent
+interface SendSupportPostSendEvent extends SendSupportInteractionEvent, InternalMessagePostSendEvent
+interface ContactInteractionEvent extends SendSupportInteractionEvent
+interface ContactPreSendEvent extends ContactInteractionEvent, SendSupportPreSendEvent
+interface ContactPostSendEvent extends ContactInteractionEvent, SendSupportPostSendEvent
+interface MemberInteractionEvent extends SendSupportInteractionEvent
+interface MemberPreSendEvent extends MemberInteractionEvent, SendSupportPreSendEvent
+interface MemberPostSendEvent extends MemberInteractionEvent, SendSupportPostSendEvent
+interface ChatRoomInteractionEvent extends SendSupportInteractionEvent
+interface ChatRoomPreSendEvent extends ChatRoomInteractionEvent, SendSupportPreSendEvent
+interface ChatRoomPostSendEvent extends ChatRoomInteractionEvent, SendSupportPostSendEvent
+interface ChatGroupInteractionEvent extends ChatRoomInteractionEvent
+interface ChatGroupPreSendEvent extends ChatGroupInteractionEvent, ChatRoomPreSendEvent
+interface ChatGroupPostSendEvent extends ChatGroupInteractionEvent, ChatRoomPostSendEvent
+interface ChatChannelInteractionEvent extends ChatRoomInteractionEvent
+interface ChatChannelPreSendEvent extends ChatChannelInteractionEvent, ChatRoomPreSendEvent
+interface ChatChannelPostSendEvent extends ChatChannelInteractionEvent, ChatRoomPostSendEvent
 
 @enduml
 ```
