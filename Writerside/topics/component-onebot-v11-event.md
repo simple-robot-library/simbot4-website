@@ -239,6 +239,9 @@ v1.4.0 之前，`OneBotNotifyEvent` 实现 `MemberEvent` ，
 </deflist>
 </def>
 
+<def id="OneBotInternalEvent" title="OneBotInternalEvent">
+与OneBot协议本身无关的用于内部流转或拦截的事件。
+<deflist>
 <def id="OneBotBotStageEvent" title="OneBotBotStageEvent">
 与OneBot协议本身无关的Bot的阶段事件。
 <deflist>
@@ -250,6 +253,172 @@ v1.4.0 之前，`OneBotNotifyEvent` 实现 `MemberEvent` ，
 </def>
 </deflist>
 </def>
+
+<def id="OneBotInternalMessageInteractionEvent" title="OneBotInternalMessageInteractionEvent">
+
+OneBot 组件中与 Message 交互有关的事件。
+
+> 自 `v1.6.0` 起添加。可参考 [OneBot组件#177](https://github.com/simple-robot/simbot-component-onebot/pull/177)。
+
+**基础类型**
+
+<deflist>
+<def id="OneBotInternalMessagePreSendEvent" title="OneBotInternalMessagePreSendEvent">
+OneBot 组件针对消息发送前的拦截事件。
+继承 <code>InternalMessagePreSendEvent</code>
+</def>
+<def id="OneBotInternalMessagePostSendEvent" title="OneBotInternalMessagePostSendEvent">
+OneBot 组件针对消息发送后的通知事件。
+继承 <code>InternalMessagePostSendEvent</code>
+</def>
+</deflist>
+
+**`SendSupport` 相关类型**
+
+<deflist>
+<def id="OneBotSendSupportInteractionEvent" title="OneBotSendSupportInteractionEvent">
+<code>SendSupport.send</code> 的行为事件
+</def>
+<def id="OneBotSendSupportPreSendEvent" title="OneBotSendSupportPreSendEvent">
+<code>SendSupport.send</code> 的拦截事件
+</def>
+<def id="OneBotSendSupportPostSendEvent" title="OneBotSendSupportPostSendEvent">
+<code>SendSupport.send</code> 的通知事件
+</def>
+</deflist>
+
+**`SendSupport` 相关类型细分子类型**
+
+<deflist>
+<def id="OneBotGroupInteractionEvent" title="OneBotGroupInteractionEvent">
+<code>OneBotGroup.send</code> 的行为事件
+<deflist>
+<def id="OneBotGroupPreSendEvent" title="OneBotGroupPreSendEvent">
+<code>OneBotGroup.send</code> 的拦截事件
+</def>
+<def id="OneBotGroupPostSendEvent" title="OneBotGroupPostSendEvent">
+<code>OneBotGroup.send</code> 的通知事件
+</def>
+</deflist>
+</def>
+<def id="OneBotFriendInteractionEvent" title="OneBotFriendInteractionEvent">
+<code>OneBotFriend.send</code> 的行为事件
+<deflist>
+<def id="OneBotFriendPreSendEvent" title="OneBotFriendPreSendEvent">
+<code>OneBotFriend.send</code> 的拦截事件
+</def>
+<def id="OneBotFriendPostSendEvent" title="OneBotFriendPostSendEvent">
+<code>OneBotFriend.send</code> 的通知事件
+</def>
+</deflist>
+</def>
+<def id="OneBotMemberInteractionEvent" title="OneBotMemberInteractionEvent">
+<code>OneBotMember.send</code> 的行为事件
+<deflist>
+<def id="OneBotMemberPreSendEvent" title="OneBotMemberPreSendEvent">
+<code>OneBotMember.send</code> 的拦截事件
+</def>
+<def id="OneBotMemberPostSendEvent" title="OneBotMemberPostSendEvent">
+<code>OneBotMember.send</code> 的通知事件
+</def>
+</deflist>
+</def>
+</deflist>
+
+**`ReplySupport` (`MessageEvent`) 相关类型**
+
+<deflist>
+<def id="OneBotMessageEventInteractionEvent" title="OneBotMessageEventInteractionEvent">
+<code>OneBotMessageEvent.reply</code> 的行为事件
+</def>
+<def id="OneBotMessageEventPreReplyEvent" title="OneBotMessageEventPreReplyEvent">
+<code>OneBotMessageEvent.reply</code> 的拦截事件
+</def>
+<def id="OneBotMessageEventPostReplyEvent" title="OneBotMessageEventPostReplyEvent">
+<code>OneBotMessageEvent.reply</code> 的通知事件
+</def>
+</deflist>
+
+**`ReplySupport` (`MessageEvent`) 相关类型细分子类型**
+
+**群聊相关**
+
+<deflist>
+<def id="OneBotGroupMessageEventInteractionEvent" title="OneBotGroupMessageEventInteractionEvent">
+<code>OneBotGroupMessageEvent.reply</code> 的行为事件
+</def>
+<def id="OneBotGroupMessageEventPreReplyEvent" title="OneBotGroupMessageEventPreReplyEvent">
+<code>OneBotGroupMessageEvent.reply</code> 的拦截事件
+</def>
+<def id="OneBotGroupMessageEventPostReplyEvent" title="OneBotGroupMessageEventPostReplyEvent">
+<code>OneBotGroupMessageEvent.reply</code> 的通知事件
+</def>
+<def id="OneBotNormalGroupMessageEventInteractionEvent" title="OneBotNormalGroupMessageEventInteractionEvent">
+<code>OneBotNormalGroupMessageEvent.reply</code> 的行为事件
+</def>
+<def id="OneBotNormalGroupMessageEventPreReplyEvent" title="OneBotNormalGroupMessageEventPreReplyEvent">
+<code>OneBotNormalGroupMessageEvent.reply</code> 的拦截事件
+</def>
+<def id="OneBotNormalGroupMessageEventPostReplyEvent" title="OneBotNormalGroupMessageEventPostReplyEvent">
+<code>OneBotNormalGroupMessageEvent.reply</code> 的通知事件
+</def>
+<def id="OneBotAnonymousGroupMessageEventInteractionEvent" title="OneBotAnonymousGroupMessageEventInteractionEvent">
+<code>OneBotAnonymousGroupMessageEvent.reply</code> 的行为事件
+</def>
+<def id="OneBotAnonymousGroupMessageEventPreReplyEvent" title="OneBotAnonymousGroupMessageEventPreReplyEvent">
+<code>OneBotAnonymousGroupMessageEvent.reply</code> 的拦截事件
+</def>
+<def id="OneBotAnonymousGroupMessageEventPostReplyEvent" title="OneBotAnonymousGroupMessageEventPostReplyEvent">
+<code>OneBotAnonymousGroupMessageEvent.reply</code> 的通知事件
+</def>
+<def id="OneBotNoticeGroupMessageEventInteractionEvent" title="OneBotNoticeGroupMessageEventInteractionEvent">
+<code>OneBotNoticeGroupMessageEvent.reply</code> 的行为事件
+</def>
+<def id="OneBotNoticeGroupMessageEventPreReplyEvent" title="OneBotNoticeGroupMessageEventPreReplyEvent">
+<code>OneBotNoticeGroupMessageEvent.reply</code> 的拦截事件
+</def>
+<def id="OneBotNoticeGroupMessageEventPostReplyEvent" title="OneBotNoticeGroupMessageEventPostReplyEvent">
+<code>OneBotNoticeGroupMessageEvent.reply</code> 的通知事件
+</def>
+</deflist>
+
+**私聊相关**
+
+<deflist>
+<def id="OneBotPrivateMessageEventInteractionEvent" title="OneBotPrivateMessageEventInteractionEvent"> 
+<code>OneBotPrivateMessageEvent.reply</code> 的行为类型
+</def>
+<def id="OneBotPrivateMessageEventPreReplyEvent" title="OneBotPrivateMessageEventPreReplyEvent"> 
+<code>OneBotPrivateMessageEvent.reply</code> 的拦截类型
+</def>
+<def id="OneBotPrivateMessageEventPostReplyEvent" title="OneBotPrivateMessageEventPostReplyEvent"> 
+<code>OneBotPrivateMessageEvent.reply</code> 的通知类型
+</def>
+<def id="OneBotGroupPrivateMessageEventInteractionEvent" title="OneBotGroupPrivateMessageEventInteractionEvent"> 
+<code>OneBotGroupPrivateMessageEvent.reply</code> 的行为类型
+</def>
+<def id="OneBotGroupPrivateMessageEventPreReplyEvent" title="OneBotGroupPrivateMessageEventPreReplyEvent"> 
+<code>OneBotGroupPrivateMessageEvent.reply</code> 的拦截类型
+</def>
+<def id="OneBotGroupPrivateMessageEventPostReplyEvent" title="OneBotGroupPrivateMessageEventPostReplyEvent"> 
+<code>OneBotGroupPrivateMessageEvent.reply</code> 的通知类型
+</def>
+<def id="OneBotFriendMessageEventInteractionEvent" title="OneBotFriendMessageEventInteractionEvent"> 
+<code>OneBotFriendMessageEvent.reply</code> 的行为类型
+</def>
+<def id="OneBotFriendMessageEventPreReplyEvent" title="OneBotFriendMessageEventPreReplyEvent"> 
+<code>OneBotFriendMessageEvent.reply</code> 的拦截类型
+</def>
+<def id="OneBotFriendMessageEventPostReplyEvent" title="OneBotFriendMessageEventPostReplyEvent"> 
+<code>OneBotFriendMessageEvent.reply</code> 的通知类型
+</def>
+</deflist>
+
+</def>
+</deflist>
+
+</def>
+
 </deflist>
 
 ### 未知事件
