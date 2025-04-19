@@ -33,7 +33,7 @@
     <var name="tg-version" value="0.0.12" />
 
     <var name="api-doc" value="https://docs.simbot.forte.love"/>
-    <var name="kstcpVersion" value="2.1.0-0.11.0" />
+    <var name="kstcpVersion" value="2.1.0-0.11.1" />
     <var name="jb" value="阻塞"/>
     <var name="ja" value="异步"/>
     <var name="jr" value="响应式"/>
