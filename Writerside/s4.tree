@@ -84,6 +84,7 @@
                     <toc-element topic="component-onebot-v11-OneBotMember.md"/>
                     <toc-element topic="component-onebot-v11-OneBotFriend.md"/>
                 </toc-element>
+                <toc-element topic="component-onebot-v11-custom-event-processor.md"/>
             </toc-element>
         </toc-element>
         <toc-element topic="component-kook.md">
