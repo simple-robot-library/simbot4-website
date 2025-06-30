@@ -24,12 +24,12 @@
 
 <!DOCTYPE vars SYSTEM "https://resources.jetbrains.com/writerside/1.0/vars.dtd">
 <vars>
-    <var name="version" value="4.12.0" />
+    <var name="version" value="4.13.0" />
     <var name="kt-version" value="2.1.20" />
     <!-- 组件版本 -->
-    <var name="ob-version" value="1.8.0" />
-    <var name="qg-version" value="4.1.4" />
-    <var name="kook-version" value="4.1.1" />
+    <var name="ob-version" value="1.8.1" />
+    <var name="qg-version" value="4.2.1" />
+    <var name="kook-version" value="4.1.3" />
     <var name="tg-version" value="0.0.12" />
 
     <var name="api-doc" value="https://docs.simbot.forte.love"/>
