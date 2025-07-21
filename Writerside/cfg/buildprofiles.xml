@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~     Copyright (c) 2025. ForteScarlet.
+  ~
+  ~     Project    https://github.com/simple-robot/simpler-robot
+  ~     Email      ForteScarlet@163.com
+  ~
+  ~     This file is part of the Simple Robot Library (Alias: simple-robot, simbot, etc.).
+  ~
+  ~     This program is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU Lesser General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     This program is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     Lesser GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the Lesser GNU General Public License
+  ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  ~
+  -->
+
 <buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
@@ -30,16 +53,15 @@
             <noindex-content>false</noindex-content>
         </variables>
         <sitemap priority="0.45" change-frequency="weekly" />
+        <llms-txt single-file="true"/>
     </build-profile>
 
     <footer>
         <copyright>%copyright-year% Forte Scarlet.</copyright>
-<!--        <link href="https://simbot.forte.love/">核心库手册</link>-->
         <link href="https://docs.simbot.forte.love/">文档引导站</link>
         <link href="https://github.com/orgs/simple-robot/discussions">社区</link>
-        <link href="https://github.com/simple-robot/simpler-robot/issues">反馈</link>
-        <link href="https://github.com/simple-robot">组织库</link>
-        <link href="https://github.com/simple-robot/simpler-robot">核心库仓库</link>
+        <social type="github" href="https://github.com/simple-robot"/>
+        <social type="bugtracker" href="https://github.com/simple-robot/simpler-robot/issues"/>
         <social type="bilibili" href="https://space.bilibili.com/2714954" />
         <social type="email" href="ForteScarlet@163.com" />
     </footer>
